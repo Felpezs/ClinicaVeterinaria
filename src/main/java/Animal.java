@@ -57,8 +57,8 @@ public class Animal {
 
     @Override
     public String toString() {
-        return "Animal{" + "id=" + id + ", nome=" + nome + ", idade=" + idade + ", sexo=" + sexo + '}';
+        return "Animal{" + "nome=" + nome + '}';
     }
-    
+
     
 }

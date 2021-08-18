@@ -1,8 +1,4 @@
-/*
- * To change this license header, choose License Headers in Project Properties.
- * To change this template file, choose Tools | Templates
- * and open the template in the editor.
- */
+import java.util.List;
 
 /**
  *
@@ -17,6 +13,12 @@ public class Main {
         
         c1.addAnimal(a1);
         c1.addAnimal(a2);
+        
+        System.out.println(c1);
+        
+        List<Animal> listaExterna = c1.getAnimais();
+        Animal a3 = new Animal(3, "", 5, 1);
+        listaExterna.add(a3);
         
         System.out.println(c1);
     }

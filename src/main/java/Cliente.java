@@ -76,11 +76,15 @@ public class Cliente {
     }
     
     public void addAnimal(Animal animal){
-        animais.add(animal);
+        if(!animal.getNome().isBlank())
+        {
+            animais.add(animal);
+        } 
     }
     
     public List<Animal> getAnimais(){
-        return animais;
+        List<Animal> copia = new ArrayList<Animal>(this.animais);
+        return copia;
     }
     
     @Override
