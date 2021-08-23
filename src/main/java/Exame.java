@@ -10,30 +10,27 @@
  */
 public class Exame {
 
-    public Exame(String desc_exame, int id_consulta) {
-        this.desc_exame = desc_exame;
-        this.id_consulta = id_consulta;
+    public Exame(String descExame, int idConsulta) {
+        this.descExame = descExame;
+        this.idConsulta = idConsulta;
     }
     
-    private int id_exame;
-    private String desc_exame;
-    private int id_consulta;
+    private String descExame;
+    private int idConsulta;
 
-    public String getDesc_exame() {
-        return desc_exame;
+    public String getDescExame() {
+        return descExame;
     }
 
-    public int getId_consulta() {
-        return id_consulta;
+    public int getIdConsulta() {
+        return idConsulta;
     }
 
-    public void setDesc_exame(String desc_exame) {
-        this.desc_exame = desc_exame;
+    public void setDescExame(String descExame) {
+        this.descExame = descExame;
     }
 
-    public void setId_consulta(int id_consulta) {
-        this.id_consulta = id_consulta;
+    public void setIdConsulta(int idConsulta) {
+        this.idConsulta = idConsulta;
     }
-    
-    
 }

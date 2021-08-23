@@ -5,14 +5,14 @@
  */
 public class Especie {
 
-    public Especie(String nom_esp) {
-        this.nom_esp = nom_esp;
+    public Especie(String nome) {
+        this.nome = nome;
     }
     
-    private String nom_esp;
+    private String nome;
 
     public String getNom_esp() {
-        return nom_esp;
+        return nome;
     }
 
 }

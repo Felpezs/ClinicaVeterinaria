@@ -49,10 +49,6 @@ public class Cliente {
         return email;
     }
 
-    public void setId(int id) {
-        this.id = id;
-    }
-
     public void setNome(String nome) {
         this.nome = nome;
     }
@@ -75,11 +71,12 @@ public class Cliente {
         }
     }
     
-    public void addAnimal(Animal animal){
-        if(!animal.getNome().isBlank())
-        {
+    public boolean addAnimal(Animal animal){
+        if(!animal.getNome().isBlank()){
             animais.add(animal);
-        } 
+            return true;
+        }
+        return false;
     }
     
     public List<Animal> getAnimais(){

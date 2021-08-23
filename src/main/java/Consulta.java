@@ -6,40 +6,77 @@ import java.util.Calendar;
  */
 public class Consulta {
 
-    public Consulta(Calendar dat_con, String historico, int idTratamento) {
-        this.dat_con = dat_con;
-        this.historico = historico;
+    public Consulta(Calendar data, int hora, String comentarios, int idAnimal, int idVet, int idTratamento, boolean terminou) {
+        this.data = data;
+        this.hora = hora;
+        this.comentarios = comentarios;
+        this.idAnimal = idAnimal;
+        this.idVet = idVet;
         this.idTratamento = idTratamento;
+        this.terminou = terminou;
     }
     
-    private Calendar dat_con;
-    private String historico;
+    private Calendar data;
+    private int hora;
+    private String comentarios;
+    private int idAnimal;
+    private int idVet;
     private int idTratamento;
-    private int id_animal;
-    private int id_vet;
-    private boolean terminou;
-
-    public Calendar getDat_con() {
-        return dat_con;
+    private boolean terminou;    
+    
+    public Calendar getData() {
+        return data;
     }
 
-    public String getHistorico() {
-        return historico;
+    public void setData(Calendar data) {
+        this.data = data;
+    }
+
+    public int getHora() {
+        return hora;
+    }
+
+    public void setHora(int hora) {
+        this.hora = hora;
+    }
+
+    public String getComentarios() {
+        return comentarios;
+    }
+
+    public void setComentarios(String comentarios) {
+        this.comentarios = comentarios;
+    }
+
+    public int getIdAnimal() {
+        return idAnimal;
+    }
+
+    public void setIdAnimal(int idAnimal) {
+        this.idAnimal = idAnimal;
+    }
+
+    public int getIdVet() {
+        return idVet;
+    }
+
+    public void setIdVet(int idVet) {
+        this.idVet = idVet;
     }
 
     public int getIdTratamento() {
         return idTratamento;
     }
 
-    public void setDat_con(Calendar dat_con) {
-        this.dat_con = dat_con;
-    }
-
-    public void setHistorico(String historico) {
-        this.historico = historico;
-    }
-
     public void setIdTratamento(int idTratamento) {
         this.idTratamento = idTratamento;
+    }
+
+    public boolean isTerminou() {
+        return terminou;
+    }
+
+    public void setTerminou(boolean terminou) {
+        this.terminou = terminou;
     }
 }
