@@ -14,7 +14,7 @@ public class ClienteDAO extends DAO{
     private static ClienteDAO instance;
     
     private ClienteDAO(){
-        getConnection();            //Por ser uma classe abstrata, consigo executar somente o metodo?
+        getConnection();            
         createTable();
     }
     
