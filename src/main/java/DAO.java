@@ -72,7 +72,7 @@ public abstract class DAO {
     protected final boolean createTable() {
         try {
             PreparedStatement stmt;
-            // Tabeka cliente:
+            // Tabela cliente:
             stmt = DAO.getConnection().prepareStatement("CREATE TABLE IF NOT EXISTS cliente( \n"
                     + "id INTEGER PRIMARY KEY, \n"
                     + "nome VARCHAR, \n"

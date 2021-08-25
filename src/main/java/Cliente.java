@@ -7,7 +7,8 @@ import java.util.ArrayList;
  */
 public class Cliente {
 
-    public Cliente(int id, String nome, String endereco, String telefone, String cep, String email) {
+    //(int id, String nome, String endereco, String cep, string email, string telefone
+    public Cliente(int id, String nome, String endereco, String cep, String email, String telefone) {
         this.id = id;
         this.nome = nome;
         this.endereco = endereco;
