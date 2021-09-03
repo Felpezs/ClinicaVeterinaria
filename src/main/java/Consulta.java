@@ -6,7 +6,8 @@ import java.util.Calendar;
  */
 public class Consulta {
 
-    public Consulta(Calendar data, int hora, String comentarios, int idAnimal, int idVet, int idTratamento, boolean terminou) {
+    public Consulta(int id, Calendar data, int hora, String comentarios, int idAnimal, int idVet, int idTratamento, boolean terminou) {
+        this.id = id;
         this.data = data;
         this.hora = hora;
         this.comentarios = comentarios;
@@ -16,6 +17,7 @@ public class Consulta {
         this.terminou = terminou;
     }
     
+    private int id;
     private Calendar data;
     private int hora;
     private String comentarios;
@@ -23,6 +25,10 @@ public class Consulta {
     private int idVet;
     private int idTratamento;
     private boolean terminou;    
+
+    public int getId() {
+        return id;
+    }
     
     public Calendar getData() {
         return data;
