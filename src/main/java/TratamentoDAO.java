@@ -6,6 +6,7 @@ import java.util.List;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 import java.util.Calendar;
+import java.text.ParseException;
 
 /**
  *
@@ -43,9 +44,14 @@ public class TratamentoDAO extends DAO{
     
     private Tratamento buildObject(ResultSet rs) {
         Tratamento tratamento = null;
+        
         try {
-            tratamento = new Tratamento(rs.getInt("id"), rs.getInt("id_animal"), rs.getString("nome"), dateFormat.parse(rs.getString("dataIni")), dateFormat.parse(rs.getString("dataFim")), (rs.getInt("terminado")==1? true:false));
-        } catch (SQLException e) {
+            Calendar dt_ini = Calendar.getInstance();
+            Calendar dt_fim = Calendar.getInstance();
+            dt_ini.setTime(dateFormat.parse(rs.getString("dataIni")));
+            dt_fim.setTime(dateFormat.parse(rs.getString("dataFim")));
+            tratamento = new Tratamento(rs.getInt("id"), rs.getInt("id_animal"), rs.getString("nome"), dt_ini, dt_fim, (rs.getInt("terminado")==1? true:false));
+        } catch (SQLException | ParseException e) {
             System.err.println("Exception: " + e.getMessage());
         }
         return tratamento;
