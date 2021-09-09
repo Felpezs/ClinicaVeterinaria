@@ -23,16 +23,16 @@ public class TratamentoDAO extends DAO{
     public static TratamentoDAO getInstance(){
         return (instance == null?(instance = new TratamentoDAO()):instance);
     }
-    //É RECOMENDADO TRABALHAR COM TIPOS DIFERENTES DE DADOS ENTRE O BD E A APLICAÇÃO
+    //É RECOMENDADO TRABALHAR COM TIPOS DIFERENTES DE DADOS ENTRE O BD E A APLICAÇÃO?
     
-    public Tratamento create(int idAnimal, String nome, Calendar datIni, Calendar datFim, boolean terminou){
+    public Tratamento create(Animal animal, String nome, Calendar datIni, Calendar datFim, boolean terminou){
         try{
             PreparedStatement stmt;
             stmt = DAO.getConnection().prepareStatement("INSERT into tratamento (id_animal, nome, dataIni, dataFim, terminado) VALUES (?,?,?,?,?)");
-            stmt.setInt(1, idAnimal);
+            stmt.setInt(1, animal.getId());
             stmt.setString(2, nome);
-            stmt.setString(3, dateFormat.format(datIni));
-            stmt.setString(4, dateFormat.format(datFim));
+            stmt.setString(3, dateFormat.format(datIni.getTime()));
+            stmt.setString(4, dateFormat.format(datFim.getTime()));
             stmt.setInt(5, (terminou == true? 1:0));
             executeUpdate(stmt);
         }
@@ -50,7 +50,9 @@ public class TratamentoDAO extends DAO{
             Calendar dt_fim = Calendar.getInstance();
             dt_ini.setTime(dateFormat.parse(rs.getString("dataIni")));
             dt_fim.setTime(dateFormat.parse(rs.getString("dataFim")));
-            tratamento = new Tratamento(rs.getInt("id"), rs.getInt("id_animal"), rs.getString("nome"), dt_ini, dt_fim, (rs.getInt("terminado")==1? true:false));
+            boolean terminado = rs.getInt("terminado")==1? true: false;
+            
+            tratamento = new Tratamento(rs.getInt("id"), rs.getInt("id_animal"), rs.getString("nome"), dt_ini, dt_fim, terminado);
         } catch (SQLException | ParseException e) {
             System.err.println("Exception: " + e.getMessage());
         }
@@ -96,14 +98,18 @@ public class TratamentoDAO extends DAO{
         return this.retrieve("SELECT * FROM tratamento WHERE terminado=1");
     }
     
+    public List retrieveByDataIni(String data) {
+        return this.retrieve("SELECT * FROM tratamento WHERE dataIni LIKE '%" + data + "%'");
+    }
+    
     public void update(Tratamento tratamento) {
         try {
             PreparedStatement stmt;
             stmt = DAO.getConnection().prepareStatement("UPDATE tratamento SET id_animal=?, nome=?, dataIni=?, dataFim=?, terminado=? WHERE id=? ");
             stmt.setInt(1, tratamento.getIdAnimal());
             stmt.setString(2, tratamento.getNome());
-            stmt.setString(3, dateFormat.format(tratamento.getDat_ini()));
-            stmt.setString(4, dateFormat.format(tratamento.getDat_fin()));
+            stmt.setString(3, tratamento.getDat_ini());
+            stmt.setString(4, tratamento.getDat_fin());
             stmt.setInt(5, (tratamento.isTerminou()==true? 1:0));
             stmt.setInt(6, tratamento.getId());
             executeUpdate(stmt);

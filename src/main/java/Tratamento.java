@@ -1,3 +1,4 @@
+import java.text.SimpleDateFormat;
 import java.util.Calendar;
 
 /**
@@ -15,6 +16,7 @@ public class Tratamento {
         this.terminou = terminou;
     }
     
+    SimpleDateFormat dateFormat = new SimpleDateFormat("dd/MM/yyyy");
     private int id;
     private String nome;
     private Calendar dat_ini;
@@ -26,12 +28,12 @@ public class Tratamento {
         return id;
     }
 
-    public Calendar getDat_ini() {
-        return dat_ini;
+    public String getDat_ini() {
+        return dateFormat.format(dat_ini.getTime());
     }
 
-    public Calendar getDat_fin() {
-        return dat_fin;
+    public String getDat_fin() {
+        return dateFormat.format(dat_fin.getTime());
     }
 
     public void setDat_ini(Calendar dat_ini) {
@@ -61,5 +63,4 @@ public class Tratamento {
     public void setTerminou(boolean terminou) {
         this.terminou = terminou;
     }
-    
 }

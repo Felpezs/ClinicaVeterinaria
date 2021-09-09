@@ -10,24 +10,30 @@
  */
 public class Exame {
 
-    public Exame(String descExame, int idConsulta) {
-        this.descExame = descExame;
+    public Exame(int id, String nome, int idConsulta) {
+        this.id = id;
+        this.nome = nome;
         this.idConsulta = idConsulta;
     }
     
-    private String descExame;
+    private int id;
+    private String nome;
     private int idConsulta;
 
-    public String getDescExame() {
-        return descExame;
+    public int getId() {
+        return id;
+    }
+
+    public String getNome() {
+        return nome;
     }
 
     public int getIdConsulta() {
         return idConsulta;
     }
 
-    public void setDescExame(String descExame) {
-        this.descExame = descExame;
+    public void setDescExame(String nome) {
+        this.nome = nome;
     }
 
     public void setIdConsulta(int idConsulta) {

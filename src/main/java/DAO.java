@@ -11,6 +11,7 @@ public abstract class DAO {
     public static final String DBURL = "jdbc:sqlite:vet2021.db";
     private static Connection con;
     protected static SimpleDateFormat dateFormat = new SimpleDateFormat("dd/MM/yyyy");
+    protected static SimpleDateFormat hourFormat = new SimpleDateFormat("HH:mm:ss");
     
     //Conexão ao SQLite
     public static Connection getConnection(){

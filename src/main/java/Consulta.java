@@ -1,4 +1,6 @@
+import java.text.SimpleDateFormat;
 import java.util.Calendar;
+import java.util.Date;
 
 /**
  *
@@ -6,10 +8,9 @@ import java.util.Calendar;
  */
 public class Consulta {
 
-    public Consulta(int id, Calendar data, int hora, String comentarios, int idAnimal, int idVet, int idTratamento, boolean terminou) {
+    public Consulta(int id, Calendar data, String comentarios, int idAnimal, int idVet, int idTratamento, boolean terminou) {
         this.id = id;
         this.data = data;
-        this.hora = hora;
         this.comentarios = comentarios;
         this.idAnimal = idAnimal;
         this.idVet = idVet;
@@ -17,9 +18,10 @@ public class Consulta {
         this.terminou = terminou;
     }
     
+    SimpleDateFormat dateFormat = new SimpleDateFormat("dd/MM/yyyy");
+    SimpleDateFormat hourFormat = new SimpleDateFormat("HH:mm:ss");
     private int id;
     private Calendar data;
-    private int hora;
     private String comentarios;
     private int idAnimal;
     private int idVet;
@@ -30,20 +32,22 @@ public class Consulta {
         return id;
     }
     
-    public Calendar getData() {
-        return data;
+    public String getData() {
+        return dateFormat.format(data.getTime());
     }
 
-    public void setData(Calendar data) {
-        this.data = data;
+    public void setData(String data) {
+        Date date = dateFormat.parse(data);
+        this.data.setTime(date);
     }
 
-    public int getHora() {
-        return hora;
+    public String getHora() {
+        return hourFormat.format(data.getTime());
     }
-
-    public void setHora(int hora) {
-        this.hora = hora;
+    
+    public void setHora(String hora) {
+        Date hour = hourFormat.parse(data);
+        this.data.setTime(hour);
     }
 
     public String getComentarios() {
