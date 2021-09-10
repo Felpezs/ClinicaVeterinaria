@@ -87,7 +87,7 @@ public class TratamentoDAO extends DAO{
     }
     
     public List retrieveByIdAnimal(int id) {
-        return this.retrieve("SELECT * FROM tratamentos WHERE id_animal = " + id);
+        return this.retrieve("SELECT * FROM tratamento WHERE id_animal = " + id);
     }
     
      public List retrieveBySimilarName(String nome) {

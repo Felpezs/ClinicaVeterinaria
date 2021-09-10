@@ -10,7 +10,20 @@ import java.util.Date;
  */
 public class Main {
     public static void main(String[] args){
+    /*
+        Calendar c = Calendar.getInstance();
         
+        Animal a = AnimalDAO.getInstance().retrieveById(1);
+        Veterinario vet = VeterinarioDAO.getInstance().retrieveById(1);
+        Tratamento trat = TratamentoDAO.getInstance().retrieveById(5);
+        String comentarios = "Otite canina";
+        ConsultaDAO.getInstance().create(c, comentarios, a, vet, trat, true); 
+        
+        Consulta consulta = ConsultaDAO.getInstance().retrieveById(1);
+
+        List<Veterinario> veterinarios = VeterinarioDAO.getInstance().retrieveAll();
+    */  
+        //System.out.println(e1);
     /*
         Animal a1 = AnimalDAO.getInstance().retrieveById(1);
         

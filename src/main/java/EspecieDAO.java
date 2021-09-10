@@ -76,4 +76,27 @@ public class EspecieDAO extends DAO{
     public List retrieveBySimilarName(String nome){
         return this.retrieve("SELECT * FROM especie WHERE nome LIKE '%" + nome + "%'");
     }
+    
+    public void update(Especie especie) {
+        try {
+            PreparedStatement stmt;
+            stmt = DAO.getConnection().prepareStatement("UPDATE especie SET nome=? WHERE id=?");
+            stmt.setString(1, especie.getNom_esp());
+            stmt.setInt(2, especie.getId());
+            executeUpdate(stmt);
+        } catch (SQLException e) {
+            System.err.println("Exception: " + e.getMessage());
+        }
+    }
+    // Delete   
+    public void delete(int id) {
+        PreparedStatement stmt;
+        try {
+            stmt = DAO.getConnection().prepareStatement("DELETE FROM especie WHERE id = ?");
+            stmt.setInt(1, id);
+            executeUpdate(stmt);
+        } catch (SQLException e) {
+            System.err.println("Exception: " + e.getMessage());
+        }
+    }   
 }

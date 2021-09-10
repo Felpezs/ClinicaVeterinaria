@@ -89,4 +89,9 @@ public class Consulta {
     public void setTerminou(boolean terminou) {
         this.terminou = terminou;
     }
+
+    @Override
+    public String toString() {
+        return "Consulta{" + "id=" + id + ", comentarios=" + comentarios + ", idAnimal=" + idAnimal + ", idVet=" + idVet + ", idTratamento=" + idTratamento + ", terminou=" + terminou + '}';
+    }
 }

@@ -25,14 +25,14 @@ public class AnimalDAO extends DAO{
     
     //CRUD
     
-    public Animal create(String nome, int anoNasc, String sexo, int idEspecie, Cliente cliente){
+    public Animal create(String nome, int anoNasc, String sexo, Especie especie, Cliente cliente){
         try{
             PreparedStatement stmt;
             stmt = DAO.getConnection().prepareStatement("INSERT INTO animal (nome, anoNasc, sexo, id_especie, id_cliente) VALUES (?,?,?,?,?)");
             stmt.setString(1, nome);
             stmt.setInt(2, anoNasc);
             stmt.setString(3, sexo);
-            stmt.setInt(4, idEspecie);
+            stmt.setInt(4, especie.getId());
             stmt.setInt(5, cliente.getId());
             executeUpdate(stmt);
         }

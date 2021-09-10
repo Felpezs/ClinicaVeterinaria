@@ -24,12 +24,12 @@ public class ExameDAO extends DAO{
     }
     
     //CRUD
-    public Exame create(String nome, int idConsulta){
+    public Exame create(String nome, Consulta consulta){
         try{
             PreparedStatement stmt;
             stmt = DAO.getConnection().prepareStatement("INSERT INTO exame (nome, id_consulta) VALUES (?,?)");
             stmt.setString(1, nome);
-            stmt.setInt(2, idConsulta);
+            stmt.setInt(2, consulta.getId());
             executeUpdate(stmt);
         }
         catch(SQLException ex){

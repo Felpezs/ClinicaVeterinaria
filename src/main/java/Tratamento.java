@@ -63,4 +63,9 @@ public class Tratamento {
     public void setTerminou(boolean terminou) {
         this.terminou = terminou;
     }
+
+    @Override
+    public String toString() {
+        return "Tratamento{" + "id=" + id + ", nome=" + nome + ", idAnimal=" + idAnimal + ", terminou=" + terminou + '}';
+    }
 }

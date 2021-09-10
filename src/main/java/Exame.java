@@ -39,4 +39,9 @@ public class Exame {
     public void setIdConsulta(int idConsulta) {
         this.idConsulta = idConsulta;
     }
+
+    @Override
+    public String toString() {
+        return "Exame{" + "id=" + id + ", nome=" + nome + ", idConsulta=" + idConsulta + '}';
+    }
 }

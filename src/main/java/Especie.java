@@ -17,7 +17,16 @@ public class Especie {
         return nome;
     }
     
+    public void setNom_esp(String nome) {
+        this.nome = nome;
+    }
+    
     public int getId(){
         return id;
     }
+
+    @Override
+    public String toString() {
+        return "Especie{" + "nome=" + nome + ", id=" + id + '}';
+    }   
 }
