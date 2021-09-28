@@ -1,3 +1,5 @@
+package Model;
+
 import java.util.List;
 import java.text.SimpleDateFormat;
 import java.util.Calendar;
@@ -36,5 +38,9 @@ public class Main {
         c2.setTime(data2);
         Tratamento t1 = TratamentoDAO.getInstance().create(a1, "sutura", c1, c2, true);
     */
+    
+    List<Consulta> consultas = ConsultaDAO.getInstance().retrieveAll();
+    
+        System.out.println(consultas);
     }
 }

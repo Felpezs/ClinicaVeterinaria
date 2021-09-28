@@ -1,3 +1,5 @@
+package Model;
+
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
@@ -23,7 +25,6 @@ public class TratamentoDAO extends DAO{
     public static TratamentoDAO getInstance(){
         return (instance == null?(instance = new TratamentoDAO()):instance);
     }
-    //É RECOMENDADO TRABALHAR COM TIPOS DIFERENTES DE DADOS ENTRE O BD E A APLICAÇÃO?
     
     public Tratamento create(Animal animal, String nome, Calendar datIni, Calendar datFim, boolean terminou){
         try{

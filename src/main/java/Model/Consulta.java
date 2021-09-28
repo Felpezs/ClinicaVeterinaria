@@ -1,3 +1,6 @@
+package Model;
+
+import java.text.ParseException;
 import java.text.SimpleDateFormat;
 import java.util.Calendar;
 import java.util.Date;
@@ -36,7 +39,7 @@ public class Consulta {
         return dateFormat.format(data.getTime());
     }
 
-    public void setData(String data) {
+    public void setData(String data) throws ParseException {
         Date date = dateFormat.parse(data);
         this.data.setTime(date);
     }
@@ -45,8 +48,8 @@ public class Consulta {
         return hourFormat.format(data.getTime());
     }
     
-    public void setHora(String hora) {
-        Date hour = hourFormat.parse(data);
+    public void setHora(String hora) throws ParseException {
+        Date hour = hourFormat.parse(hora);
         this.data.setTime(hour);
     }
 
