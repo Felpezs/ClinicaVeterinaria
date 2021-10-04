@@ -1,5 +1,5 @@
-package Model;
-
+import Model.Consulta;
+import Model.ConsultaDAO;
 import java.util.List;
 import java.text.SimpleDateFormat;
 import java.util.Calendar;
