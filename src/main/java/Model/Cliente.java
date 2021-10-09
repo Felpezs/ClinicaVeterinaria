@@ -9,7 +9,6 @@ import java.util.ArrayList;
  */
 public class Cliente {
 
-    //(int id, String nome, String endereco, String cep, string email, string telefone
     public Cliente(int id, String nome, String endereco, String cep, String email, String telefone) {
         this.id = id;
         this.nome = nome;
