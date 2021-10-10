@@ -16,14 +16,64 @@ import Model.Veterinario;
 import Model.VeterinarioDAO;
 import javax.swing.JTable;
 import View.GenericTableModel;
+import javax.swing.JTextField;
 
 /**
  *
  * @author PC
  */
 public class Controller {
+    private static Cliente clienteSelecionado = null;
+    private static Animal animalSelecionado = null;
+    private static Veterinario veterinarioSelecionado = null;
+    private static Tratamento tratamentoSelecionado = null;
+    private static JTextField clienteSelecionadoTextField = null;
+    private static JTextField animalSelecionadoTextField = null;
+    private static JTextField especieSelecionadoTextField = null;
+    private static JTextField veterinarioSelecionadoTextField = null;
+    private static JTextField tratamentoSelecionadoTextField = null;
+    
     public static void setTableModel(JTable table, GenericTableModel tableModel){
         table.setModel(tableModel);
+    }
+    
+    public static void setFields(JTextField clienteField, JTextField animalField, JTextField especieField, JTextField veterinarioField, JTextField tratamentoField){
+        clienteSelecionadoTextField = clienteField;
+        animalSelecionadoTextField = animalField;
+        especieSelecionadoTextField = especieField;
+        veterinarioSelecionadoTextField = veterinarioField;
+        tratamentoSelecionadoTextField = tratamentoField;
+    }
+    
+    public static Cliente getClienteSelecionado(){
+        return clienteSelecionado;
+    }
+    
+    public static Animal getAnimalSelecionado(){
+        return animalSelecionado;
+    }
+    
+    public static void setSelected(Object selected){
+       if(selected instanceof Cliente){
+           clienteSelecionado = (Cliente)selected;
+           clienteSelecionadoTextField.setText(clienteSelecionado.getNome());
+           animalSelecionadoTextField.setText("");
+           especieSelecionadoTextField.setText("");
+       }
+       else if(selected instanceof Animal){
+           animalSelecionado = (Animal)selected;
+           animalSelecionadoTextField.setText(animalSelecionado.getNome());
+           especieSelecionadoTextField.setText(EspecieDAO.getInstance().retrieveById(animalSelecionado.getIdEspecie()).getNom_esp());
+           tratamentoSelecionadoTextField.setText("");
+       }
+       else if(selected instanceof Veterinario){
+           veterinarioSelecionado = (Veterinario)selected;
+           veterinarioSelecionadoTextField.setText(veterinarioSelecionado.getNome());
+       }
+       else if(selected instanceof Tratamento){
+           tratamentoSelecionado = (Tratamento)selected;
+           tratamentoSelecionadoTextField.setText(tratamentoSelecionado.getNome());
+       }
     }
     
     public static void updateInstance(Object instance){

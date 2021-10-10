@@ -73,6 +73,7 @@ public class Cliente {
         }
     }
     
+    /*
     public boolean addAnimal(Animal animal){
         if(!animal.getNome().isBlank()){
             animais.add(animal);
@@ -80,6 +81,7 @@ public class Cliente {
         }
         return false;
     }
+    */
     
     public List<Animal> getAnimais(){
         List<Animal> copia = new ArrayList<Animal>(this.animais);
