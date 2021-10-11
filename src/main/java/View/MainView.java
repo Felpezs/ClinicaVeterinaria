@@ -63,6 +63,9 @@ public class MainView extends javax.swing.JFrame {
         itemHelp = new javax.swing.JPanel();
         jLabel15 = new javax.swing.JLabel();
         jLabel16 = new javax.swing.JLabel();
+        itemEspecies = new javax.swing.JPanel();
+        jLabel18 = new javax.swing.JLabel();
+        jLabel24 = new javax.swing.JLabel();
         conteudoTop = new javax.swing.JPanel();
         topGroup = new javax.swing.JPanel();
         topItemCliente = new javax.swing.JPanel();
@@ -99,7 +102,6 @@ public class MainView extends javax.swing.JFrame {
         jButton4 = new javax.swing.JButton();
         jButton5 = new javax.swing.JButton();
         jButton6 = new javax.swing.JButton();
-        jButton13 = new javax.swing.JButton();
         consulta = new javax.swing.JPanel();
         areaTabelaVet = new javax.swing.JPanel();
         jScrollPane4 = new javax.swing.JScrollPane();
@@ -143,6 +145,10 @@ public class MainView extends javax.swing.JFrame {
         jButton11 = new javax.swing.JButton();
         jButton12 = new javax.swing.JButton();
         jTextField10 = new javax.swing.JTextField();
+        Especies = new javax.swing.JPanel();
+        areaListaTrat1 = new javax.swing.JPanel();
+        jScrollPane10 = new javax.swing.JScrollPane();
+        jTable6 = new javax.swing.JTable();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         setTitle("Clínica Veterinária");
@@ -212,7 +218,7 @@ public class MainView extends javax.swing.JFrame {
         jLabel4.setBackground(new java.awt.Color(44, 44, 99));
         jLabel4.setFont(new java.awt.Font("Segoe UI", 1, 14)); // NOI18N
         jLabel4.setForeground(new java.awt.Color(255, 255, 255));
-        jLabel4.setText("Consultas");
+        jLabel4.setText("Agendar Consultas");
 
         javax.swing.GroupLayout itemConsultaLayout = new javax.swing.GroupLayout(itemConsulta);
         itemConsulta.setLayout(itemConsultaLayout);
@@ -336,6 +342,40 @@ public class MainView extends javax.swing.JFrame {
             .addComponent(jLabel15, javax.swing.GroupLayout.DEFAULT_SIZE, 54, Short.MAX_VALUE)
         );
 
+        itemEspecies.setBackground(new java.awt.Color(38, 38, 84));
+        itemEspecies.setBorder(javax.swing.BorderFactory.createMatteBorder(0, 0, 1, 0, new java.awt.Color(44, 44, 99)));
+        itemEspecies.setPreferredSize(new java.awt.Dimension(288, 60));
+        itemEspecies.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                itemEspeciesMouseClicked(evt);
+            }
+        });
+
+        jLabel18.setForeground(new java.awt.Color(255, 255, 255));
+        jLabel18.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
+        jLabel18.setIcon(new javax.swing.ImageIcon("C:\\Users\\PC\\Unicamp\\2ºSem. 2021\\Topicos\\ClinicaVeterinaria\\src\\main\\java\\View\\Icones\\icons8_footprint_scanning_25px_1.png")); // NOI18N
+
+        jLabel24.setFont(new java.awt.Font("Segoe UI", 1, 14)); // NOI18N
+        jLabel24.setForeground(new java.awt.Color(255, 255, 255));
+        jLabel24.setText("Espécies");
+
+        javax.swing.GroupLayout itemEspeciesLayout = new javax.swing.GroupLayout(itemEspecies);
+        itemEspecies.setLayout(itemEspeciesLayout);
+        itemEspeciesLayout.setHorizontalGroup(
+            itemEspeciesLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(itemEspeciesLayout.createSequentialGroup()
+                .addGap(13, 13, 13)
+                .addComponent(jLabel18, javax.swing.GroupLayout.PREFERRED_SIZE, 50, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addComponent(jLabel24, javax.swing.GroupLayout.PREFERRED_SIZE, 203, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+        );
+        itemEspeciesLayout.setVerticalGroup(
+            itemEspeciesLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addComponent(jLabel18, javax.swing.GroupLayout.DEFAULT_SIZE, 59, Short.MAX_VALUE)
+            .addComponent(jLabel24, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+        );
+
         javax.swing.GroupLayout navBarLayout = new javax.swing.GroupLayout(navBar);
         navBar.setLayout(navBarLayout);
         navBarLayout.setHorizontalGroup(
@@ -345,6 +385,7 @@ public class MainView extends javax.swing.JFrame {
             .addComponent(itemTratamento, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
             .addComponent(itemHeader, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
             .addComponent(itemHelp, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+            .addComponent(itemEspecies, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
         );
         navBarLayout.setVerticalGroup(
             navBarLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -357,7 +398,9 @@ public class MainView extends javax.swing.JFrame {
                 .addComponent(itemConsulta, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(0, 0, 0)
                 .addComponent(itemTratamento, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 344, Short.MAX_VALUE)
+                .addGap(0, 0, 0)
+                .addComponent(itemEspecies, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 284, Short.MAX_VALUE)
                 .addComponent(itemHelp, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
         );
 
@@ -503,7 +546,7 @@ public class MainView extends javax.swing.JFrame {
 
         jLabel12.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
         jLabel12.setForeground(new java.awt.Color(0, 0, 0));
-        jLabel12.setText("Consultas Pendentes:");
+        jLabel12.setText("Consultas Registradas:");
 
         javax.swing.GroupLayout topGroupLayout = new javax.swing.GroupLayout(topGroup);
         topGroup.setLayout(topGroupLayout);
@@ -719,15 +762,6 @@ public class MainView extends javax.swing.JFrame {
         jButton6.setForeground(new java.awt.Color(0, 0, 0));
         jButton6.setText("Apagar");
 
-        jButton13.setBackground(new java.awt.Color(238, 238, 252));
-        jButton13.setForeground(new java.awt.Color(0, 0, 0));
-        jButton13.setText("Nova Espécie");
-        jButton13.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jButton13ActionPerformed(evt);
-            }
-        });
-
         javax.swing.GroupLayout areaTabelaAnimalLayout = new javax.swing.GroupLayout(areaTabelaAnimal);
         areaTabelaAnimal.setLayout(areaTabelaAnimalLayout);
         areaTabelaAnimalLayout.setHorizontalGroup(
@@ -739,16 +773,15 @@ public class MainView extends javax.swing.JFrame {
                     .addGroup(areaTabelaAnimalLayout.createSequentialGroup()
                         .addComponent(jLabel14)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addComponent(jTextField5, javax.swing.GroupLayout.PREFERRED_SIZE, 325, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addComponent(jTextField5, javax.swing.GroupLayout.PREFERRED_SIZE, 400, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                         .addComponent(jButton4)
                         .addGap(18, 18, 18)
                         .addComponent(jButton5)
                         .addGap(18, 18, 18)
                         .addComponent(jButton6)
-                        .addGap(18, 18, 18)
-                        .addComponent(jButton13)))
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                        .addGap(40, 40, 40)))
+                .addContainerGap(25, Short.MAX_VALUE))
         );
         areaTabelaAnimalLayout.setVerticalGroup(
             areaTabelaAnimalLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -759,8 +792,7 @@ public class MainView extends javax.swing.JFrame {
                     .addComponent(jTextField5, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(jButton4)
                     .addComponent(jButton5)
-                    .addComponent(jButton6)
-                    .addComponent(jButton13))
+                    .addComponent(jButton6))
                 .addGap(27, 27, 27)
                 .addComponent(jScrollPane3, javax.swing.GroupLayout.PREFERRED_SIZE, 108, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addContainerGap(20, Short.MAX_VALUE))
@@ -1291,6 +1323,75 @@ public class MainView extends javax.swing.JFrame {
 
         areaTabelas.add(tratamento, "card4");
 
+        Especies.setBackground(new java.awt.Color(241, 242, 249));
+        Especies.setPreferredSize(new java.awt.Dimension(906, 508));
+
+        areaListaTrat1.setBackground(new java.awt.Color(241, 242, 249));
+        areaListaTrat1.setBorder(javax.swing.BorderFactory.createTitledBorder(new javax.swing.border.LineBorder(new java.awt.Color(55, 64, 129), 1, true), "Tratamentos Atuais", javax.swing.border.TitledBorder.DEFAULT_JUSTIFICATION, javax.swing.border.TitledBorder.DEFAULT_POSITION, new java.awt.Font("Segoe UI", 1, 14), new java.awt.Color(55, 64, 129))); // NOI18N
+
+        jTable6.setBackground(new java.awt.Color(255, 255, 255));
+        jTable6.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
+        jTable6.setForeground(new java.awt.Color(0, 0, 0));
+        jTable6.setModel(new javax.swing.table.DefaultTableModel(
+            new Object [][] {
+                {null, null, null}
+            },
+            new String [] {
+                "Nome", "Data de Início", "Concluído?"
+            }
+        ) {
+            Class[] types = new Class [] {
+                java.lang.Object.class, java.lang.Object.class, java.lang.Boolean.class
+            };
+
+            public Class getColumnClass(int columnIndex) {
+                return types [columnIndex];
+            }
+        });
+        jTable6.setShowGrid(false);
+        jTable6.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mousePressed(java.awt.event.MouseEvent evt) {
+                jTable6MousePressed(evt);
+            }
+        });
+        jScrollPane10.setViewportView(jTable6);
+
+        javax.swing.GroupLayout areaListaTrat1Layout = new javax.swing.GroupLayout(areaListaTrat1);
+        areaListaTrat1.setLayout(areaListaTrat1Layout);
+        areaListaTrat1Layout.setHorizontalGroup(
+            areaListaTrat1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, areaListaTrat1Layout.createSequentialGroup()
+                .addContainerGap(53, Short.MAX_VALUE)
+                .addComponent(jScrollPane10, javax.swing.GroupLayout.PREFERRED_SIZE, 750, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(52, 52, 52))
+        );
+        areaListaTrat1Layout.setVerticalGroup(
+            areaListaTrat1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(areaListaTrat1Layout.createSequentialGroup()
+                .addGap(20, 20, 20)
+                .addComponent(jScrollPane10, javax.swing.GroupLayout.PREFERRED_SIZE, 108, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addContainerGap(25, Short.MAX_VALUE))
+        );
+
+        javax.swing.GroupLayout EspeciesLayout = new javax.swing.GroupLayout(Especies);
+        Especies.setLayout(EspeciesLayout);
+        EspeciesLayout.setHorizontalGroup(
+            EspeciesLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(EspeciesLayout.createSequentialGroup()
+                .addGap(16, 16, 16)
+                .addComponent(areaListaTrat1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addContainerGap(25, Short.MAX_VALUE))
+        );
+        EspeciesLayout.setVerticalGroup(
+            EspeciesLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(EspeciesLayout.createSequentialGroup()
+                .addGap(140, 140, 140)
+                .addComponent(areaListaTrat1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addContainerGap(218, Short.MAX_VALUE))
+        );
+
+        areaTabelas.add(Especies, "card4");
+
         getContentPane().add(areaTabelas, new org.netbeans.lib.awtextra.AbsoluteConstraints(290, 280, 910, 540));
 
         pack();
@@ -1420,10 +1521,6 @@ public class MainView extends javax.swing.JFrame {
        new HelpView().setVisible(true);
     }//GEN-LAST:event_itemHelpMouseClicked
 
-    private void jButton13ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton13ActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_jButton13ActionPerformed
-
     private void jButton10MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jButton10MouseClicked
         new AgendarView().setVisible(true);
     }//GEN-LAST:event_jButton10MouseClicked
@@ -1468,6 +1565,14 @@ public class MainView extends javax.swing.JFrame {
         Controller.setSelected(((GenericTableModel)jTable5.getModel()).getItem(jTable5.getSelectedRow()));
     }//GEN-LAST:event_jTable5MousePressed
 
+    private void itemEspeciesMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_itemEspeciesMouseClicked
+        
+    }//GEN-LAST:event_itemEspeciesMouseClicked
+
+    private void jTable6MousePressed(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jTable6MousePressed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_jTable6MousePressed
+
     /**
      * @param args the command line arguments
      */
@@ -1504,10 +1609,12 @@ public class MainView extends javax.swing.JFrame {
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
+    private javax.swing.JPanel Especies;
     private javax.swing.JPanel animalCliente;
     private javax.swing.JPanel areaCadConsulta;
     private javax.swing.JPanel areaConsulta;
     private javax.swing.JPanel areaListaTrat;
+    private javax.swing.JPanel areaListaTrat1;
     private javax.swing.JPanel areaTabelaAnimal;
     private javax.swing.JPanel areaTabelaCliente;
     private javax.swing.JPanel areaTabelaVet;
@@ -1518,6 +1625,7 @@ public class MainView extends javax.swing.JFrame {
     private javax.swing.JPanel conteudoTop;
     private javax.swing.JPanel itemAnimal;
     private javax.swing.JPanel itemConsulta;
+    private javax.swing.JPanel itemEspecies;
     private javax.swing.JPanel itemHeader;
     private javax.swing.JPanel itemHelp;
     private javax.swing.JPanel itemTratamento;
@@ -1525,7 +1633,6 @@ public class MainView extends javax.swing.JFrame {
     private javax.swing.JButton jButton10;
     private javax.swing.JButton jButton11;
     private javax.swing.JButton jButton12;
-    private javax.swing.JButton jButton13;
     private javax.swing.JButton jButton2;
     private javax.swing.JButton jButton3;
     private javax.swing.JButton jButton4;
@@ -1546,12 +1653,14 @@ public class MainView extends javax.swing.JFrame {
     private javax.swing.JLabel jLabel15;
     private javax.swing.JLabel jLabel16;
     private javax.swing.JLabel jLabel17;
+    private javax.swing.JLabel jLabel18;
     private javax.swing.JLabel jLabel19;
     private javax.swing.JLabel jLabel2;
     private javax.swing.JLabel jLabel20;
     private javax.swing.JLabel jLabel21;
     private javax.swing.JLabel jLabel22;
     private javax.swing.JLabel jLabel23;
+    private javax.swing.JLabel jLabel24;
     private javax.swing.JLabel jLabel3;
     private javax.swing.JLabel jLabel4;
     private javax.swing.JLabel jLabel5;
@@ -1560,6 +1669,7 @@ public class MainView extends javax.swing.JFrame {
     private javax.swing.JLabel jLabel8;
     private javax.swing.JLabel jLabel9;
     private javax.swing.JScrollPane jScrollPane1;
+    private javax.swing.JScrollPane jScrollPane10;
     private javax.swing.JScrollPane jScrollPane2;
     private javax.swing.JScrollPane jScrollPane3;
     private javax.swing.JScrollPane jScrollPane4;
@@ -1581,6 +1691,7 @@ public class MainView extends javax.swing.JFrame {
     private javax.swing.JTable jTable3;
     private javax.swing.JTable jTable4;
     private javax.swing.JTable jTable5;
+    private javax.swing.JTable jTable6;
     private javax.swing.JTextArea jTextArea1;
     private javax.swing.JTextArea jTextArea2;
     private javax.swing.JTextArea jTextArea3;
