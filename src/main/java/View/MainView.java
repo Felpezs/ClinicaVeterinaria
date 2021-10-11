@@ -4,6 +4,7 @@ import java.awt.Color;
 import Controller.Controller;
 import Model.AnimalDAO;
 import Model.ClienteDAO;
+import Model.ConsultaDAO;
 import Model.TratamentoDAO;
 import Model.VeterinarioDAO;
 
@@ -28,7 +29,7 @@ public class MainView extends javax.swing.JFrame {
         jTextField6.setText("");
         jTextField8.setText("");
         jTextField9.setText("");
-        Controller.setFields(jTextField1, jTextField2, jTextField3, jTextField8, jTextField9);
+        Controller.setFields(jTextField1, jTextField2, jTextField3, jTextField8, jTextField9, jTextArea1);
         Controller.setTableModel(jTable1, new ClienteTableModel(ClienteDAO.getInstance().retrieveAll()));
     }
     
@@ -1132,6 +1133,11 @@ public class MainView extends javax.swing.JFrame {
             }
         ));
         jTable5.setShowGrid(false);
+        jTable5.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mousePressed(java.awt.event.MouseEvent evt) {
+                jTable5MousePressed(evt);
+            }
+        });
         jScrollPane7.setViewportView(jTable5);
 
         jScrollPane8.setBackground(new java.awt.Color(255, 255, 255));
@@ -1434,6 +1440,7 @@ public class MainView extends javax.swing.JFrame {
         Controller.setSelected(((GenericTableModel)jTable2.getModel()).getItem(jTable2.getSelectedRow()));
         int idAnimal = Controller.getAnimalSelecionado().getId();
         Controller.setTableModel(jTable4, new TratamentoTableModel(TratamentoDAO.getInstance().retrieveByIdAnimal(idAnimal)));
+        Controller.setTableModel(jTable5, new ConsultaTableModel(ConsultaDAO.getInstance().retrieveByIdAnimal(idAnimal)));
     }//GEN-LAST:event_jTable2MousePressed
 
     private void jTextField6ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jTextField6ActionPerformed
@@ -1451,6 +1458,11 @@ public class MainView extends javax.swing.JFrame {
     private void jTable4MousePressed(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jTable4MousePressed
         Controller.setSelected(((GenericTableModel)jTable4.getModel()).getItem(jTable4.getSelectedRow()));
     }//GEN-LAST:event_jTable4MousePressed
+    
+    //Tabela Consulta
+    private void jTable5MousePressed(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jTable5MousePressed
+        Controller.setSelected(((GenericTableModel)jTable5.getModel()).getItem(jTable5.getSelectedRow()));
+    }//GEN-LAST:event_jTable5MousePressed
 
     /**
      * @param args the command line arguments

@@ -4,6 +4,7 @@ import java.text.ParseException;
 import java.text.SimpleDateFormat;
 import java.util.Calendar;
 import java.util.Date;
+import java.util.logging.Logger;
 
 /**
  *
@@ -39,18 +40,30 @@ public class Consulta {
         return dateFormat.format(data.getTime());
     }
 
-    public void setData(String data) throws ParseException {
-        Date date = dateFormat.parse(data);
-        this.data.setTime(date);
+    public void setData(String data){
+        try{
+            Date date = dateFormat.parse(data);
+            this.data.setTime(date);
+        }
+        catch(ParseException e){
+            System.err.println("Exception: " + e.getMessage());
+        }
+        
     }
 
     public String getHora() {
         return hourFormat.format(data.getTime());
     }
     
-    public void setHora(String hora) throws ParseException {
-        Date hour = hourFormat.parse(hora);
-        this.data.setTime(hour);
+    public void setHora(String hora){
+        try{
+            Date hour = hourFormat.parse(hora);
+            this.data.setTime(hour);
+        }
+        catch(ParseException e){
+            System.err.println("Exception: " + e.getMessage());
+        }
+        
     }
 
     public String getComentarios() {
