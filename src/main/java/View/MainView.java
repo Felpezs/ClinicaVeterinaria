@@ -29,7 +29,7 @@ public class MainView extends javax.swing.JFrame {
         jTextField6.setText("");
         jTextField8.setText("");
         jTextField9.setText("");
-        Controller.setFields(jTextField1, jTextField2, jTextField3, jTextField8, jTextField9, jTextArea1);
+        Controller.setFields(jTextField1, jTextField2, jTextField3, jTextField8, jTextField9, jTextArea1, jTextArea3);
         Controller.setTableModel(jTable1, new ClienteTableModel(ClienteDAO.getInstance().retrieveAll()));
     }
     
@@ -503,7 +503,7 @@ public class MainView extends javax.swing.JFrame {
 
         jLabel12.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
         jLabel12.setForeground(new java.awt.Color(0, 0, 0));
-        jLabel12.setText("Consultas Recentes:");
+        jLabel12.setText("Consultas Pendentes:");
 
         javax.swing.GroupLayout topGroupLayout = new javax.swing.GroupLayout(topGroup);
         topGroup.setLayout(topGroupLayout);
@@ -1077,6 +1077,7 @@ public class MainView extends javax.swing.JFrame {
         areaListaTrat.setBorder(javax.swing.BorderFactory.createTitledBorder(new javax.swing.border.LineBorder(new java.awt.Color(55, 64, 129), 1, true), "Tratamentos Atuais", javax.swing.border.TitledBorder.DEFAULT_JUSTIFICATION, javax.swing.border.TitledBorder.DEFAULT_POSITION, new java.awt.Font("Segoe UI", 1, 14), new java.awt.Color(55, 64, 129))); // NOI18N
 
         jTable4.setBackground(new java.awt.Color(255, 255, 255));
+        jTable4.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
         jTable4.setForeground(new java.awt.Color(0, 0, 0));
         jTable4.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
@@ -1123,6 +1124,7 @@ public class MainView extends javax.swing.JFrame {
         areaConsulta.setBorder(javax.swing.BorderFactory.createTitledBorder(new javax.swing.border.LineBorder(new java.awt.Color(55, 64, 129), 1, true), "Dados de Consultas", javax.swing.border.TitledBorder.DEFAULT_JUSTIFICATION, javax.swing.border.TitledBorder.DEFAULT_POSITION, new java.awt.Font("Segoe UI", 1, 14), new java.awt.Color(55, 64, 129))); // NOI18N
 
         jTable5.setBackground(new java.awt.Color(255, 255, 255));
+        jTable5.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
         jTable5.setForeground(new java.awt.Color(0, 0, 0));
         jTable5.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
@@ -1144,7 +1146,8 @@ public class MainView extends javax.swing.JFrame {
 
         jTextArea3.setBackground(new java.awt.Color(255, 255, 255));
         jTextArea3.setColumns(20);
-        jTextArea3.setForeground(new java.awt.Color(255, 255, 255));
+        jTextArea3.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
+        jTextArea3.setForeground(new java.awt.Color(0, 0, 0));
         jTextArea3.setRows(5);
         jScrollPane8.setViewportView(jTextArea3);
 
@@ -1159,6 +1162,7 @@ public class MainView extends javax.swing.JFrame {
 
         jTextArea4.setBackground(new java.awt.Color(255, 255, 255));
         jTextArea4.setColumns(20);
+        jTextArea4.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
         jTextArea4.setForeground(new java.awt.Color(255, 255, 255));
         jTextArea4.setRows(5);
         jScrollPane9.setViewportView(jTextArea4);

@@ -16,6 +16,7 @@ import Model.Veterinario;
 import Model.VeterinarioDAO;
 import javax.swing.JTable;
 import View.GenericTableModel;
+import java.util.List;
 import javax.swing.JTextArea;
 import javax.swing.JTextField;
 
@@ -35,18 +36,20 @@ public class Controller {
     private static JTextField veterinarioSelecionadoTextField = null;
     private static JTextField tratamentoSelecionadoTextField = null;
     private static JTextArea consultaSelecionadoTextField = null;
+    private static JTextArea consultaSelecionadoComentarios = null;
     
     public static void setTableModel(JTable table, GenericTableModel tableModel){
         table.setModel(tableModel);
     }
     
-    public static void setFields(JTextField clienteField, JTextField animalField, JTextField especieField, JTextField veterinarioField, JTextField tratamentoField, JTextArea consultaField){
+    public static void setFields(JTextField clienteField, JTextField animalField, JTextField especieField, JTextField veterinarioField, JTextField tratamentoField, JTextArea consultaField, JTextArea consultaField2){
         clienteSelecionadoTextField = clienteField;
         animalSelecionadoTextField = animalField;
         especieSelecionadoTextField = especieField;
         veterinarioSelecionadoTextField = veterinarioField;
         tratamentoSelecionadoTextField = tratamentoField;
         consultaSelecionadoTextField = consultaField;
+        consultaSelecionadoComentarios = consultaField2;
     }
     
     public static Cliente getClienteSelecionado(){
@@ -64,18 +67,25 @@ public class Controller {
            animalSelecionadoTextField.setText("");
            especieSelecionadoTextField.setText("");
            consultaSelecionadoTextField.setText("");
+           consultaSelecionadoComentarios.setText("");
        }
        else if(selected instanceof Animal){
            animalSelecionado = (Animal)selected;
            animalSelecionadoTextField.setText(animalSelecionado.getNome());
            especieSelecionadoTextField.setText(EspecieDAO.getInstance().retrieveById(animalSelecionado.getIdEspecie()).getNom_esp());
            tratamentoSelecionadoTextField.setText("");
-           Consulta c = ConsultaDAO.getInstance().retrieveById(animalSelecionado.getId());
-           if(c == null)
-                consultaSelecionadoTextField.setText("Sem consultas recentes :)");
-           else
-               consultaSelecionadoTextField.setText(c.getComentarios());
-           
+           consultaSelecionadoTextField.setText("");
+           List<Consulta> consulta = ConsultaDAO.getInstance().retrieveByIdAnimal(animalSelecionado.getId());
+           if(consulta.isEmpty()){
+               consultaSelecionadoTextField.setText("Sem consultas registradas");
+               consultaSelecionadoComentarios.setText("Sem consultas registradas");
+           }
+           else{
+               for(Consulta c : consulta){
+                   String status = c.isTerminou() ? "(Concluída) - " : "(Pendente) - ";
+                   consultaSelecionadoTextField.append(status + c.getComentarios() + "\n");
+               }
+           }
        }
        else if(selected instanceof Veterinario){
            veterinarioSelecionado = (Veterinario)selected;
@@ -88,6 +98,8 @@ public class Controller {
        
        else if(selected instanceof Consulta){
            consultaSelecionado = (Consulta)selected;
+           String status = consultaSelecionado.isTerminou() ? "(Concluída) - " : "(Pendente) - ";
+           consultaSelecionadoComentarios.setText(status + consultaSelecionado.getComentarios());
        }
     }
     

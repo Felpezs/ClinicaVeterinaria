@@ -91,8 +91,8 @@ public class ConsultaDAO extends DAO{
         return this.retrieve("SELECT * FROM consulta WHERE id_vet = " + id);
     }
     
-    public List retrieveByFinishedTreatment(){
-        return this.retrieve("SELECT * FROM consulta WHERE terminado = 1");
+    public List retrieveByPendent(int id){
+        return this.retrieve("SELECT * FROM consulta WHERE terminado = 0 and id_animal = " + id);
     }
 
     public List retrieveByData(String data) {
