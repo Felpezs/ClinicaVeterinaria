@@ -16,6 +16,7 @@ import Model.Veterinario;
 import Model.VeterinarioDAO;
 import javax.swing.JTable;
 import View.GenericTableModel;
+import java.awt.Color;
 import java.util.List;
 import javax.swing.JPanel;
 import javax.swing.JTextArea;
@@ -38,10 +39,11 @@ public class Controller {
     private static JTextField tratamentoSelecionadoTextField = null;
     private static JTextArea consultaSelecionadoTextField = null;
     private static JTextArea consultaSelecionadoComentarios = null;
-    private static JPanel panelAnimalCliente = null;
-    private static JPanel panelConsulta = null;
-    private static JPanel panelTratamento = null;
-    private static JPanel panelEspecies = null;
+    private static JPanel visiblePanel = null;
+    private static JPanel clickedNavItem = null;
+    private static Color navItemColor = null;
+    private static Color clickedColor = new Color(77, 86, 168);
+    private static Color defaultColor = new Color(38, 38, 84);
     
     public static void setTableModel(JTable table, GenericTableModel tableModel){
         table.setModel(tableModel);
@@ -57,11 +59,31 @@ public class Controller {
         consultaSelecionadoComentarios = consultaField2;
     }
     
-    public static void setPanels(JPanel animalCliente, JPanel consulta, JPanel tratamento, JPanel especies){
-        panelAnimalCliente = animalCliente;
-        panelConsulta = consulta;
-        panelTratamento = tratamento;
-        panelEspecies = especies;
+    public static void setVisiblePanel(JPanel animalCliente){
+        visiblePanel = animalCliente;
+    }
+    
+    public static void setClickedItem(JPanel itemAnimal){
+        clickedNavItem = itemAnimal;
+    }
+    
+    public static void setClicked(JPanel panel){
+        clickedNavItem.setBackground(defaultColor);
+        clickedNavItem = panel;
+        clickedNavItem.setBackground(clickedColor);
+        navItemColor = clickedColor;
+    }
+    
+    public static void hoverEffect(JPanel panel){
+
+        navItemColor = panel.getBackground();
+        if(!panel.getBackground().equals(clickedColor)){
+            panel.setBackground(new Color(55, 55, 123));
+        }
+    }
+    
+    public static Color exitedHover(){
+        return navItemColor;
     }
     
     public static Cliente getClienteSelecionado(){
@@ -139,29 +161,8 @@ public class Controller {
     }
     
     public static void switchPanels(JPanel panel){
-        if(panel.equals(panelAnimalCliente)){
-            panelAnimalCliente.setVisible(true);
-            panelConsulta.setVisible(false);
-            panelTratamento.setVisible(false);
-            panelEspecies.setVisible(false);
-        }
-        else if(panel.equals(panelConsulta)){
-            panelAnimalCliente.setVisible(false);
-            panelConsulta.setVisible(true);
-            panelTratamento.setVisible(false);
-            panelEspecies.setVisible(false);
-        }
-        else if(panel.equals(panelTratamento)){
-            panelAnimalCliente.setVisible(false);
-            panelConsulta.setVisible(false);
-            panelTratamento.setVisible(true);
-            panelEspecies.setVisible(false);
-        }
-        else{
-            panelAnimalCliente.setVisible(false);
-            panelConsulta.setVisible(false);
-            panelTratamento.setVisible(false);
-            panelEspecies.setVisible(true);
-        }
+        visiblePanel.setVisible(false);
+        visiblePanel = panel;
+        visiblePanel.setVisible(true);
     }
 }

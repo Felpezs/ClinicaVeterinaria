@@ -30,7 +30,8 @@ public class MainView extends javax.swing.JFrame {
         jTextField8.setText("");
         jTextField9.setText("");
         Controller.setFields(jTextField1, jTextField2, jTextField3, jTextField8, jTextField9, jTextArea1, jTextArea3);
-        Controller.setPanels(animalCliente, tratamento, consulta, especies);
+        Controller.setVisiblePanel(animalCliente);
+        Controller.setClickedItem(itemAnimal);
         Controller.setTableModel(jTable1, new ClienteTableModel(ClienteDAO.getInstance().retrieveAll()));
     }
     
@@ -354,6 +355,12 @@ public class MainView extends javax.swing.JFrame {
         itemEspecies.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseClicked(java.awt.event.MouseEvent evt) {
                 itemEspeciesMouseClicked(evt);
+            }
+            public void mouseEntered(java.awt.event.MouseEvent evt) {
+                itemEspeciesMouseEntered(evt);
+            }
+            public void mouseExited(java.awt.event.MouseEvent evt) {
+                itemEspeciesMouseExited(evt);
             }
         });
 
@@ -1435,9 +1442,7 @@ public class MainView extends javax.swing.JFrame {
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
-    private Color itemMouseEntered(){
-        return new Color(55, 55, 123);
-    }
+
     
     private void jTextField2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jTextField2ActionPerformed
         // TODO add your handling code here:
@@ -1456,69 +1461,50 @@ public class MainView extends javax.swing.JFrame {
     }//GEN-LAST:event_jTextField5ActionPerformed
 
     private void itemAnimalMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_itemAnimalMouseClicked
-        corItemAnimal = new Color(77, 86, 168);
-        corItemConsulta = new Color(38, 38, 84);
-        corItemTratamento = new Color(38, 38, 84);
-        itemAnimal.setBackground(corItemAnimal);
-        itemConsulta.setBackground(corItemConsulta);
-        itemTratamento.setBackground(corItemTratamento);
+        Controller.setClicked(itemAnimal);
         Controller.switchPanels(animalCliente);
     }//GEN-LAST:event_itemAnimalMouseClicked
 
     private void itemAnimalMouseEntered(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_itemAnimalMouseEntered
-        corItemAnimal = itemAnimal.getBackground();
-        itemAnimal.setBackground(itemMouseEntered());
+        Controller.hoverEffect(itemAnimal);
     }//GEN-LAST:event_itemAnimalMouseEntered
 
     private void itemConsultaMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_itemConsultaMouseClicked
-        corItemAnimal = new Color(38, 38, 84);
-        corItemConsulta = new Color(77, 86, 168);
-        corItemTratamento = new Color(38, 38, 84);
-        itemAnimal.setBackground(corItemAnimal);
-        itemConsulta.setBackground(corItemConsulta);
-        itemTratamento.setBackground(corItemTratamento);
+        Controller.setClicked(itemConsulta);
         Controller.switchPanels(consulta);
-        
         Controller.setTableModel(jTable3, new VeterinarioTableModel(VeterinarioDAO.getInstance().retrieveAll()));
     }//GEN-LAST:event_itemConsultaMouseClicked
 
     private void itemAnimalMouseExited(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_itemAnimalMouseExited
-        itemAnimal.setBackground(corItemAnimal);
+        itemAnimal.setBackground(Controller.exitedHover());
     }//GEN-LAST:event_itemAnimalMouseExited
 
     private void itemConsultaMouseEntered(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_itemConsultaMouseEntered
-        corItemConsulta = itemConsulta.getBackground();
-        itemConsulta.setBackground(itemMouseEntered());  
+        Controller.hoverEffect(itemConsulta);
     }//GEN-LAST:event_itemConsultaMouseEntered
 
     private void itemConsultaMouseExited(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_itemConsultaMouseExited
-        itemConsulta.setBackground(corItemConsulta);
+        itemConsulta.setBackground(Controller.exitedHover());
     }//GEN-LAST:event_itemConsultaMouseExited
 
     private void itemTratamentoMouseEntered(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_itemTratamentoMouseEntered
-        corItemTratamento = itemTratamento.getBackground();
-        itemTratamento.setBackground(itemMouseEntered());
+        Controller.hoverEffect(itemTratamento);
     }//GEN-LAST:event_itemTratamentoMouseEntered
 
     private void itemTratamentoMouseExited(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_itemTratamentoMouseExited
-        itemTratamento.setBackground(corItemTratamento);
+        itemTratamento.setBackground(Controller.exitedHover());
     }//GEN-LAST:event_itemTratamentoMouseExited
 
     private void itemHelpMouseEntered(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_itemHelpMouseEntered
-        itemHelp.setBackground(itemMouseEntered());
+        Controller.hoverEffect(itemHelp);
     }//GEN-LAST:event_itemHelpMouseEntered
 
     private void itemHelpMouseExited(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_itemHelpMouseExited
-        itemHelp.setBackground(new Color(38, 38, 84));
+        itemHelp.setBackground(Controller.exitedHover());
     }//GEN-LAST:event_itemHelpMouseExited
 
     private void itemTratamentoMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_itemTratamentoMouseClicked
-        corItemAnimal = new Color(38, 38, 84);
-        corItemConsulta = new Color(38, 38, 84);
-        corItemTratamento = new Color(77, 86, 168);
-        itemAnimal.setBackground(corItemAnimal);
-        itemConsulta.setBackground(corItemConsulta);
-        itemTratamento.setBackground(corItemTratamento);
+        Controller.setClicked(itemTratamento);
         Controller.switchPanels(tratamento);
     }//GEN-LAST:event_itemTratamentoMouseClicked
 
@@ -1599,12 +1585,21 @@ public class MainView extends javax.swing.JFrame {
     }//GEN-LAST:event_jTable5MousePressed
 
     private void itemEspeciesMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_itemEspeciesMouseClicked
+        Controller.setClicked(itemEspecies);
         Controller.switchPanels(especies);
     }//GEN-LAST:event_itemEspeciesMouseClicked
 
     private void jButton13ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton13ActionPerformed
         // TODO add your handling code here:
     }//GEN-LAST:event_jButton13ActionPerformed
+
+    private void itemEspeciesMouseEntered(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_itemEspeciesMouseEntered
+        Controller.hoverEffect(itemEspecies);
+    }//GEN-LAST:event_itemEspeciesMouseEntered
+
+    private void itemEspeciesMouseExited(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_itemEspeciesMouseExited
+        itemEspecies.setBackground(Controller.exitedHover());
+    }//GEN-LAST:event_itemEspeciesMouseExited
 
     /**
      * @param args the command line arguments
