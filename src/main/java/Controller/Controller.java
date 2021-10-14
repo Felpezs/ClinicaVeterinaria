@@ -38,7 +38,8 @@ public class Controller {
     private static JTextField veterinarioSelecionadoTextField = null;
     private static JTextField tratamentoSelecionadoTextField = null;
     private static JTextArea consultaSelecionadoTextField = null;
-    private static JTextArea consultaSelecionadoComentarios = null;
+    private static JTextArea consultaSelecionadoTextArea = null;
+    private static JTextArea exameTextArea = null;
     private static JPanel visiblePanel = null;
     private static JPanel clickedNavItem = null;
     private static Color navItemColor = null;
@@ -49,14 +50,15 @@ public class Controller {
         table.setModel(tableModel);
     }
     
-    public static void setFields(JTextField clienteField, JTextField animalField, JTextField especieField, JTextField veterinarioField, JTextField tratamentoField, JTextArea consultaField, JTextArea consultaField2){
+    public static void setFields(JTextField clienteField, JTextField animalField, JTextField especieField, JTextField veterinarioField, JTextField tratamentoField, JTextArea consultaField, JTextArea consultaField2, JTextArea exameField){
         clienteSelecionadoTextField = clienteField;
         animalSelecionadoTextField = animalField;
         especieSelecionadoTextField = especieField;
         veterinarioSelecionadoTextField = veterinarioField;
         tratamentoSelecionadoTextField = tratamentoField;
         consultaSelecionadoTextField = consultaField;
-        consultaSelecionadoComentarios = consultaField2;
+        consultaSelecionadoTextArea = consultaField2;
+        exameTextArea = exameField;
     }
     
     public static void setVisiblePanel(JPanel animalCliente){
@@ -104,7 +106,7 @@ public class Controller {
            animalSelecionadoTextField.setText("");
            especieSelecionadoTextField.setText("");
            consultaSelecionadoTextField.setText("");
-           consultaSelecionadoComentarios.setText("");
+           consultaSelecionadoTextArea.setText("");
        }
        else if(selected instanceof Animal){
            animalSelecionado = (Animal)selected;
@@ -112,11 +114,11 @@ public class Controller {
            especieSelecionadoTextField.setText(EspecieDAO.getInstance().retrieveById(animalSelecionado.getIdEspecie()).getNom_esp());
            tratamentoSelecionadoTextField.setText("");
            consultaSelecionadoTextField.setText("");
-           consultaSelecionadoComentarios.setText("");
+           consultaSelecionadoTextArea.setText("");
            List<Consulta> consulta = ConsultaDAO.getInstance().retrieveByIdAnimal(animalSelecionado.getId());
            if(consulta.isEmpty()){
                consultaSelecionadoTextField.setText("Sem consultas registradas");
-               consultaSelecionadoComentarios.setText("Sem consultas registradas");
+               consultaSelecionadoTextArea.setText("Sem consultas registradas");
            }
            else{
                for(Consulta c : consulta){
@@ -132,12 +134,25 @@ public class Controller {
        else if(selected instanceof Tratamento){
            tratamentoSelecionado = (Tratamento)selected;
            tratamentoSelecionadoTextField.setText(tratamentoSelecionado.getNome());
+           exameTextArea.setText("");
        }
        
        else if(selected instanceof Consulta){
            consultaSelecionado = (Consulta)selected;
            String status = consultaSelecionado.isTerminou() ? "(Concluída) - " : "(Pendente) - ";
-           consultaSelecionadoComentarios.setText(status + consultaSelecionado.getComentarios());
+           consultaSelecionadoTextArea.setText(status + consultaSelecionado.getComentarios());
+           
+           exameTextArea.setText("");
+           List<Exame> exame = ExameDAO.getInstance().retrieveByIdConsulta(consultaSelecionado.getId());
+           
+           if(exame.isEmpty()){
+               exameTextArea.setText("Sem exames registrados para a consulta selecionada!");
+           }
+           else{
+               for(Exame e : exame){
+                   exameTextArea.append(e.getNome());
+               }
+           }
        }
     }
     

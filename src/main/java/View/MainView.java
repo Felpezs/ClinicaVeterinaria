@@ -32,7 +32,7 @@ public class MainView extends javax.swing.JFrame {
         jTextField8.setText("");
         jTextField9.setText("");
         jTextField10.setText("");
-        Controller.setFields(jTextField1, jTextField2, jTextField3, jTextField8, jTextField9, jTextArea1, jTextArea3);
+        Controller.setFields(jTextField1, jTextField2, jTextField3, jTextField8, jTextField9, jTextArea1, jTextArea3, jTextArea4);
         Controller.setVisiblePanel(animalCliente);
         Controller.setClickedItem(itemAnimal);
         
@@ -933,7 +933,7 @@ public class MainView extends javax.swing.JFrame {
         jTextArea4.setBackground(new java.awt.Color(255, 255, 255));
         jTextArea4.setColumns(20);
         jTextArea4.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
-        jTextArea4.setForeground(new java.awt.Color(255, 255, 255));
+        jTextArea4.setForeground(new java.awt.Color(0, 0, 0));
         jTextArea4.setRows(5);
         jScrollPane9.setViewportView(jTextArea4);
 
