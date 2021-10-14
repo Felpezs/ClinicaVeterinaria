@@ -75,7 +75,6 @@ public class Controller {
     }
     
     public static void hoverEffect(JPanel panel){
-
         navItemColor = panel.getBackground();
         if(!panel.getBackground().equals(clickedColor)){
             panel.setBackground(new Color(55, 55, 123));
@@ -94,6 +93,10 @@ public class Controller {
         return animalSelecionado;
     }
     
+    public static Tratamento getTratamentoSelecionado(){
+        return tratamentoSelecionado;
+    }
+    
     public static void setSelected(Object selected){
        if(selected instanceof Cliente){
            clienteSelecionado = (Cliente)selected;
@@ -109,6 +112,7 @@ public class Controller {
            especieSelecionadoTextField.setText(EspecieDAO.getInstance().retrieveById(animalSelecionado.getIdEspecie()).getNom_esp());
            tratamentoSelecionadoTextField.setText("");
            consultaSelecionadoTextField.setText("");
+           consultaSelecionadoComentarios.setText("");
            List<Consulta> consulta = ConsultaDAO.getInstance().retrieveByIdAnimal(animalSelecionado.getId());
            if(consulta.isEmpty()){
                consultaSelecionadoTextField.setText("Sem consultas registradas");

@@ -5,6 +5,7 @@ import Controller.Controller;
 import Model.AnimalDAO;
 import Model.ClienteDAO;
 import Model.ConsultaDAO;
+import Model.EspecieDAO;
 import Model.TratamentoDAO;
 import Model.VeterinarioDAO;
 
@@ -27,12 +28,18 @@ public class MainView extends javax.swing.JFrame {
         jTextField4.setText("");
         jTextField5.setText("");
         jTextField6.setText("");
+        jTextField7.setText("");
         jTextField8.setText("");
         jTextField9.setText("");
+        jTextField10.setText("");
         Controller.setFields(jTextField1, jTextField2, jTextField3, jTextField8, jTextField9, jTextArea1, jTextArea3);
         Controller.setVisiblePanel(animalCliente);
         Controller.setClickedItem(itemAnimal);
+        
+        //Inicializacao de Tabelas
         Controller.setTableModel(jTable1, new ClienteTableModel(ClienteDAO.getInstance().retrieveAll()));
+        Controller.setTableModel(jTable6, new EspecieTableModel(EspecieDAO.getInstance().retrieveAll()));
+        Controller.setTableModel(jTable3, new VeterinarioTableModel(VeterinarioDAO.getInstance().retrieveAll()));
     }
     
     public MainView() {
@@ -1472,7 +1479,6 @@ public class MainView extends javax.swing.JFrame {
     private void itemConsultaMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_itemConsultaMouseClicked
         Controller.setClicked(itemConsulta);
         Controller.switchPanels(consulta);
-        Controller.setTableModel(jTable3, new VeterinarioTableModel(VeterinarioDAO.getInstance().retrieveAll()));
     }//GEN-LAST:event_itemConsultaMouseClicked
 
     private void itemAnimalMouseExited(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_itemAnimalMouseExited
@@ -1560,7 +1566,6 @@ public class MainView extends javax.swing.JFrame {
         Controller.setSelected(((GenericTableModel)jTable2.getModel()).getItem(jTable2.getSelectedRow()));
         int idAnimal = Controller.getAnimalSelecionado().getId();
         Controller.setTableModel(jTable4, new TratamentoTableModel(TratamentoDAO.getInstance().retrieveByIdAnimal(idAnimal)));
-        Controller.setTableModel(jTable5, new ConsultaTableModel(ConsultaDAO.getInstance().retrieveByIdAnimal(idAnimal)));
     }//GEN-LAST:event_jTable2MousePressed
 
     private void jTextField6ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jTextField6ActionPerformed
@@ -1574,9 +1579,12 @@ public class MainView extends javax.swing.JFrame {
     private void jTable3MousePressed(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jTable3MousePressed
         Controller.setSelected(((GenericTableModel)jTable3.getModel()).getItem(jTable3.getSelectedRow()));
     }//GEN-LAST:event_jTable3MousePressed
-
+    
+    //Tabela tratamento
     private void jTable4MousePressed(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jTable4MousePressed
         Controller.setSelected(((GenericTableModel)jTable4.getModel()).getItem(jTable4.getSelectedRow()));
+        int idTratamento = Controller.getTratamentoSelecionado().getId();
+        Controller.setTableModel(jTable5, new ConsultaTableModel(ConsultaDAO.getInstance().retrieveByIdTratamento(idTratamento)));
     }//GEN-LAST:event_jTable4MousePressed
     
     //Tabela Consulta
