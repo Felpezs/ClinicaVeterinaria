@@ -135,6 +135,7 @@ public class Controller {
            tratamentoSelecionado = (Tratamento)selected;
            tratamentoSelecionadoTextField.setText(tratamentoSelecionado.getNome());
            exameTextArea.setText("");
+           consultaSelecionadoTextArea.setText("");
        }
        
        else if(selected instanceof Consulta){
@@ -166,9 +167,10 @@ public class Controller {
         else if(instance.getClass().equals(Veterinario.class))
             VeterinarioDAO.getInstance().update((Veterinario)instance);
         
-        else if(instance.getClass().equals(Consulta.class))
+        else if(instance.getClass().equals(Consulta.class)){
             ConsultaDAO.getInstance().update((Consulta)instance);
-        
+        }
+             
         else if(instance.getClass().equals(Exame.class))
             ExameDAO.getInstance().update((Exame)instance);
         

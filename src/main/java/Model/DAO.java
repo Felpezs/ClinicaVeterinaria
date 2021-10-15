@@ -14,6 +14,7 @@ public abstract class DAO {
     private static Connection con;
     protected static SimpleDateFormat dateFormat = new SimpleDateFormat("dd/MM/yyyy");
     protected static SimpleDateFormat hourFormat = new SimpleDateFormat("HH:mm:ss");
+    protected static SimpleDateFormat dateHourFormat = new SimpleDateFormat("dd/MM/yy HH:mm:ss");
     
     //Conexão ao SQLite
     public static Connection getConnection(){

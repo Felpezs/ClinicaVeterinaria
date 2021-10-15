@@ -39,8 +39,11 @@ public class Main {
         Tratamento t1 = TratamentoDAO.getInstance().create(a1, "sutura", c1, c2, true);
     */
     
-    List<Consulta> consultas = ConsultaDAO.getInstance().retrieveAll();
-    
-        System.out.println(consultas);
+    //List<Consulta> consultas = ConsultaDAO.getInstance().retrieveAll();
+         Consulta c = ConsultaDAO.getInstance().retrieveById(1);
+       
+         c.setData("25/01/2002");
+         System.out.println(c.getData());
+         
     }
 }

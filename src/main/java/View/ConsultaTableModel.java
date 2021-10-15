@@ -20,9 +20,9 @@ public class ConsultaTableModel extends GenericTableModel{
     public Class<?> getColumnClass(int columnIndex) {
         switch(columnIndex){
             case 0:
-                return Calendar.class;
+                return String.class;
             case 1:
-                return Calendar.class;
+                return String.class;
             case 2:
                 return String.class;
             default:
@@ -53,13 +53,15 @@ public class ConsultaTableModel extends GenericTableModel{
         switch(columnIndex){
             case 0:
                 //tratar string antes de passsar para o setter para evitar exception
+                System.out.println("Estou setando a data");
                 consulta.setData((String)aValue);
+                System.out.println(consulta.getData());
                 break;
             case 1:
                 consulta.setHora((String)aValue);
                 break;
             default:
-                throw new IndexOutOfBoundsException("columnIndex out of bounds");
+                throw new IndexOutOfBoundsException("columnIndex out of bounds");            
         }
         
         Controller.updateInstance(consulta);

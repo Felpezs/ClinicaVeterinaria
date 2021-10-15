@@ -22,7 +22,8 @@ public class Consulta {
         this.terminou = terminou;
     }
     
-    SimpleDateFormat dateFormat = new SimpleDateFormat("dd/MM/yyyy");
+    SimpleDateFormat sdf = new SimpleDateFormat("dd/MM/yyyy HH:mm:ss");
+    SimpleDateFormat datFormat = new SimpleDateFormat("dd/MM/yyyy");
     SimpleDateFormat hourFormat = new SimpleDateFormat("HH:mm:ss");
     private int id;
     private Calendar data;
@@ -37,18 +38,16 @@ public class Consulta {
     }
     
     public String getData() {
-        return dateFormat.format(data.getTime());
+        return datFormat.format(data.getTime());
     }
 
     public void setData(String data){
         try{
-            Date date = dateFormat.parse(data);
-            this.data.setTime(date);
+            this.data.setTime(sdf.parse(data + " " + this.getHora()));
         }
         catch(ParseException e){
             System.err.println("Exception: " + e.getMessage());
         }
-        
     }
 
     public String getHora() {
@@ -57,8 +56,7 @@ public class Consulta {
     
     public void setHora(String hora){
         try{
-            Date hour = hourFormat.parse(hora);
-            this.data.setTime(hour);
+            this.data.setTime(sdf.parse(this.getData() + " " + hora));
         }
         catch(ParseException e){
             System.err.println("Exception: " + e.getMessage());

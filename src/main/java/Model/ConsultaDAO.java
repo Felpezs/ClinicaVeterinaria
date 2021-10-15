@@ -48,8 +48,7 @@ public class ConsultaDAO extends DAO{
         Consulta consulta = null;
         try {
             Calendar dt = Calendar.getInstance();
-            dt.setTime(dateFormat.parse(rs.getString("data")));
-            dt.setTime(hourFormat.parse(rs.getString("horario")));
+            dt.setTime(dateHourFormat.parse(rs.getString("data") + " " + rs.getString("horario")));
             consulta = new Consulta(rs.getInt("id"), dt, rs.getString("comentario"), rs.getInt("id_animal"), rs.getInt("id_vet"), rs.getInt("id_tratamento"), (rs.getInt("terminado")==1? true:false));
         } catch (SQLException | ParseException e) {
             System.err.println("Exception: " + e.getMessage());
