@@ -53,9 +53,7 @@ public class ConsultaTableModel extends GenericTableModel{
         switch(columnIndex){
             case 0:
                 //tratar string antes de passsar para o setter para evitar exception
-                System.out.println("Estou setando a data");
                 consulta.setData((String)aValue);
-                System.out.println(consulta.getData());
                 break;
             case 1:
                 consulta.setHora((String)aValue);
