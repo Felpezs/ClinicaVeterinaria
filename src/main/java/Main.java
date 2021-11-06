@@ -1,9 +1,7 @@
+import Model.Cliente;
+import Model.ClienteDAO;
 import Model.Consulta;
 import Model.ConsultaDAO;
-import java.util.List;
-import java.text.SimpleDateFormat;
-import java.util.Calendar;
-import java.util.Date;
 
 
 /**
@@ -42,8 +40,12 @@ public class Main {
     //List<Consulta> consultas = ConsultaDAO.getInstance().retrieveAll();
          Consulta c = ConsultaDAO.getInstance().retrieveById(1);
        
-         c.setData("25/01/2002");
-         System.out.println(c.getData());
+        // c.setData("25/01/2002");
+         //System.out.println(c.getData());
+         
+        Cliente cliente = ClienteDAO.getInstance().create("Marcos", "Rua dos laranjais", "080808", "Marcos@borges.unicamp.br", "123456789");
+        
+        System.out.println(cliente);
          
     }
 }

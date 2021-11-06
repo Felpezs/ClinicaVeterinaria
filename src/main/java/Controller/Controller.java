@@ -14,8 +14,12 @@ import Model.Tratamento;
 import Model.TratamentoDAO;
 import Model.Veterinario;
 import Model.VeterinarioDAO;
+import View.AnimalTableModel;
+import View.ClienteTableModel;
+import View.EspecieTableModel;
 import javax.swing.JTable;
 import View.GenericTableModel;
+import View.VeterinarioTableModel;
 import java.awt.Color;
 import java.util.List;
 import javax.swing.JPanel;
@@ -179,6 +183,18 @@ public class Controller {
         
         else if(instance.getClass().equals(Especie.class))
             EspecieDAO.getInstance().update((Especie)instance);
+    }
+    
+    public static void setBySearch(JTable table, String input){
+        if(table.getModel() instanceof ClienteTableModel)
+            ((GenericTableModel)table.getModel()).addListOfItems(ClienteDAO.getInstance().retrieveBySimilarName(input));
+        else if(table.getModel() instanceof VeterinarioTableModel)
+            ((GenericTableModel)table.getModel()).addListOfItems(VeterinarioDAO.getInstance().retrieveBySimilarName(input));
+        else if(table.getModel() instanceof AnimalTableModel){
+            ((GenericTableModel)table.getModel()).addListOfItems(AnimalDAO.getInstance().retrieveBySimilarName(input, clienteSelecionado.getId()));
+        }
+        else if(table.getModel() instanceof EspecieTableModel)
+            ((GenericTableModel)table.getModel()).addListOfItems(EspecieDAO.getInstance().retrieveBySimilarName(input));
     }
     
     public static void switchPanels(JPanel panel){

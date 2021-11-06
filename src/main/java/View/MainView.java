@@ -166,7 +166,6 @@ public class MainView extends javax.swing.JFrame {
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         setTitle("Clínica Veterinária");
-        setMaximumSize(new java.awt.Dimension(290, 580));
         setResizable(false);
         getContentPane().setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
@@ -667,6 +666,11 @@ public class MainView extends javax.swing.JFrame {
         jTextField4.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
         jTextField4.setForeground(new java.awt.Color(51, 51, 51));
         jTextField4.setText("jTextField4");
+        jTextField4.addKeyListener(new java.awt.event.KeyAdapter() {
+            public void keyTyped(java.awt.event.KeyEvent evt) {
+                jTextField4KeyTyped(evt);
+            }
+        });
 
         jButton1.setBackground(new java.awt.Color(238, 238, 252));
         jButton1.setForeground(new java.awt.Color(0, 0, 0));
@@ -761,6 +765,11 @@ public class MainView extends javax.swing.JFrame {
         jTextField5.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 jTextField5ActionPerformed(evt);
+            }
+        });
+        jTextField5.addKeyListener(new java.awt.event.KeyAdapter() {
+            public void keyTyped(java.awt.event.KeyEvent evt) {
+                jTextField5KeyTyped(evt);
             }
         });
 
@@ -1102,6 +1111,11 @@ public class MainView extends javax.swing.JFrame {
                 jTextField6ActionPerformed(evt);
             }
         });
+        jTextField6.addKeyListener(new java.awt.event.KeyAdapter() {
+            public void keyTyped(java.awt.event.KeyEvent evt) {
+                jTextField6KeyTyped(evt);
+            }
+        });
 
         jButton7.setBackground(new java.awt.Color(238, 238, 252));
         jButton7.setForeground(new java.awt.Color(0, 0, 0));
@@ -1364,6 +1378,11 @@ public class MainView extends javax.swing.JFrame {
         jTextField7.setBackground(new java.awt.Color(255, 255, 255));
         jTextField7.setForeground(new java.awt.Color(0, 0, 0));
         jTextField7.setText("jTextField7");
+        jTextField7.addKeyListener(new java.awt.event.KeyAdapter() {
+            public void keyTyped(java.awt.event.KeyEvent evt) {
+                jTextField7KeyTyped(evt);
+            }
+        });
 
         jButton14.setBackground(new java.awt.Color(238, 238, 252));
         jButton14.setForeground(new java.awt.Color(0, 0, 0));
@@ -1608,6 +1627,22 @@ public class MainView extends javax.swing.JFrame {
     private void itemEspeciesMouseExited(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_itemEspeciesMouseExited
         itemEspecies.setBackground(Controller.exitedHover());
     }//GEN-LAST:event_itemEspeciesMouseExited
+
+    private void jTextField4KeyTyped(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_jTextField4KeyTyped
+        Controller.setBySearch(jTable1, jTextField4.getText());
+    }//GEN-LAST:event_jTextField4KeyTyped
+
+    private void jTextField7KeyTyped(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_jTextField7KeyTyped
+        Controller.setBySearch(jTable6, jTextField7.getText());
+    }//GEN-LAST:event_jTextField7KeyTyped
+
+    private void jTextField6KeyTyped(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_jTextField6KeyTyped
+        Controller.setBySearch(jTable3, jTextField6.getText());
+    }//GEN-LAST:event_jTextField6KeyTyped
+
+    private void jTextField5KeyTyped(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_jTextField5KeyTyped
+        Controller.setBySearch(jTable2, jTextField5.getText());
+    }//GEN-LAST:event_jTextField5KeyTyped
 
     /**
      * @param args the command line arguments
