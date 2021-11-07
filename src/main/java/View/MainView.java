@@ -641,10 +641,7 @@ public class MainView extends javax.swing.JFrame {
         jTable1.setForeground(new java.awt.Color(0, 0, 0));
         jTable1.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
-                {null, null, null, null, null},
-                {null, null, null, null, null},
-                {null, null, null, null, null},
-                {null, null, null, null, null}
+
             },
             new String [] {
                 "Nome", "Endereço", "Email", "Telefone", "CEP"
@@ -675,15 +672,20 @@ public class MainView extends javax.swing.JFrame {
         jButton1.setBackground(new java.awt.Color(238, 238, 252));
         jButton1.setForeground(new java.awt.Color(0, 0, 0));
         jButton1.setText("Todos");
-        jButton1.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jButton1ActionPerformed(evt);
+        jButton1.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                jButton1MouseClicked(evt);
             }
         });
 
         jButton2.setBackground(new java.awt.Color(238, 238, 252));
         jButton2.setForeground(new java.awt.Color(0, 0, 0));
         jButton2.setText("Inserir");
+        jButton2.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                jButton2MouseClicked(evt);
+            }
+        });
         jButton2.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 jButton2ActionPerformed(evt);
@@ -737,10 +739,7 @@ public class MainView extends javax.swing.JFrame {
         jTable2.setForeground(new java.awt.Color(0, 0, 0));
         jTable2.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
-                {null, null, null, null},
-                {null, null, null, null},
-                {null, null, null, null},
-                {null, null, null, null}
+
             },
             new String [] {
                 "Nome", "Ano de Nascimento", "Sexo", "Espécie"
@@ -776,9 +775,9 @@ public class MainView extends javax.swing.JFrame {
         jButton4.setBackground(new java.awt.Color(238, 238, 252));
         jButton4.setForeground(new java.awt.Color(0, 0, 0));
         jButton4.setText("Todos");
-        jButton4.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jButton4ActionPerformed(evt);
+        jButton4.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                jButton4MouseClicked(evt);
             }
         });
 
@@ -1079,10 +1078,7 @@ public class MainView extends javax.swing.JFrame {
         jTable3.setForeground(new java.awt.Color(0, 0, 0));
         jTable3.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
-                {null, null, null},
-                {null, null, null},
-                {null, null, null},
-                {null, null, null}
+
             },
             new String [] {
                 "Nome", "Email", "Telefone"
@@ -1095,9 +1091,6 @@ public class MainView extends javax.swing.JFrame {
             }
         });
         jScrollPane4.setViewportView(jTable3);
-        if (jTable3.getColumnModel().getColumnCount() > 0) {
-            jTable3.getColumnModel().getColumn(2).setHeaderValue("Telefone");
-        }
 
         jLabel17.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
         jLabel17.setForeground(new java.awt.Color(0, 0, 0));
@@ -1120,15 +1113,20 @@ public class MainView extends javax.swing.JFrame {
         jButton7.setBackground(new java.awt.Color(238, 238, 252));
         jButton7.setForeground(new java.awt.Color(0, 0, 0));
         jButton7.setText("Todos");
-        jButton7.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jButton7ActionPerformed(evt);
+        jButton7.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                jButton7MouseClicked(evt);
             }
         });
 
         jButton8.setBackground(new java.awt.Color(238, 238, 252));
         jButton8.setForeground(new java.awt.Color(0, 0, 0));
         jButton8.setText("Inserir");
+        jButton8.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                jButton8MouseClicked(evt);
+            }
+        });
 
         jButton9.setBackground(new java.awt.Color(238, 238, 252));
         jButton9.setForeground(new java.awt.Color(0, 0, 0));
@@ -1365,9 +1363,9 @@ public class MainView extends javax.swing.JFrame {
         jButton13.setBackground(new java.awt.Color(238, 238, 252));
         jButton13.setForeground(new java.awt.Color(0, 0, 0));
         jButton13.setText("Inserir");
-        jButton13.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jButton13ActionPerformed(evt);
+        jButton13.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                jButton13MouseClicked(evt);
             }
         });
 
@@ -1387,16 +1385,18 @@ public class MainView extends javax.swing.JFrame {
         jButton14.setBackground(new java.awt.Color(238, 238, 252));
         jButton14.setForeground(new java.awt.Color(0, 0, 0));
         jButton14.setText("Todos");
+        jButton14.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                jButton14MouseClicked(evt);
+            }
+        });
 
         jTable6.setBackground(new java.awt.Color(255, 255, 255));
         jTable6.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
         jTable6.setForeground(new java.awt.Color(0, 0, 0));
         jTable6.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
-                {null},
-                {null},
-                {null},
-                {null}
+
             },
             new String [] {
                 "Espécie"
@@ -1459,7 +1459,7 @@ public class MainView extends javax.swing.JFrame {
             .addGroup(especiesLayout.createSequentialGroup()
                 .addGap(54, 54, 54)
                 .addComponent(areaListaEspecies, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(165, Short.MAX_VALUE))
+                .addContainerGap(135, Short.MAX_VALUE))
         );
 
         areaTabelas.add(especies, "card4");
@@ -1477,10 +1477,6 @@ public class MainView extends javax.swing.JFrame {
     private void jTextField3ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jTextField3ActionPerformed
         // TODO add your handling code here:
     }//GEN-LAST:event_jTextField3ActionPerformed
-
-    private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
-        Controller.setTableModel(jTable1, new ClienteTableModel(ClienteDAO.getInstance().retrieveAll()));
-    }//GEN-LAST:event_jButton1ActionPerformed
 
     private void jTextField5ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jTextField5ActionPerformed
         // TODO add your handling code here:
@@ -1532,10 +1528,6 @@ public class MainView extends javax.swing.JFrame {
         Controller.setClicked(itemTratamento);
         Controller.switchPanels(tratamento);
     }//GEN-LAST:event_itemTratamentoMouseClicked
-
-    private void jButton7ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton7ActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_jButton7ActionPerformed
 
     private void jTextField8ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jTextField8ActionPerformed
         // TODO add your handling code here:
@@ -1591,10 +1583,6 @@ public class MainView extends javax.swing.JFrame {
         // TODO add your handling code here:
     }//GEN-LAST:event_jTextField6ActionPerformed
 
-    private void jButton4ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton4ActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_jButton4ActionPerformed
-
     private void jTable3MousePressed(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jTable3MousePressed
         Controller.setSelected(((GenericTableModel)jTable3.getModel()).getItem(jTable3.getSelectedRow()));
     }//GEN-LAST:event_jTable3MousePressed
@@ -1615,10 +1603,6 @@ public class MainView extends javax.swing.JFrame {
         Controller.setClicked(itemEspecies);
         Controller.switchPanels(especies);
     }//GEN-LAST:event_itemEspeciesMouseClicked
-
-    private void jButton13ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton13ActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_jButton13ActionPerformed
 
     private void itemEspeciesMouseEntered(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_itemEspeciesMouseEntered
         Controller.hoverEffect(itemEspecies);
@@ -1643,6 +1627,38 @@ public class MainView extends javax.swing.JFrame {
     private void jTextField5KeyTyped(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_jTextField5KeyTyped
         Controller.setBySearch(jTable2, jTextField5.getText());
     }//GEN-LAST:event_jTextField5KeyTyped
+
+    private void jButton2MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jButton2MouseClicked
+        Controller.insertLine(jTable1);
+    }//GEN-LAST:event_jButton2MouseClicked
+
+    private void jButton7MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jButton7MouseClicked
+        Controller.setBySearch(jTable3, "");
+        Controller.cleanSearch(jTextField6);
+    }//GEN-LAST:event_jButton7MouseClicked
+
+    private void jButton8MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jButton8MouseClicked
+       Controller.insertLine(jTable3);
+    }//GEN-LAST:event_jButton8MouseClicked
+
+    private void jButton13MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jButton13MouseClicked
+        Controller.insertLine(jTable6);
+    }//GEN-LAST:event_jButton13MouseClicked
+
+    private void jButton1MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jButton1MouseClicked
+        Controller.setBySearch(jTable1, "");
+        Controller.cleanSearch(jTextField4);
+    }//GEN-LAST:event_jButton1MouseClicked
+
+    private void jButton4MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jButton4MouseClicked
+        Controller.setBySearch(jTable2, "");
+        Controller.cleanSearch(jTextField5);
+    }//GEN-LAST:event_jButton4MouseClicked
+
+    private void jButton14MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jButton14MouseClicked
+        Controller.setBySearch(jTable6, "");
+        Controller.cleanSearch(jTextField7);
+    }//GEN-LAST:event_jButton14MouseClicked
 
     /**
      * @param args the command line arguments

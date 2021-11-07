@@ -57,6 +57,7 @@ public abstract class DAO {
         try{
             s = (Statement) con.createStatement();
             ResultSet rs = s.executeQuery("SELECT MAX(" + primaryKey + ") AS id FROM " + tableName);
+            lastId = rs.getInt("id");
         }
         catch(SQLException e){
             System.err.println("Exception: " + e.getMessage());

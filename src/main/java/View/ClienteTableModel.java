@@ -44,7 +44,7 @@ public class ClienteTableModel extends GenericTableModel{
             case 2:
                 return cliente.getEmail();
             case 3:
-                return cliente.getEndereco();
+                return cliente.getTelefone();
             case 4:
                 return cliente.getCep();
             default:
@@ -67,7 +67,7 @@ public class ClienteTableModel extends GenericTableModel{
                 cliente.setEmail((String)aValue);
                 break;
             case 3:
-                cliente.setEndereco((String)aValue);
+                cliente.setTelefone((String)aValue);
                 break;
             case 4:
                 cliente.setCep((String)aValue);

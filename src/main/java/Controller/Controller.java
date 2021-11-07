@@ -197,6 +197,21 @@ public class Controller {
             ((GenericTableModel)table.getModel()).addListOfItems(EspecieDAO.getInstance().retrieveBySimilarName(input));
     }
     
+    public static void insertLine(JTable table){
+        if(table.getModel() instanceof ClienteTableModel){
+            Cliente cliente = ClienteDAO.getInstance().create("", "", "", "", "");
+            ((GenericTableModel)table.getModel()).addItem(cliente);
+        }
+        else if(table.getModel() instanceof VeterinarioTableModel){
+            Veterinario veterinario = VeterinarioDAO.getInstance().create("", "", "");
+            ((GenericTableModel)table.getModel()).addItem(veterinario);
+        }
+    }
+    
+    public static void cleanSearch(JTextField textField){
+        textField.setText("");
+    }
+    
     public static void switchPanels(JPanel panel){
         visiblePanel.setVisible(false);
         visiblePanel = panel;
