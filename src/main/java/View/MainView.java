@@ -9,16 +9,6 @@ import Model.EspecieDAO;
 import Model.TratamentoDAO;
 import Model.VeterinarioDAO;
 
-/*
- * To change this license header, choose License Headers in Project Properties.
- * To change this template file, choose Tools | Templates
- * and open the template in the editor.
- */
-
-/**
- *
- * @author PC
- */
 public class MainView extends javax.swing.JFrame {
 
     public void startComponents(){
@@ -695,6 +685,11 @@ public class MainView extends javax.swing.JFrame {
         jButton3.setBackground(new java.awt.Color(238, 238, 252));
         jButton3.setForeground(new java.awt.Color(0, 0, 0));
         jButton3.setText("Apagar");
+        jButton3.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                jButton3MouseClicked(evt);
+            }
+        });
 
         javax.swing.GroupLayout areaTabelaClienteLayout = new javax.swing.GroupLayout(areaTabelaCliente);
         areaTabelaCliente.setLayout(areaTabelaClienteLayout);
@@ -784,6 +779,11 @@ public class MainView extends javax.swing.JFrame {
         jButton5.setBackground(new java.awt.Color(238, 238, 252));
         jButton5.setForeground(new java.awt.Color(0, 0, 0));
         jButton5.setText("Inserir");
+        jButton5.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                jButton5MouseClicked(evt);
+            }
+        });
 
         jButton6.setBackground(new java.awt.Color(238, 238, 252));
         jButton6.setForeground(new java.awt.Color(0, 0, 0));
@@ -1659,6 +1659,14 @@ public class MainView extends javax.swing.JFrame {
         Controller.setBySearch(jTable6, "");
         Controller.cleanSearch(jTextField7);
     }//GEN-LAST:event_jButton14MouseClicked
+
+    private void jButton3MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jButton3MouseClicked
+        Controller.deleteRowCliente(jTable1, jTable2);
+    }//GEN-LAST:event_jButton3MouseClicked
+
+    private void jButton5MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jButton5MouseClicked
+        Controller.insertLine(jTable2);
+    }//GEN-LAST:event_jButton5MouseClicked
 
     /**
      * @param args the command line arguments

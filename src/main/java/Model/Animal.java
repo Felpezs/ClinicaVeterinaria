@@ -52,20 +52,20 @@ public class Animal {
         return idCliente;
     }
     
-    public boolean setNome(String nome) {
-        if(nome.toLowerCase().equals("macho") || nome.toLowerCase().equals("fêmea")){
-            this.nome = nome;
-            return true;
-        }
-        return false;
+    public void setNome(String nome) {
+        this.nome = nome;
     }
 
     public void setAnoNasc(int anoNasc) {
         this.anoNasc = anoNasc;
     }
 
-    public void setSexo(String sexo) {
-        this.sexo = sexo;
+    public boolean setSexo(String sexo) {
+        if(sexo.toLowerCase().equals("macho") || sexo.toLowerCase().equals("fêmea")){
+            this.sexo = sexo;
+            return true;
+        }
+        return false;
     }
 
     public void setIdEspecie(int idEspecie) {

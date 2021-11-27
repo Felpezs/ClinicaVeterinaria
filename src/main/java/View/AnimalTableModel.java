@@ -5,6 +5,8 @@ import Model.Animal;
 import Model.Especie;
 import Model.EspecieDAO;
 import java.util.List;
+import javax.swing.JFrame;
+import javax.swing.JOptionPane;
 
 /**
  *
@@ -27,8 +29,6 @@ public class AnimalTableModel extends GenericTableModel{
                 return String.class;
             case 3:
                 return String.class;
-            case 4:
-                return String.class;
             default:
                 throw new IndexOutOfBoundsException("columnIndex out of bounds");
         }
@@ -46,7 +46,8 @@ public class AnimalTableModel extends GenericTableModel{
             case 2:
                 return animal.getSexo();
             case 3:
-                return EspecieDAO.getInstance().retrieveById(animal.getIdEspecie()).getNom_esp();
+                Especie especie = EspecieDAO.getInstance().retrieveById(animal.getIdEspecie());
+                return especie != null ? especie.getNom_esp() : "";
             default:
                 throw new IndexOutOfBoundsException("columnIndex out of bounds");
         }
@@ -64,10 +65,12 @@ public class AnimalTableModel extends GenericTableModel{
                 animal.setAnoNasc((int)aValue);
                 break;
             case 2:
-                animal.setSexo((String)aValue);
+                boolean validSex = animal.setSexo((String)aValue);
+                if(!validSex){
+                    JOptionPane.showMessageDialog(new JFrame(), "Um cliente deve ser selecionado para fazer o cadastro de um animal", "Dialog",JOptionPane.ERROR_MESSAGE);
+                }
                 break;
             case 3:
-                //tentar buscar por nomes similares ao inves de nome exato e comparar strings igualmente
                 Especie especie = EspecieDAO.getInstance().retrieveByName((String)aValue);
                 
                 if(especie == null){
