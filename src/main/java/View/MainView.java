@@ -30,6 +30,7 @@ public class MainView extends javax.swing.JFrame {
         Controller.setTableModel(jTable1, new ClienteTableModel(ClienteDAO.getInstance().retrieveAll()));
         Controller.setTableModel(jTable6, new EspecieTableModel(EspecieDAO.getInstance().retrieveAll()));
         Controller.setTableModel(jTable3, new VeterinarioTableModel(VeterinarioDAO.getInstance().retrieveAll()));
+        Controller.setTableModel(jTable2, new AnimalTableModel(AnimalDAO.getInstance().retrieveAll()));
     }
     
     public MainView() {

@@ -109,11 +109,11 @@ public class VeterinarioDAO extends DAO{
         }
     }
     // Delete   
-    public void delete(int id) {
+    public void delete(Veterinario veterinario) {
         PreparedStatement stmt;
         try {
             stmt = DAO.getConnection().prepareStatement("DELETE FROM vet WHERE id = ?");
-            stmt.setInt(1, id);
+            stmt.setInt(1, veterinario.getId());
             executeUpdate(stmt);
         } catch (SQLException e) {
             System.err.println("Exception: " + e.getMessage());

@@ -21,6 +21,9 @@ import javax.swing.JTable;
 import View.GenericTableModel;
 import View.VeterinarioTableModel;
 import java.awt.Color;
+import java.text.SimpleDateFormat;
+import java.util.Calendar;
+import java.util.Date;
 import java.util.List;
 import javax.swing.JFrame;
 import javax.swing.JOptionPane;
@@ -214,14 +217,24 @@ public class Controller {
             ((GenericTableModel)table.getModel()).addItem(veterinario);
         }
         
-        else if(table.getModel() instanceof AnimalTableModel){
-            if(clienteSelecionado!=null){
+        else if(table.getModel() instanceof AnimalTableModel){      
+            if(Controller.getClienteSelecionado()!=null){
                 Especie especie = EspecieDAO.getInstance().retrieveById(1);
                 Animal animal = AnimalDAO.getInstance().create("", 0, "macho", especie, clienteSelecionado); 
                 ((GenericTableModel)table.getModel()).addItem(animal);
             }
             else
-                JOptionPane.showMessageDialog(new JFrame(), "Um cliente deve ser selecionado para fazer o cadastro de um animal", "Dialog",JOptionPane.ERROR_MESSAGE);
+                JOptionPane.showMessageDialog(new JFrame(), "Um cliente deve ser selecionado para fazer o cadastro de um animal", "Dialog",JOptionPane.ERROR_MESSAGE);   
+        }
+        
+        else if(table.getModel() instanceof Tratamento){
+            if(Controller.getAnimalSelecionado() != null){
+                Calendar c1 = Calendar.getInstance();
+                Tratamento tratamento = TratamentoDAO.getInstance().create(Controller.getAnimalSelecionado(), "", c1, c1, false);
+                ((GenericTableModel)table.getModel()).addItem(tratamento);
+            }
+            else
+                JOptionPane.showMessageDialog(new JFrame(), "Um animal deve ser selecionado para fazer o cadastro de um tratamento", "Dialog",JOptionPane.ERROR_MESSAGE);
         }
     }
     
@@ -249,6 +262,18 @@ public class Controller {
         animalSelecionado = null;
         clienteSelecionado = null;
     }
+    /*
+    public static void deleteRow(JTable table){
+        Object obj = ((GenericTableModel)table.getModel()).getItem(table.getSelectedRow());
+        ((GenericTableModel)table.getModel()).removeItem(table.getSelectedRow());
+        
+        if(table.getModel() instanceof VeterinarioTableModel){
+            Veterinario veterinario = (Veterinario) obj;
+            VeterinarioDAO.getInstance().delete(veterinario);
+        }
+        else if(table.getModel() instanceof)
+    }
+*/
     
     public static void switchPanels(JPanel panel){
         visiblePanel.setVisible(false);
