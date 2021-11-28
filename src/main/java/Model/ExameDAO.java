@@ -111,11 +111,11 @@ public class ExameDAO extends DAO{
         }
     }
     // Delete   
-    public void delete(int id) {
+    public void delete(Exame exame) {
         PreparedStatement stmt;
         try {
             stmt = DAO.getConnection().prepareStatement("DELETE FROM exame WHERE id = ?");
-            stmt.setInt(1, id);
+            stmt.setInt(1, exame.getId());
             executeUpdate(stmt);
         } catch (SQLException e) {
             System.err.println("Exception: " + e.getMessage());

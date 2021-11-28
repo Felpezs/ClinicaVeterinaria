@@ -16,14 +16,14 @@ import Model.Veterinario;
 import Model.VeterinarioDAO;
 import View.AnimalTableModel;
 import View.ClienteTableModel;
+import View.ConsultaTableModel;
 import View.EspecieTableModel;
 import javax.swing.JTable;
 import View.GenericTableModel;
+import View.TratamentoTableModel;
 import View.VeterinarioTableModel;
 import java.awt.Color;
-import java.text.SimpleDateFormat;
 import java.util.Calendar;
-import java.util.Date;
 import java.util.List;
 import javax.swing.JFrame;
 import javax.swing.JOptionPane;
@@ -109,17 +109,21 @@ public class Controller {
         return tratamentoSelecionado;
     }
     
+    public static Veterinario getVeterinarioSelecionado(){
+        return veterinarioSelecionado;
+    }
+    
     public static void setSelected(Object selected){
-       if(selected instanceof Cliente){
-           clienteSelecionado = (Cliente)selected;
+       if(selected instanceof Cliente cliente){
+           clienteSelecionado = cliente;
            clienteSelecionadoTextField.setText(clienteSelecionado.getNome());
            animalSelecionadoTextField.setText("");
            especieSelecionadoTextField.setText("");
            consultaSelecionadoTextField.setText("");
            consultaSelecionadoTextArea.setText("");
        }
-       else if(selected instanceof Animal){
-           animalSelecionado = (Animal)selected;
+       else if(selected instanceof Animal animal){
+           animalSelecionado = animal;
            animalSelecionadoTextField.setText(animalSelecionado.getNome());
            especieSelecionadoTextField.setText(EspecieDAO.getInstance().retrieveById(animalSelecionado.getIdEspecie()).getNom_esp());
            tratamentoSelecionadoTextField.setText("");
@@ -137,19 +141,19 @@ public class Controller {
                }
            }
        }
-       else if(selected instanceof Veterinario){
-           veterinarioSelecionado = (Veterinario)selected;
+       else if(selected instanceof Veterinario veterinario){
+           veterinarioSelecionado = veterinario;
            veterinarioSelecionadoTextField.setText(veterinarioSelecionado.getNome());
        }
-       else if(selected instanceof Tratamento){
-           tratamentoSelecionado = (Tratamento)selected;
+       else if(selected instanceof Tratamento tratamento){
+           tratamentoSelecionado = tratamento;
            tratamentoSelecionadoTextField.setText(tratamentoSelecionado.getNome());
            exameTextArea.setText("");
            consultaSelecionadoTextArea.setText("");
        }
        
-       else if(selected instanceof Consulta){
-           consultaSelecionado = (Consulta)selected;
+       else if(selected instanceof Consulta consulta){
+           consultaSelecionado = consulta;
            String status = consultaSelecionado.isTerminou() ? "(Concluída) - " : "(Pendente) - ";
            consultaSelecionadoTextArea.setText(status + consultaSelecionado.getComentarios());
            
@@ -165,8 +169,8 @@ public class Controller {
                }
            }
        }
-       else if(selected instanceof Especie){
-           especieSelecionado = (Especie)selected;
+       else if(selected instanceof Especie especie){
+           especieSelecionado = especie;
        }
     }
     
@@ -227,7 +231,7 @@ public class Controller {
                 JOptionPane.showMessageDialog(new JFrame(), "Um cliente deve ser selecionado para fazer o cadastro de um animal", "Dialog",JOptionPane.ERROR_MESSAGE);   
         }
         
-        else if(table.getModel() instanceof Tratamento){
+        else if(table.getModel() instanceof TratamentoTableModel){
             if(Controller.getAnimalSelecionado() != null){
                 Calendar c1 = Calendar.getInstance();
                 Tratamento tratamento = TratamentoDAO.getInstance().create(Controller.getAnimalSelecionado(), "", c1, c1, false);
@@ -236,6 +240,26 @@ public class Controller {
             else
                 JOptionPane.showMessageDialog(new JFrame(), "Um animal deve ser selecionado para fazer o cadastro de um tratamento", "Dialog",JOptionPane.ERROR_MESSAGE);
         }
+        /*
+        else if(table.getModel() instanceof ConsultaTableModel){
+            if(Controller.getTratamentoSelecionado() != null){
+                if(Controller.getVeterinarioSelecionado() != null){
+                    Calendar c1 = Calendar.getInstance();
+                    Consulta consulta = ConsultaDAO.getInstance().create(c1, "", Controller.getAnimalSelecionado(), Controller.getVeterinarioSelecionado(), Controller.getTratamentoSelecionado(), false);
+                    ((GenericTableModel)table.getModel()).addItem(consulta);
+                }
+                else
+                    JOptionPane.showMessageDialog(new JFrame(), "Um Veterinario deve ser selecionado para fazer o cadastro de uma consulta", "Dialog", JOptionPane.ERROR_MESSAGE);
+            }
+            else
+                JOptionPane.showMessageDialog(new JFrame(), "Um tratamento deve ser selecionado para fazer o cadastro de uma consulta", "Dialog", JOptionPane.ERROR_MESSAGE);
+        }
+        */
+        else if(table.getModel() instanceof EspecieTableModel){
+            Especie especie = EspecieDAO.getInstance().create("");
+            ((GenericTableModel)table.getModel()).addItem(especie);
+            
+        }
     }
     
     public static void cleanSearch(JTextField textField){
@@ -243,7 +267,13 @@ public class Controller {
     }
     
     public static void deleteRowCliente(JTable tableCliente, JTable tableAnimal){
+        if(tableCliente.getSelectedRow() < 0){
+            JOptionPane.showMessageDialog(new JFrame(), "Uma linha deve ser selecionada", "Dialog",JOptionPane.ERROR_MESSAGE);
+            return;
+        }
+        
         Cliente cliente = (Cliente)((GenericTableModel)tableCliente.getModel()).getItem(tableCliente.getSelectedRow());
+        
         
         List<Animal> animais = AnimalDAO.getInstance().retrieveByIdCliente(cliente.getId());
         for(Animal animal : animais){
@@ -256,24 +286,73 @@ public class Controller {
         
         animalSelecionadoTextField.setText("");
         especieSelecionadoTextField.setText("");
-        consultaSelecionadoTextField.setText("");
         consultaSelecionadoTextArea.setText("");
         clienteSelecionadoTextField.setText("");
+        consultaSelecionado = null;
         animalSelecionado = null;
         clienteSelecionado = null;
+        tratamentoSelecionado = null;
     }
-    /*
+
     public static void deleteRow(JTable table){
+        if (table.getSelectedRow() < 0){
+            JOptionPane.showMessageDialog(new JFrame(), "Uma linha deve ser selecionada", "Dialog",JOptionPane.ERROR_MESSAGE);
+            return;
+        }
         Object obj = ((GenericTableModel)table.getModel()).getItem(table.getSelectedRow());
-        ((GenericTableModel)table.getModel()).removeItem(table.getSelectedRow());
-        
+
         if(table.getModel() instanceof VeterinarioTableModel){
             Veterinario veterinario = (Veterinario) obj;
+            List<Consulta> consultas = ConsultaDAO.getInstance().retrieveByIdVet(veterinario.getId());
+            if(!consultas.isEmpty()){
+                JOptionPane.showMessageDialog(new JFrame(), "Apague as consultas que este veterinário participa antes de prosseguir", "Dialog",JOptionPane.ERROR_MESSAGE);
+                return;
+            }
             VeterinarioDAO.getInstance().delete(veterinario);
+            veterinarioSelecionado = null;
         }
-        else if(table.getModel() instanceof)
+        else if(table.getModel() instanceof EspecieTableModel){
+            Especie especie = (Especie) obj;
+            List<Animal> animais = AnimalDAO.getInstance().retrieveAll();
+            
+            for(Animal animal : animais){
+                if(animal.getIdEspecie() == especie.getId()){
+                    JOptionPane.showMessageDialog(new JFrame(), "Apague os animais desta espécie antes de prosseguir", "Dialog",JOptionPane.ERROR_MESSAGE);
+                    return;
+                } 
+            }
+            EspecieDAO.getInstance().delete(especie);
+        }
+        else if(table.getModel() instanceof AnimalTableModel){
+            Animal animal = (Animal) obj;
+            List<Tratamento> tratamentos = TratamentoDAO.getInstance().retrieveByIdAnimal(animal.getId());
+            
+            if(!tratamentos.isEmpty()){
+                JOptionPane.showMessageDialog(new JFrame(), "Apague os tratamentos associados a este animal antes de prosseguir", "Dialog",JOptionPane.ERROR_MESSAGE);
+                return;
+            }
+            AnimalDAO.getInstance().delete(animal);
+            animalSelecionadoTextField.setText("");
+            especieSelecionadoTextField.setText("");
+            consultaSelecionadoTextArea.setText("");
+            clienteSelecionado = null;
+            consultaSelecionado = null;
+            tratamentoSelecionado = null;
+        }
+        
+        else if(table.getModel() instanceof ConsultaTableModel){
+            Consulta consulta = (Consulta) obj;
+            
+            List<Exame> exames = ExameDAO.getInstance().retrieveByIdConsulta(consulta.getId());
+            
+            for(Exame exame : exames){
+                ExameDAO.getInstance().delete(exame);
+            }
+            consultaSelecionadoTextArea.setText("");
+        }
+        ((GenericTableModel)table.getModel()).removeItem(table.getSelectedRow());
     }
-*/
+
     
     public static void switchPanels(JPanel panel){
         visiblePanel.setVisible(false);

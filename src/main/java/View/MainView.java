@@ -22,6 +22,7 @@ public class MainView extends javax.swing.JFrame {
         jTextField8.setText("");
         jTextField9.setText("");
         jTextField10.setText("");
+        jTextField11.setText("");
         Controller.setFields(jTextField1, jTextField2, jTextField3, jTextField8, jTextField9, jTextArea1, jTextArea3, jTextArea4);
         Controller.setVisiblePanel(animalCliente);
         Controller.setClickedItem(itemAnimal);
@@ -106,6 +107,11 @@ public class MainView extends javax.swing.JFrame {
         areaListaTrat = new javax.swing.JPanel();
         jScrollPane6 = new javax.swing.JScrollPane();
         jTable4 = new javax.swing.JTable();
+        jButton16 = new javax.swing.JButton();
+        jButton17 = new javax.swing.JButton();
+        jButton18 = new javax.swing.JButton();
+        jTextField11 = new javax.swing.JTextField();
+        jLabel28 = new javax.swing.JLabel();
         areaConsulta = new javax.swing.JPanel();
         jScrollPane7 = new javax.swing.JScrollPane();
         jTable5 = new javax.swing.JTable();
@@ -757,11 +763,6 @@ public class MainView extends javax.swing.JFrame {
         jTextField5.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
         jTextField5.setForeground(new java.awt.Color(51, 51, 51));
         jTextField5.setText("jTextField5");
-        jTextField5.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jTextField5ActionPerformed(evt);
-            }
-        });
         jTextField5.addKeyListener(new java.awt.event.KeyAdapter() {
             public void keyTyped(java.awt.event.KeyEvent evt) {
                 jTextField5KeyTyped(evt);
@@ -789,6 +790,11 @@ public class MainView extends javax.swing.JFrame {
         jButton6.setBackground(new java.awt.Color(238, 238, 252));
         jButton6.setForeground(new java.awt.Color(0, 0, 0));
         jButton6.setText("Apagar");
+        jButton6.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                jButton6MouseClicked(evt);
+            }
+        });
 
         javax.swing.GroupLayout areaTabelaAnimalLayout = new javax.swing.GroupLayout(areaTabelaAnimal);
         areaTabelaAnimal.setLayout(areaTabelaAnimalLayout);
@@ -860,7 +866,7 @@ public class MainView extends javax.swing.JFrame {
         jTable4.setForeground(new java.awt.Color(0, 0, 0));
         jTable4.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
-                {null, null, null}
+
             },
             new String [] {
                 "Nome", "Data de Início", "Concluído?"
@@ -882,21 +888,80 @@ public class MainView extends javax.swing.JFrame {
         });
         jScrollPane6.setViewportView(jTable4);
 
+        jButton16.setBackground(new java.awt.Color(238, 238, 252));
+        jButton16.setForeground(new java.awt.Color(0, 0, 0));
+        jButton16.setText("Apagar");
+        jButton16.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                jButton16MouseClicked(evt);
+            }
+        });
+
+        jButton17.setBackground(new java.awt.Color(238, 238, 252));
+        jButton17.setForeground(new java.awt.Color(0, 0, 0));
+        jButton17.setText("Inserir");
+        jButton17.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                jButton17MouseClicked(evt);
+            }
+        });
+
+        jButton18.setBackground(new java.awt.Color(238, 238, 252));
+        jButton18.setForeground(new java.awt.Color(0, 0, 0));
+        jButton18.setText("Todos");
+        jButton18.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                jButton18MouseClicked(evt);
+            }
+        });
+
+        jTextField11.setEditable(false);
+        jTextField11.setBackground(new java.awt.Color(255, 255, 255));
+        jTextField11.setForeground(new java.awt.Color(51, 51, 51));
+        jTextField11.setText("jTextField11");
+        jTextField11.addKeyListener(new java.awt.event.KeyAdapter() {
+            public void keyTyped(java.awt.event.KeyEvent evt) {
+                jTextField11KeyTyped(evt);
+            }
+        });
+
+        jLabel28.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
+        jLabel28.setForeground(new java.awt.Color(0, 0, 0));
+        jLabel28.setText("Buscar:");
+
         javax.swing.GroupLayout areaListaTratLayout = new javax.swing.GroupLayout(areaListaTrat);
         areaListaTrat.setLayout(areaListaTratLayout);
         areaListaTratLayout.setHorizontalGroup(
             areaListaTratLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, areaListaTratLayout.createSequentialGroup()
-                .addContainerGap(53, Short.MAX_VALUE)
-                .addComponent(jScrollPane6, javax.swing.GroupLayout.PREFERRED_SIZE, 750, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addGroup(areaListaTratLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
+                    .addGroup(areaListaTratLayout.createSequentialGroup()
+                        .addComponent(jLabel28)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addComponent(jTextField11)
+                        .addGap(45, 45, 45)
+                        .addComponent(jButton18)
+                        .addGap(18, 18, 18)
+                        .addComponent(jButton17)
+                        .addGap(18, 18, 18)
+                        .addComponent(jButton16))
+                    .addComponent(jScrollPane6, javax.swing.GroupLayout.PREFERRED_SIZE, 750, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addGap(52, 52, 52))
         );
         areaListaTratLayout.setVerticalGroup(
             areaListaTratLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(areaListaTratLayout.createSequentialGroup()
-                .addGap(20, 20, 20)
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, areaListaTratLayout.createSequentialGroup()
+                .addGap(0, 8, Short.MAX_VALUE)
+                .addGroup(areaListaTratLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(jButton18)
+                    .addComponent(jButton17)
+                    .addComponent(jButton16)
+                    .addComponent(jTextField11, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(jLabel28))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                 .addComponent(jScrollPane6, javax.swing.GroupLayout.PREFERRED_SIZE, 108, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(25, Short.MAX_VALUE))
+                .addGap(27, 27, 27))
         );
 
         areaConsulta.setBackground(new java.awt.Color(241, 242, 249));
@@ -973,9 +1038,9 @@ public class MainView extends javax.swing.JFrame {
         jButton12.setBackground(new java.awt.Color(238, 238, 252));
         jButton12.setForeground(new java.awt.Color(0, 0, 0));
         jButton12.setText("Apagar Consulta");
-        jButton12.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jButton12ActionPerformed(evt);
+        jButton12.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                jButton12MouseClicked(evt);
             }
         });
 
@@ -999,7 +1064,7 @@ public class MainView extends javax.swing.JFrame {
                     .addComponent(jScrollPane9)
                     .addGroup(areaConsultaLayout.createSequentialGroup()
                         .addComponent(jCheckBox2)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 36, Short.MAX_VALUE)
                         .addComponent(jButton12))
                     .addGroup(areaConsultaLayout.createSequentialGroup()
                         .addGroup(areaConsultaLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -1061,7 +1126,7 @@ public class MainView extends javax.swing.JFrame {
         tratamentoLayout.setVerticalGroup(
             tratamentoLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(tratamentoLayout.createSequentialGroup()
-                .addGap(30, 30, 30)
+                .addContainerGap()
                 .addComponent(areaListaTrat, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(15, 15, 15)
                 .addComponent(areaConsulta, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
@@ -1100,11 +1165,6 @@ public class MainView extends javax.swing.JFrame {
         jTextField6.setBackground(new java.awt.Color(255, 255, 255));
         jTextField6.setForeground(new java.awt.Color(51, 51, 51));
         jTextField6.setText("jTextField6\n");
-        jTextField6.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jTextField6ActionPerformed(evt);
-            }
-        });
         jTextField6.addKeyListener(new java.awt.event.KeyAdapter() {
             public void keyTyped(java.awt.event.KeyEvent evt) {
                 jTextField6KeyTyped(evt);
@@ -1132,6 +1192,11 @@ public class MainView extends javax.swing.JFrame {
         jButton9.setBackground(new java.awt.Color(238, 238, 252));
         jButton9.setForeground(new java.awt.Color(0, 0, 0));
         jButton9.setText("Apagar");
+        jButton9.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                jButton9MouseClicked(evt);
+            }
+        });
 
         javax.swing.GroupLayout areaTabelaVetLayout = new javax.swing.GroupLayout(areaTabelaVet);
         areaTabelaVet.setLayout(areaTabelaVetLayout);
@@ -1408,6 +1473,11 @@ public class MainView extends javax.swing.JFrame {
         jButton15.setBackground(new java.awt.Color(238, 238, 252));
         jButton15.setForeground(new java.awt.Color(0, 0, 0));
         jButton15.setText("Apagar");
+        jButton15.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                jButton15MouseClicked(evt);
+            }
+        });
 
         javax.swing.GroupLayout areaListaEspeciesLayout = new javax.swing.GroupLayout(areaListaEspecies);
         areaListaEspecies.setLayout(areaListaEspeciesLayout);
@@ -1423,9 +1493,9 @@ public class MainView extends javax.swing.JFrame {
                         .addGap(18, 18, 18)
                         .addComponent(jButton14)
                         .addGap(18, 18, 18)
-                        .addComponent(jButton15)
+                        .addComponent(jButton13)
                         .addGap(18, 18, 18)
-                        .addComponent(jButton13))
+                        .addComponent(jButton15))
                     .addGroup(areaListaEspeciesLayout.createSequentialGroup()
                         .addGap(122, 122, 122)
                         .addComponent(jScrollPane10, javax.swing.GroupLayout.PREFERRED_SIZE, 525, javax.swing.GroupLayout.PREFERRED_SIZE)))
@@ -1439,8 +1509,8 @@ public class MainView extends javax.swing.JFrame {
                     .addComponent(jLabel27)
                     .addComponent(jTextField7, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(jButton14)
-                    .addComponent(jButton15)
-                    .addComponent(jButton13))
+                    .addComponent(jButton13)
+                    .addComponent(jButton15))
                 .addGap(31, 31, 31)
                 .addComponent(jScrollPane10, javax.swing.GroupLayout.PREFERRED_SIZE, 144, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(50, 50, 50))
@@ -1478,10 +1548,6 @@ public class MainView extends javax.swing.JFrame {
     private void jTextField3ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jTextField3ActionPerformed
         // TODO add your handling code here:
     }//GEN-LAST:event_jTextField3ActionPerformed
-
-    private void jTextField5ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jTextField5ActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_jTextField5ActionPerformed
 
     private void itemAnimalMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_itemAnimalMouseClicked
         Controller.setClicked(itemAnimal);
@@ -1550,10 +1616,6 @@ public class MainView extends javax.swing.JFrame {
         // TODO add your handling code here:
     }//GEN-LAST:event_jButton11ActionPerformed
 
-    private void jButton12ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton12ActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_jButton12ActionPerformed
-
     private void itemHelpMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_itemHelpMouseClicked
        new HelpView().setVisible(true);
     }//GEN-LAST:event_itemHelpMouseClicked
@@ -1579,10 +1641,6 @@ public class MainView extends javax.swing.JFrame {
         int idAnimal = Controller.getAnimalSelecionado().getId();
         Controller.setTableModel(jTable4, new TratamentoTableModel(TratamentoDAO.getInstance().retrieveByIdAnimal(idAnimal)));
     }//GEN-LAST:event_jTable2MousePressed
-
-    private void jTextField6ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jTextField6ActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_jTextField6ActionPerformed
 
     private void jTable3MousePressed(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jTable3MousePressed
         Controller.setSelected(((GenericTableModel)jTable3.getModel()).getItem(jTable3.getSelectedRow()));
@@ -1669,6 +1727,39 @@ public class MainView extends javax.swing.JFrame {
         Controller.insertLine(jTable2);
     }//GEN-LAST:event_jButton5MouseClicked
 
+    private void jButton17MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jButton17MouseClicked
+        Controller.insertLine(jTable4);
+    }//GEN-LAST:event_jButton17MouseClicked
+
+    private void jButton18MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jButton18MouseClicked
+        Controller.setBySearch(jTable4, "");
+        Controller.cleanSearch(jTextField11);
+    }//GEN-LAST:event_jButton18MouseClicked
+
+    private void jTextField11KeyTyped(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_jTextField11KeyTyped
+        Controller.setBySearch(jTable4, jTextField11.getText());
+    }//GEN-LAST:event_jTextField11KeyTyped
+
+    private void jButton15MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jButton15MouseClicked
+        Controller.deleteRow(jTable6);
+    }//GEN-LAST:event_jButton15MouseClicked
+
+    private void jButton16MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jButton16MouseClicked
+        Controller.deleteRow(jTable4);
+    }//GEN-LAST:event_jButton16MouseClicked
+
+    private void jButton6MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jButton6MouseClicked
+        Controller.deleteRow(jTable2);
+    }//GEN-LAST:event_jButton6MouseClicked
+
+    private void jButton9MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jButton9MouseClicked
+        Controller.deleteRow(jTable3);
+    }//GEN-LAST:event_jButton9MouseClicked
+
+    private void jButton12MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jButton12MouseClicked
+        Controller.deleteRow(jTable5);
+    }//GEN-LAST:event_jButton12MouseClicked
+
     /**
      * @param args the command line arguments
      */
@@ -1732,6 +1823,9 @@ public class MainView extends javax.swing.JFrame {
     private javax.swing.JButton jButton13;
     private javax.swing.JButton jButton14;
     private javax.swing.JButton jButton15;
+    private javax.swing.JButton jButton16;
+    private javax.swing.JButton jButton17;
+    private javax.swing.JButton jButton18;
     private javax.swing.JButton jButton2;
     private javax.swing.JButton jButton3;
     private javax.swing.JButton jButton4;
@@ -1761,6 +1855,7 @@ public class MainView extends javax.swing.JFrame {
     private javax.swing.JLabel jLabel23;
     private javax.swing.JLabel jLabel24;
     private javax.swing.JLabel jLabel27;
+    private javax.swing.JLabel jLabel28;
     private javax.swing.JLabel jLabel3;
     private javax.swing.JLabel jLabel4;
     private javax.swing.JLabel jLabel5;
@@ -1798,6 +1893,7 @@ public class MainView extends javax.swing.JFrame {
     private javax.swing.JTextArea jTextArea4;
     private javax.swing.JTextField jTextField1;
     private javax.swing.JTextField jTextField10;
+    private javax.swing.JTextField jTextField11;
     private javax.swing.JTextField jTextField2;
     private javax.swing.JTextField jTextField3;
     private javax.swing.JTextField jTextField4;
