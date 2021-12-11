@@ -22,6 +22,7 @@ import javax.swing.JTable;
 import View.GenericTableModel;
 import View.TratamentoTableModel;
 import View.VeterinarioTableModel;
+import com.toedter.calendar.JDateChooser;
 import java.awt.Color;
 import java.util.Calendar;
 import java.util.Date;
@@ -31,6 +32,7 @@ import javax.swing.JOptionPane;
 import javax.swing.JPanel;
 import javax.swing.JTextArea;
 import javax.swing.JTextField;
+import javax.swing.JToggleButton;
 
 /**
  *
@@ -46,7 +48,6 @@ public class Controller {
     private static JTextField clienteSelecionadoTextField = null;
     private static JTextField animalSelecionadoTextField = null;
     private static JTextField especieSelecionadoTextField = null;
-    private static JTextField veterinarioSelecionadoTextField = null;
     private static JTextArea consultaSelecionadoTextField = null;
     private static JTextArea consultaSelecionadoTextArea = null;
     private static JTextArea consultasGeraisTextArea = null;
@@ -62,11 +63,10 @@ public class Controller {
         table.setModel(tableModel);
     }
     
-    public static void setFields(JTextField clienteField, JTextField animalField, JTextField especieField, JTextField veterinarioField, JTextArea consultaField, JTextArea consultaField2, JTextArea exameField, JTextArea examesGerais, JTextArea consultasGerais){
+    public static void setFields(JTextField clienteField, JTextField animalField, JTextField especieField, JTextArea consultaField, JTextArea consultaField2, JTextArea exameField, JTextArea examesGerais, JTextArea consultasGerais){
         clienteSelecionadoTextField = clienteField;
         animalSelecionadoTextField = animalField;
         especieSelecionadoTextField = especieField;
-        veterinarioSelecionadoTextField = veterinarioField;
         consultaSelecionadoTextField = consultaField;
         consultaSelecionadoTextArea = consultaField2;
         examesGeraisTextArea = examesGerais;
@@ -122,6 +122,38 @@ public class Controller {
         return false;
     }
     
+    public static void changeInputStatus(JTextField input, JToggleButton btn){
+        if(input.isEnabled()){
+            input.setEnabled(false);
+            input.setText("");
+            btn.setSelected(false);
+        }
+        else{
+            input.setEnabled(true);
+            btn.setSelected(true);
+        }
+    }
+    
+    public static void changeInputStatus(JDateChooser input, JToggleButton btn){
+        if(input.isEnabled()){
+            input.setEnabled(false);
+            input.cleanup();
+            btn.setSelected(false);
+        }
+        else{
+            input.setEnabled(true);
+            btn.setSelected(true);
+        }
+            
+    }
+    
+    public static void filtrarConsultas(JTable tabelaConsultas, Date data, String hora, String nomeCliente, String nomeVeterinario, String nomeTratamento, Boolean finalizadas){
+        Calendar c = Calendar.getInstance();
+        c.setTime(data);
+        List<Consulta> consultas = ConsultaDAO.getInstance().retrieveByFilter(c, hora, idCliente, idVeterinario, idTratamento, finalizadas);
+        ((GenericTableModel)tabelaConsultas.getModel()).addListOfItems(consultas);
+    }
+    
     public static void setSelected(Object selected){
        if(selected instanceof Cliente cliente){
            clienteSelecionado = cliente;
@@ -141,7 +173,6 @@ public class Controller {
        }
        else if(selected instanceof Veterinario veterinario){
            veterinarioSelecionado = veterinario;
-           veterinarioSelecionadoTextField.setText(veterinarioSelecionado.getNome());
        }
        else if(selected instanceof Tratamento tratamento){
            tratamentoSelecionado = tratamento;

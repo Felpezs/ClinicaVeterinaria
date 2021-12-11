@@ -102,6 +102,13 @@ public class ConsultaDAO extends DAO{
         return this.retrieve("SELECT * FROM consulta WHERE id_animal = " + id);
     }   
     
+    public List retrieveByFilter(String dia, String hora, String nomeCliente, int idVeterinario, int idTratamento, Boolean finalizadas){
+        String data = (dia == null ? "" : dateFormat.format(dia.getTime()));
+        String veterinario = (idVeterinario < 0 ? "" : Integer.toString(idVeterinario));
+        String tratamento = (idTratamento < 0 ? "" : Integer.toString(idTratamento));
+        return this.retrieve("SELECT * FROM consulta WHERE data = " + data + " AND horario LIKE '%" + hora + "%' AND id_vet LIKE '%" + veterinario + "%' AND id_tratamento LIKE '%" + tratamento + "%' AND terminado LIKE '%" + finalizadas + "%'");
+    }
+    
     public void update(Consulta consulta) {
         try {
             PreparedStatement stmt;
