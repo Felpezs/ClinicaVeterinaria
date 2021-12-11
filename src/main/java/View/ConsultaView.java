@@ -6,6 +6,7 @@
 package View;
 
 import Controller.Controller;
+import javax.swing.JTable;
 
 /**
  *
@@ -276,13 +277,15 @@ public class ConsultaView extends javax.swing.JFrame {
     }// </editor-fold>//GEN-END:initComponents
 
     private void jButton1MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jButton1MouseClicked
-        Controller.agendarConsulta(jDateChooser1.getDate(), jFormattedTextField1.getText());
+        Boolean agendou = Controller.agendarConsulta(jDateChooser1.getDate(), jFormattedTextField1.getText());
+        if(agendou)
+            this.dispose();
     }//GEN-LAST:event_jButton1MouseClicked
 
     /**
      * @param args the command line arguments
      */
-
+    private javax.swing.JTable tabelaConsulta;
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JPanel itemHeader;
     private javax.swing.JButton jButton1;

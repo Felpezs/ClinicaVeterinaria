@@ -22,7 +22,7 @@ public class MainView extends javax.swing.JFrame {
         jTextField8.setText("");
         jTextField10.setText("");
         jTextField11.setText("");
-        Controller.setFields(jTextField1, jTextField2, jTextField3, jTextField8, jTextArea1, jTextArea3, jTextArea4);
+        Controller.setFields(jTextField1, jTextField2, jTextField3, jTextField8, jTextArea1, jTextArea3, jTextArea4, jTextArea5, jTextArea6);
         Controller.setVisiblePanel(animalCliente);
         Controller.setClickedItem(itemAnimal);
         
@@ -31,7 +31,6 @@ public class MainView extends javax.swing.JFrame {
         Controller.setTableModel(jTable6, new EspecieTableModel(EspecieDAO.getInstance().retrieveAll()));
         Controller.setTableModel(jTable9, new VeterinarioTableModel(VeterinarioDAO.getInstance().retrieveAll()));
         Controller.setTableModel(jTable2, new AnimalTableModel(AnimalDAO.getInstance().retrieveAll()));
-        Controller.setTableModel(jTable8, new ConsultasTableModel(ConsultaDAO.getInstance().retrieveAll()));
     }
     
     public MainView() {
@@ -120,16 +119,18 @@ public class MainView extends javax.swing.JFrame {
         jTable5 = new javax.swing.JTable();
         jScrollPane8 = new javax.swing.JScrollPane();
         jTextArea3 = new javax.swing.JTextArea();
-        jLabel22 = new javax.swing.JLabel();
         jSeparator9 = new javax.swing.JSeparator();
         jScrollPane9 = new javax.swing.JScrollPane();
         jTextArea4 = new javax.swing.JTextArea();
         jLabel23 = new javax.swing.JLabel();
-        jCheckBox2 = new javax.swing.JCheckBox();
-        jButton11 = new javax.swing.JButton();
-        jTextField10 = new javax.swing.JTextField();
-        jLabel30 = new javax.swing.JLabel();
         jButton12 = new javax.swing.JButton();
+        jButton19 = new javax.swing.JButton();
+        jButton20 = new javax.swing.JButton();
+        jLabel30 = new javax.swing.JLabel();
+        jTextField10 = new javax.swing.JTextField();
+        jButton11 = new javax.swing.JButton();
+        jLabel22 = new javax.swing.JLabel();
+        jCheckBox2 = new javax.swing.JCheckBox();
         consulta = new javax.swing.JPanel();
         areaCadConsulta = new javax.swing.JPanel();
         jScrollPane5 = new javax.swing.JScrollPane();
@@ -908,7 +909,7 @@ public class MainView extends javax.swing.JFrame {
         tratamento.setPreferredSize(new java.awt.Dimension(906, 508));
 
         areaListaTrat.setBackground(new java.awt.Color(241, 242, 249));
-        areaListaTrat.setBorder(javax.swing.BorderFactory.createTitledBorder(new javax.swing.border.LineBorder(new java.awt.Color(55, 64, 129), 1, true), "Tratamentos Atuais", javax.swing.border.TitledBorder.DEFAULT_JUSTIFICATION, javax.swing.border.TitledBorder.DEFAULT_POSITION, new java.awt.Font("Segoe UI", 1, 14), new java.awt.Color(55, 64, 129))); // NOI18N
+        areaListaTrat.setBorder(javax.swing.BorderFactory.createTitledBorder(new javax.swing.border.LineBorder(new java.awt.Color(55, 64, 129), 1, true), "Tratamentos do Animal Selecionado", javax.swing.border.TitledBorder.DEFAULT_JUSTIFICATION, javax.swing.border.TitledBorder.DEFAULT_POSITION, new java.awt.Font("Segoe UI", 1, 14), new java.awt.Color(55, 64, 129))); // NOI18N
 
         jTable4.setBackground(new java.awt.Color(255, 255, 255));
         jTable4.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
@@ -1001,7 +1002,7 @@ public class MainView extends javax.swing.JFrame {
         areaListaTratLayout.setVerticalGroup(
             areaListaTratLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, areaListaTratLayout.createSequentialGroup()
-                .addGap(0, 8, Short.MAX_VALUE)
+                .addGap(0, 0, Short.MAX_VALUE)
                 .addGroup(areaListaTratLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jButton18)
                     .addComponent(jButton17)
@@ -1014,7 +1015,7 @@ public class MainView extends javax.swing.JFrame {
         );
 
         areaConsulta.setBackground(new java.awt.Color(241, 242, 249));
-        areaConsulta.setBorder(javax.swing.BorderFactory.createTitledBorder(new javax.swing.border.LineBorder(new java.awt.Color(55, 64, 129), 1, true), "Dados de Consultas", javax.swing.border.TitledBorder.DEFAULT_JUSTIFICATION, javax.swing.border.TitledBorder.DEFAULT_POSITION, new java.awt.Font("Segoe UI", 1, 14), new java.awt.Color(55, 64, 129))); // NOI18N
+        areaConsulta.setBorder(javax.swing.BorderFactory.createTitledBorder(new javax.swing.border.LineBorder(new java.awt.Color(55, 64, 129), 1, true), "Consultas Realizadas no Tratamento", javax.swing.border.TitledBorder.DEFAULT_JUSTIFICATION, javax.swing.border.TitledBorder.DEFAULT_POSITION, new java.awt.Font("Segoe UI", 1, 14), new java.awt.Color(55, 64, 129))); // NOI18N
 
         jTable5.setBackground(new java.awt.Color(255, 255, 255));
         jTable5.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
@@ -1044,10 +1045,6 @@ public class MainView extends javax.swing.JFrame {
         jTextArea3.setRows(5);
         jScrollPane8.setViewportView(jTextArea3);
 
-        jLabel22.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
-        jLabel22.setForeground(new java.awt.Color(0, 0, 0));
-        jLabel22.setText("Comentários Sobre a Consulta Selecionada:");
-
         jSeparator9.setForeground(new java.awt.Color(185, 190, 223));
         jSeparator9.setOrientation(javax.swing.SwingConstants.VERTICAL);
 
@@ -1064,36 +1061,53 @@ public class MainView extends javax.swing.JFrame {
         jLabel23.setForeground(new java.awt.Color(0, 0, 0));
         jLabel23.setText("Exames solicitados:");
 
-        jCheckBox2.setForeground(new java.awt.Color(0, 0, 0));
-        jCheckBox2.setText("Confirmar Realização de Consulta?");
-        jCheckBox2.addMouseListener(new java.awt.event.MouseAdapter() {
+        jButton12.setBackground(new java.awt.Color(238, 238, 252));
+        jButton12.setForeground(new java.awt.Color(0, 0, 0));
+        jButton12.setText("Agendar");
+        jButton12.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseClicked(java.awt.event.MouseEvent evt) {
-                jCheckBox2MouseClicked(evt);
+                jButton12MouseClicked(evt);
             }
         });
 
-        jButton11.setBackground(new java.awt.Color(238, 238, 252));
-        jButton11.setForeground(new java.awt.Color(0, 0, 0));
-        jButton11.setText("Novo Exame");
-        jButton11.addMouseListener(new java.awt.event.MouseAdapter() {
+        jButton19.setBackground(new java.awt.Color(238, 238, 252));
+        jButton19.setForeground(new java.awt.Color(0, 0, 0));
+        jButton19.setText("Atualizar");
+        jButton19.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseClicked(java.awt.event.MouseEvent evt) {
-                jButton11MouseClicked(evt);
+                jButton19MouseClicked(evt);
             }
         });
 
-        jTextField10.setBackground(new java.awt.Color(255, 255, 255));
-        jTextField10.setText("jTextField10");
+        jButton20.setBackground(new java.awt.Color(238, 238, 252));
+        jButton20.setForeground(new java.awt.Color(0, 0, 0));
+        jButton20.setText("Apagar");
+        jButton20.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                jButton20MouseClicked(evt);
+            }
+        });
 
         jLabel30.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
         jLabel30.setForeground(new java.awt.Color(0, 0, 0));
         jLabel30.setText("Inserir Novo Exame:");
 
-        jButton12.setBackground(new java.awt.Color(238, 238, 252));
-        jButton12.setForeground(new java.awt.Color(0, 0, 0));
-        jButton12.setText("Nova Consulta");
-        jButton12.addMouseListener(new java.awt.event.MouseAdapter() {
+        jTextField10.setBackground(new java.awt.Color(255, 255, 255));
+        jTextField10.setText("jTextField10");
+
+        jButton11.setBackground(new java.awt.Color(238, 238, 252));
+        jButton11.setForeground(new java.awt.Color(0, 0, 0));
+        jButton11.setText("Novo Exame");
+
+        jLabel22.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
+        jLabel22.setForeground(new java.awt.Color(0, 0, 0));
+        jLabel22.setText("Comentários Sobre a Consulta Selecionada:");
+
+        jCheckBox2.setForeground(new java.awt.Color(0, 0, 0));
+        jCheckBox2.setText("Consulta concluída?");
+        jCheckBox2.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseClicked(java.awt.event.MouseEvent evt) {
-                jButton12MouseClicked(evt);
+                jCheckBox2MouseClicked(evt);
             }
         });
 
@@ -1102,28 +1116,38 @@ public class MainView extends javax.swing.JFrame {
         areaConsultaLayout.setHorizontalGroup(
             areaConsultaLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(areaConsultaLayout.createSequentialGroup()
-                .addGap(16, 16, 16)
-                .addGroup(areaConsultaLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                    .addComponent(jLabel22)
-                    .addComponent(jScrollPane7, javax.swing.GroupLayout.DEFAULT_SIZE, 425, Short.MAX_VALUE)
-                    .addComponent(jScrollPane8))
-                .addGap(18, 18, 18)
-                .addComponent(jSeparator9, javax.swing.GroupLayout.PREFERRED_SIZE, 12, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(18, 18, 18)
                 .addGroup(areaConsultaLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(jScrollPane9)
                     .addGroup(areaConsultaLayout.createSequentialGroup()
+                        .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                        .addGroup(areaConsultaLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                            .addGroup(areaConsultaLayout.createSequentialGroup()
+                                .addComponent(jButton19)
+                                .addGap(18, 18, 18)
+                                .addComponent(jButton20)
+                                .addGap(18, 18, 18)
+                                .addComponent(jButton12)
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                                .addComponent(jCheckBox2))
+                            .addComponent(jScrollPane7, javax.swing.GroupLayout.PREFERRED_SIZE, 425, javax.swing.GroupLayout.PREFERRED_SIZE))
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                    .addGroup(areaConsultaLayout.createSequentialGroup()
+                        .addContainerGap()
                         .addGroup(areaConsultaLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addComponent(jLabel23)
                             .addComponent(jLabel30)
                             .addGroup(areaConsultaLayout.createSequentialGroup()
-                                .addGroup(areaConsultaLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                    .addComponent(jTextField10, javax.swing.GroupLayout.PREFERRED_SIZE, 251, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                    .addComponent(jCheckBox2))
-                                .addGap(12, 12, 12)
-                                .addGroup(areaConsultaLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                                    .addComponent(jButton11)
-                                    .addComponent(jButton12))))
+                                .addComponent(jTextField10, javax.swing.GroupLayout.PREFERRED_SIZE, 263, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                                .addComponent(jButton11)))
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)))
+                .addComponent(jSeparator9, javax.swing.GroupLayout.PREFERRED_SIZE, 24, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addGroup(areaConsultaLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(jScrollPane9, javax.swing.GroupLayout.DEFAULT_SIZE, 402, Short.MAX_VALUE)
+                    .addComponent(jScrollPane8)
+                    .addGroup(areaConsultaLayout.createSequentialGroup()
+                        .addGroup(areaConsultaLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addComponent(jLabel22)
+                            .addComponent(jLabel23))
                         .addGap(0, 0, Short.MAX_VALUE)))
                 .addContainerGap())
         );
@@ -1131,32 +1155,37 @@ public class MainView extends javax.swing.JFrame {
             areaConsultaLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, areaConsultaLayout.createSequentialGroup()
                 .addContainerGap()
-                .addGroup(areaConsultaLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                .addGroup(areaConsultaLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                    .addComponent(jSeparator9, javax.swing.GroupLayout.PREFERRED_SIZE, 252, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addGroup(areaConsultaLayout.createSequentialGroup()
-                        .addGap(0, 0, Short.MAX_VALUE)
-                        .addGroup(areaConsultaLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                        .addGroup(areaConsultaLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
                             .addGroup(areaConsultaLayout.createSequentialGroup()
-                                .addComponent(jScrollPane7, javax.swing.GroupLayout.PREFERRED_SIZE, 108, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                .addGap(18, 18, 18)
+                                .addGap(0, 0, Short.MAX_VALUE)
+                                .addGroup(areaConsultaLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                                    .addComponent(jButton19)
+                                    .addComponent(jButton20)
+                                    .addComponent(jButton12)
+                                    .addComponent(jCheckBox2)))
+                            .addGroup(areaConsultaLayout.createSequentialGroup()
+                                .addComponent(jLabel23)
+                                .addGap(0, 0, Short.MAX_VALUE)))
+                        .addGap(12, 12, 12)
+                        .addGroup(areaConsultaLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
+                            .addGroup(areaConsultaLayout.createSequentialGroup()
+                                .addComponent(jScrollPane9, javax.swing.GroupLayout.PREFERRED_SIZE, 86, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addGap(31, 31, 31)
                                 .addComponent(jLabel22)
                                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                                 .addComponent(jScrollPane8, javax.swing.GroupLayout.PREFERRED_SIZE, 86, javax.swing.GroupLayout.PREFERRED_SIZE))
-                            .addComponent(jSeparator9)))
-                    .addGroup(areaConsultaLayout.createSequentialGroup()
-                        .addComponent(jLabel23)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                        .addComponent(jScrollPane9, javax.swing.GroupLayout.PREFERRED_SIZE, 86, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addGap(18, 18, 18)
-                        .addComponent(jLabel30)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                        .addGroup(areaConsultaLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                            .addComponent(jTextField10, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(jButton11))
-                        .addGap(18, 18, 18)
-                        .addGroup(areaConsultaLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                            .addComponent(jCheckBox2)
-                            .addComponent(jButton12))
-                        .addGap(27, 27, 27)))
+                            .addGroup(areaConsultaLayout.createSequentialGroup()
+                                .addComponent(jScrollPane7, javax.swing.GroupLayout.PREFERRED_SIZE, 135, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addGap(30, 30, 30)
+                                .addComponent(jLabel30)
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                                .addGroup(areaConsultaLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                                    .addComponent(jTextField10, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                    .addComponent(jButton11))
+                                .addGap(0, 0, Short.MAX_VALUE)))))
                 .addContainerGap())
         );
 
@@ -1175,10 +1204,10 @@ public class MainView extends javax.swing.JFrame {
             tratamentoLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(tratamentoLayout.createSequentialGroup()
                 .addContainerGap()
-                .addComponent(areaListaTrat, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(15, 15, 15)
-                .addComponent(areaConsulta, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                .addComponent(areaListaTrat, javax.swing.GroupLayout.PREFERRED_SIZE, 185, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                .addComponent(areaConsulta, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addGap(32, 32, 32))
         );
 
         areaTabelas.add(tratamento, "card4");
@@ -1214,8 +1243,14 @@ public class MainView extends javax.swing.JFrame {
                 return canEdit [columnIndex];
             }
         });
+        jTable8.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                jTable8MouseClicked(evt);
+            }
+        });
         jScrollPane5.setViewportView(jTable8);
 
+        jTextField8.setEditable(false);
         jTextField8.setBackground(new java.awt.Color(255, 255, 255));
         jTextField8.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
         jTextField8.setForeground(new java.awt.Color(0, 0, 0));
@@ -1280,19 +1315,9 @@ public class MainView extends javax.swing.JFrame {
         areaCadConsulta.setLayout(areaCadConsultaLayout);
         areaCadConsultaLayout.setHorizontalGroup(
             areaCadConsultaLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, areaCadConsultaLayout.createSequentialGroup()
+            .addGroup(areaCadConsultaLayout.createSequentialGroup()
                 .addContainerGap()
                 .addGroup(areaCadConsultaLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(areaCadConsultaLayout.createSequentialGroup()
-                        .addGap(18, 18, 18)
-                        .addGroup(areaCadConsultaLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addComponent(jScrollPane14, javax.swing.GroupLayout.PREFERRED_SIZE, 304, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(jLabel34))
-                        .addGap(39, 39, 39)
-                        .addGroup(areaCadConsultaLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addComponent(jScrollPane15, javax.swing.GroupLayout.PREFERRED_SIZE, 304, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(jLabel35))
-                        .addGap(206, 206, 206))
                     .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, areaCadConsultaLayout.createSequentialGroup()
                         .addGroup(areaCadConsultaLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
                             .addGroup(areaCadConsultaLayout.createSequentialGroup()
@@ -1312,7 +1337,18 @@ public class MainView extends javax.swing.JFrame {
                                 .addGap(18, 18, 18)
                                 .addComponent(jToggleButton3))
                             .addComponent(jScrollPane5))
-                        .addGap(27, 27, 27))))
+                        .addGap(27, 27, 27))
+                    .addGroup(areaCadConsultaLayout.createSequentialGroup()
+                        .addGroup(areaCadConsultaLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addComponent(jLabel34)
+                            .addGroup(areaCadConsultaLayout.createSequentialGroup()
+                                .addGap(0, 0, 0)
+                                .addComponent(jScrollPane14, javax.swing.GroupLayout.PREFERRED_SIZE, 304, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                        .addGap(45, 45, 45)
+                        .addGroup(areaCadConsultaLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addComponent(jLabel35)
+                            .addComponent(jScrollPane15, javax.swing.GroupLayout.PREFERRED_SIZE, 430, javax.swing.GroupLayout.PREFERRED_SIZE))
+                        .addGap(80, 80, 80))))
         );
         areaCadConsultaLayout.setVerticalGroup(
             areaCadConsultaLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -1329,15 +1365,16 @@ public class MainView extends javax.swing.JFrame {
                     .addComponent(jToggleButton8))
                 .addGap(18, 18, 18)
                 .addComponent(jScrollPane5, javax.swing.GroupLayout.PREFERRED_SIZE, 240, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                .addGroup(areaCadConsultaLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(jLabel34)
-                    .addComponent(jLabel35))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addGroup(areaCadConsultaLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                    .addComponent(jScrollPane15, javax.swing.GroupLayout.DEFAULT_SIZE, 90, Short.MAX_VALUE)
-                    .addComponent(jScrollPane14, javax.swing.GroupLayout.PREFERRED_SIZE, 0, Short.MAX_VALUE))
-                .addGap(45, 45, 45))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 20, Short.MAX_VALUE)
+                .addGroup(areaCadConsultaLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                    .addComponent(jScrollPane15, javax.swing.GroupLayout.PREFERRED_SIZE, 90, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addGroup(areaCadConsultaLayout.createSequentialGroup()
+                        .addGroup(areaCadConsultaLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                            .addComponent(jLabel34, javax.swing.GroupLayout.PREFERRED_SIZE, 20, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(jLabel35))
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                        .addComponent(jScrollPane14, javax.swing.GroupLayout.PREFERRED_SIZE, 90, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                .addGap(25, 25, 25))
         );
 
         javax.swing.GroupLayout consultaLayout = new javax.swing.GroupLayout(consulta);
@@ -1618,6 +1655,9 @@ public class MainView extends javax.swing.JFrame {
     private void itemConsultaMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_itemConsultaMouseClicked
         Controller.setClicked(itemConsulta);
         Controller.switchPanels(consulta);
+        jTextArea5.setText("");
+        jTextArea5.setText("");
+        Controller.setTableModel(jTable8, new ConsultasTableModel(ConsultaDAO.getInstance().retrieveAll()));
     }//GEN-LAST:event_itemConsultaMouseClicked
 
     private void itemAnimalMouseExited(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_itemAnimalMouseExited
@@ -1685,6 +1725,10 @@ public class MainView extends javax.swing.JFrame {
     //Tabela Consulta
     private void jTable5MousePressed(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jTable5MousePressed
         Controller.setSelected(((GenericTableModel)jTable5.getModel()).getItem(jTable5.getSelectedRow()));
+        if(Controller.consultaSelecionadaTerminou())
+            jCheckBox2.setSelected(true);
+        else
+            jCheckBox2.setSelected(false);
     }//GEN-LAST:event_jTable5MousePressed
 
     private void itemEspeciesMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_itemEspeciesMouseClicked
@@ -1806,19 +1850,26 @@ public class MainView extends javax.swing.JFrame {
         Controller.setSelected(((GenericTableModel)jTable9.getModel()).getItem(jTable9.getSelectedRow()));
     }//GEN-LAST:event_jTable9MouseClicked
 
-    private void jButton11MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jButton11MouseClicked
-       Controller.insertExame(jTable5, jTextField10.getText());
-       Controller.cleanSearch(jTextField10);
-    }//GEN-LAST:event_jButton11MouseClicked
-
-    private void jCheckBox2MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jCheckBox2MouseClicked
-        Controller.updateConsulta(jTable5);
-    }//GEN-LAST:event_jCheckBox2MouseClicked
-
     private void jButton12MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jButton12MouseClicked
         if(Controller.camposAgendamentoValidos())
             new ConsultaView().setVisible(true);
     }//GEN-LAST:event_jButton12MouseClicked
+
+    private void jButton19MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jButton19MouseClicked
+        Controller.retrieveConsultas(jTable5);
+    }//GEN-LAST:event_jButton19MouseClicked
+
+    private void jButton20MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jButton20MouseClicked
+        Controller.deleteRow(jTable5);
+    }//GEN-LAST:event_jButton20MouseClicked
+
+    private void jCheckBox2MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jCheckBox2MouseClicked
+        Controller.updateConsulta(jTable5, jCheckBox2.isSelected());
+    }//GEN-LAST:event_jCheckBox2MouseClicked
+
+    private void jTable8MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jTable8MouseClicked
+         Controller.setSelectedConsultasGerais(((GenericTableModel)jTable8.getModel()).getItem(jTable8.getSelectedRow()));
+    }//GEN-LAST:event_jTable8MouseClicked
 
     /**
      * @param args the command line arguments
@@ -1884,7 +1935,9 @@ public class MainView extends javax.swing.JFrame {
     private javax.swing.JButton jButton16;
     private javax.swing.JButton jButton17;
     private javax.swing.JButton jButton18;
+    private javax.swing.JButton jButton19;
     private javax.swing.JButton jButton2;
+    private javax.swing.JButton jButton20;
     private javax.swing.JButton jButton22;
     private javax.swing.JButton jButton23;
     private javax.swing.JButton jButton27;
