@@ -17,6 +17,7 @@ import Model.VeterinarioDAO;
 import View.AnimalTableModel;
 import View.ClienteTableModel;
 import View.ConsultaTableModel;
+import View.ConsultasTableModel;
 import View.EspecieTableModel;
 import javax.swing.JTable;
 import View.GenericTableModel;
@@ -46,7 +47,6 @@ public class Controller {
     private static JTextField animalSelecionadoTextField = null;
     private static JTextField especieSelecionadoTextField = null;
     private static JTextField veterinarioSelecionadoTextField = null;
-    private static JTextField tratamentoSelecionadoTextField = null;
     private static JTextArea consultaSelecionadoTextField = null;
     private static JTextArea consultaSelecionadoTextArea = null;
     private static JTextArea exameTextArea = null;
@@ -60,12 +60,11 @@ public class Controller {
         table.setModel(tableModel);
     }
     
-    public static void setFields(JTextField clienteField, JTextField animalField, JTextField especieField, JTextField veterinarioField, JTextField tratamentoField, JTextArea consultaField, JTextArea consultaField2, JTextArea exameField){
+    public static void setFields(JTextField clienteField, JTextField animalField, JTextField especieField, JTextField veterinarioField, JTextArea consultaField, JTextArea consultaField2, JTextArea exameField){
         clienteSelecionadoTextField = clienteField;
         animalSelecionadoTextField = animalField;
         especieSelecionadoTextField = especieField;
         veterinarioSelecionadoTextField = veterinarioField;
-        tratamentoSelecionadoTextField = tratamentoField;
         consultaSelecionadoTextField = consultaField;
         consultaSelecionadoTextArea = consultaField2;
         exameTextArea = exameField;
@@ -126,7 +125,6 @@ public class Controller {
            animalSelecionado = animal;
            animalSelecionadoTextField.setText(animalSelecionado.getNome());
            especieSelecionadoTextField.setText(EspecieDAO.getInstance().retrieveById(animalSelecionado.getIdEspecie()).getNom_esp());
-           tratamentoSelecionadoTextField.setText("");
            consultaSelecionadoTextField.setText("");
            consultaSelecionadoTextArea.setText("");
            List<Consulta> consulta = ConsultaDAO.getInstance().retrieveByIdAnimal(animalSelecionado.getId());
@@ -147,7 +145,6 @@ public class Controller {
        }
        else if(selected instanceof Tratamento tratamento){
            tratamentoSelecionado = tratamento;
-           tratamentoSelecionadoTextField.setText(tratamentoSelecionado.getNome());
            exameTextArea.setText("");
            consultaSelecionadoTextArea.setText("");
        }
@@ -165,7 +162,7 @@ public class Controller {
            }
            else{
                for(Exame e : exame){
-                   exameTextArea.append(e.getNome());
+                   exameTextArea.append(e.getNome() + "\n");
                }
            }
        }
@@ -224,7 +221,7 @@ public class Controller {
         else if(table.getModel() instanceof AnimalTableModel){      
             if(Controller.getClienteSelecionado()!=null){
                 Especie especie = EspecieDAO.getInstance().retrieveById(1);
-                Animal animal = AnimalDAO.getInstance().create("", 0, "macho", especie, clienteSelecionado); 
+                Animal animal = AnimalDAO.getInstance().create("", 1970, "macho", especie, clienteSelecionado); 
                 ((GenericTableModel)table.getModel()).addItem(animal);
             }
             else
@@ -240,8 +237,8 @@ public class Controller {
             else
                 JOptionPane.showMessageDialog(new JFrame(), "Um animal deve ser selecionado para fazer o cadastro de um tratamento", "Dialog",JOptionPane.ERROR_MESSAGE);
         }
-        /*
-        else if(table.getModel() instanceof ConsultaTableModel){
+        
+        /*else if(table.getModel() instanceof ConsultaTableModel){
             if(Controller.getTratamentoSelecionado() != null){
                 if(Controller.getVeterinarioSelecionado() != null){
                     Calendar c1 = Calendar.getInstance();
@@ -253,8 +250,8 @@ public class Controller {
             }
             else
                 JOptionPane.showMessageDialog(new JFrame(), "Um tratamento deve ser selecionado para fazer o cadastro de uma consulta", "Dialog", JOptionPane.ERROR_MESSAGE);
-        }
-        */
+        }*/
+        
         else if(table.getModel() instanceof EspecieTableModel){
             Especie especie = EspecieDAO.getInstance().create("");
             ((GenericTableModel)table.getModel()).addItem(especie);
@@ -353,10 +350,41 @@ public class Controller {
         ((GenericTableModel)table.getModel()).removeItem(table.getSelectedRow());
     }
 
+    public static void insertExame(JTable tableConsulta, String exame){
+        if(consultaSelecionado != null){
+            if(!exame.isBlank()){
+                if(ExameDAO.getInstance().retrieveByIdConsulta(consultaSelecionado.getId()).isEmpty())
+                    exameTextArea.setText("");
+                ExameDAO.getInstance().create(exame, consultaSelecionado);
+                exameTextArea.append(exame + "\n");
+            }
+            else
+                JOptionPane.showMessageDialog(new JFrame(), "O campo exame é obrigatório", "Dialog",JOptionPane.ERROR_MESSAGE);
+        }
+        else
+            JOptionPane.showMessageDialog(new JFrame(), "Uma consulta deve ser selecionada para inserir um novo exame", "Dialog",JOptionPane.ERROR_MESSAGE);
+            
+    }
+    
+    public static void updateConsulta(JTable tableConsulta){
+        if(consultaSelecionado != null){
+            consultaSelecionado.setTerminou(true);
+            ConsultaDAO.getInstance().update(consultaSelecionado);
+        }
+        else
+            JOptionPane.showMessageDialog(new JFrame(), "Uma consulta deve ser selecionada para inserir um novo exame", "Dialog",JOptionPane.ERROR_MESSAGE);
+    }
     
     public static void switchPanels(JPanel panel){
         visiblePanel.setVisible(false);
         visiblePanel = panel;
         visiblePanel.setVisible(true);
+    }
+    
+    public static void preencherCamposConsulta(JTextField clienteField, JTextField veterinarioField, JTextField animalField, JTextField tratamentoField){
+        tratamentoField.setText(tratamentoSelecionado.getNome());
+        clienteField.setText(clienteSelecionado.getNome());
+        animalField.setText(animalSelecionado.getNome());
+        veterinarioField.setText(veterinarioSelecionado.getNome());
     }
 }

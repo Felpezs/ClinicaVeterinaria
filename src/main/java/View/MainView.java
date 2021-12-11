@@ -17,21 +17,21 @@ public class MainView extends javax.swing.JFrame {
         jTextField3.setText("");
         jTextField4.setText("");
         jTextField5.setText("");
-        jTextField6.setText("");
+        jTextField14.setText("");
         jTextField7.setText("");
         jTextField8.setText("");
-        jTextField9.setText("");
         jTextField10.setText("");
         jTextField11.setText("");
-        Controller.setFields(jTextField1, jTextField2, jTextField3, jTextField8, jTextField9, jTextArea1, jTextArea3, jTextArea4);
+        Controller.setFields(jTextField1, jTextField2, jTextField3, jTextField8, jTextArea1, jTextArea3, jTextArea4);
         Controller.setVisiblePanel(animalCliente);
         Controller.setClickedItem(itemAnimal);
         
         //Inicializacao de Tabelas
         Controller.setTableModel(jTable1, new ClienteTableModel(ClienteDAO.getInstance().retrieveAll()));
         Controller.setTableModel(jTable6, new EspecieTableModel(EspecieDAO.getInstance().retrieveAll()));
-        Controller.setTableModel(jTable3, new VeterinarioTableModel(VeterinarioDAO.getInstance().retrieveAll()));
+        Controller.setTableModel(jTable9, new VeterinarioTableModel(VeterinarioDAO.getInstance().retrieveAll()));
         Controller.setTableModel(jTable2, new AnimalTableModel(AnimalDAO.getInstance().retrieveAll()));
+        Controller.setTableModel(jTable8, new ConsultasTableModel(ConsultaDAO.getInstance().retrieveAll()));
     }
     
     public MainView() {
@@ -67,6 +67,9 @@ public class MainView extends javax.swing.JFrame {
         itemEspecies = new javax.swing.JPanel();
         jLabel18 = new javax.swing.JLabel();
         jLabel24 = new javax.swing.JLabel();
+        itemVeterinarios = new javax.swing.JPanel();
+        jLabel25 = new javax.swing.JLabel();
+        jLabel26 = new javax.swing.JLabel();
         conteudoTop = new javax.swing.JPanel();
         topGroup = new javax.swing.JPanel();
         topItemCliente = new javax.swing.JPanel();
@@ -123,34 +126,28 @@ public class MainView extends javax.swing.JFrame {
         jTextArea4 = new javax.swing.JTextArea();
         jLabel23 = new javax.swing.JLabel();
         jCheckBox2 = new javax.swing.JCheckBox();
-        jCheckBox3 = new javax.swing.JCheckBox();
         jButton11 = new javax.swing.JButton();
-        jButton12 = new javax.swing.JButton();
         jTextField10 = new javax.swing.JTextField();
+        jLabel30 = new javax.swing.JLabel();
+        jButton12 = new javax.swing.JButton();
         consulta = new javax.swing.JPanel();
-        areaTabelaVet = new javax.swing.JPanel();
-        jScrollPane4 = new javax.swing.JScrollPane();
-        jTable3 = new javax.swing.JTable();
-        jLabel17 = new javax.swing.JLabel();
-        jTextField6 = new javax.swing.JTextField();
-        jButton7 = new javax.swing.JButton();
-        jButton8 = new javax.swing.JButton();
-        jButton9 = new javax.swing.JButton();
         areaCadConsulta = new javax.swing.JPanel();
-        consultaVeterinario = new javax.swing.JPanel();
-        jLabel19 = new javax.swing.JLabel();
-        jTextField8 = new javax.swing.JTextField();
-        jSeparator6 = new javax.swing.JSeparator();
-        consultaTratamento = new javax.swing.JPanel();
-        jLabel20 = new javax.swing.JLabel();
-        jTextField9 = new javax.swing.JTextField();
-        jSeparator7 = new javax.swing.JSeparator();
-        jSeparator8 = new javax.swing.JSeparator();
         jScrollPane5 = new javax.swing.JScrollPane();
-        jTextArea2 = new javax.swing.JTextArea();
-        jLabel21 = new javax.swing.JLabel();
-        jCheckBox1 = new javax.swing.JCheckBox();
-        jButton10 = new javax.swing.JButton();
+        jTable8 = new javax.swing.JTable();
+        jTextField8 = new javax.swing.JTextField();
+        jLabel33 = new javax.swing.JLabel();
+        jScrollPane14 = new javax.swing.JScrollPane();
+        jTextArea5 = new javax.swing.JTextArea();
+        jScrollPane15 = new javax.swing.JScrollPane();
+        jTextArea6 = new javax.swing.JTextArea();
+        jLabel34 = new javax.swing.JLabel();
+        jLabel35 = new javax.swing.JLabel();
+        jToggleButton3 = new javax.swing.JToggleButton();
+        jToggleButton4 = new javax.swing.JToggleButton();
+        jToggleButton5 = new javax.swing.JToggleButton();
+        jToggleButton6 = new javax.swing.JToggleButton();
+        jToggleButton7 = new javax.swing.JToggleButton();
+        jToggleButton8 = new javax.swing.JToggleButton();
         especies = new javax.swing.JPanel();
         areaListaEspecies = new javax.swing.JPanel();
         jButton13 = new javax.swing.JButton();
@@ -160,6 +157,15 @@ public class MainView extends javax.swing.JFrame {
         jScrollPane10 = new javax.swing.JScrollPane();
         jTable6 = new javax.swing.JTable();
         jButton15 = new javax.swing.JButton();
+        veterinarios = new javax.swing.JPanel();
+        areaTabelaVet3 = new javax.swing.JPanel();
+        jScrollPane13 = new javax.swing.JScrollPane();
+        jTable9 = new javax.swing.JTable();
+        jLabel31 = new javax.swing.JLabel();
+        jTextField14 = new javax.swing.JTextField();
+        jButton27 = new javax.swing.JButton();
+        jButton22 = new javax.swing.JButton();
+        jButton23 = new javax.swing.JButton();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         setTitle("Clínica Veterinária");
@@ -228,7 +234,7 @@ public class MainView extends javax.swing.JFrame {
         jLabel4.setBackground(new java.awt.Color(44, 44, 99));
         jLabel4.setFont(new java.awt.Font("Segoe UI", 1, 14)); // NOI18N
         jLabel4.setForeground(new java.awt.Color(255, 255, 255));
-        jLabel4.setText("Agendar Consultas");
+        jLabel4.setText("Consultas");
 
         javax.swing.GroupLayout itemConsultaLayout = new javax.swing.GroupLayout(itemConsulta);
         itemConsulta.setLayout(itemConsultaLayout);
@@ -392,6 +398,46 @@ public class MainView extends javax.swing.JFrame {
             .addComponent(jLabel24, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
         );
 
+        itemVeterinarios.setBackground(new java.awt.Color(38, 38, 84));
+        itemVeterinarios.setBorder(javax.swing.BorderFactory.createMatteBorder(0, 0, 1, 0, new java.awt.Color(44, 44, 99)));
+        itemVeterinarios.setPreferredSize(new java.awt.Dimension(288, 60));
+        itemVeterinarios.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                itemVeterinariosMouseClicked(evt);
+            }
+            public void mouseEntered(java.awt.event.MouseEvent evt) {
+                itemVeterinariosMouseEntered(evt);
+            }
+            public void mouseExited(java.awt.event.MouseEvent evt) {
+                itemVeterinariosMouseExited(evt);
+            }
+        });
+
+        jLabel25.setForeground(new java.awt.Color(255, 255, 255));
+        jLabel25.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
+        jLabel25.setIcon(new javax.swing.ImageIcon("C:\\Users\\PC\\Unicamp\\2ºSem. 2021\\Topicos\\ClinicaVeterinaria\\src\\main\\java\\View\\Icones\\icons8_veterinarian_male_25px_1.png")); // NOI18N
+
+        jLabel26.setFont(new java.awt.Font("Segoe UI", 1, 14)); // NOI18N
+        jLabel26.setForeground(new java.awt.Color(255, 255, 255));
+        jLabel26.setText("Veterinários");
+
+        javax.swing.GroupLayout itemVeterinariosLayout = new javax.swing.GroupLayout(itemVeterinarios);
+        itemVeterinarios.setLayout(itemVeterinariosLayout);
+        itemVeterinariosLayout.setHorizontalGroup(
+            itemVeterinariosLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(itemVeterinariosLayout.createSequentialGroup()
+                .addGap(13, 13, 13)
+                .addComponent(jLabel25, javax.swing.GroupLayout.PREFERRED_SIZE, 50, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addComponent(jLabel26, javax.swing.GroupLayout.PREFERRED_SIZE, 203, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+        );
+        itemVeterinariosLayout.setVerticalGroup(
+            itemVeterinariosLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addComponent(jLabel25, javax.swing.GroupLayout.DEFAULT_SIZE, 59, Short.MAX_VALUE)
+            .addComponent(jLabel26, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+        );
+
         javax.swing.GroupLayout navBarLayout = new javax.swing.GroupLayout(navBar);
         navBar.setLayout(navBarLayout);
         navBarLayout.setHorizontalGroup(
@@ -402,6 +448,7 @@ public class MainView extends javax.swing.JFrame {
             .addComponent(itemHeader, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
             .addComponent(itemHelp, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
             .addComponent(itemEspecies, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+            .addComponent(itemVeterinarios, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
         );
         navBarLayout.setVerticalGroup(
             navBarLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -415,8 +462,10 @@ public class MainView extends javax.swing.JFrame {
                 .addGap(0, 0, 0)
                 .addComponent(itemTratamento, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(0, 0, 0)
+                .addComponent(itemVeterinarios, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(0, 0, 0)
                 .addComponent(itemEspecies, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 284, Short.MAX_VALUE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 224, Short.MAX_VALUE)
                 .addComponent(itemHelp, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
         );
 
@@ -934,7 +983,7 @@ public class MainView extends javax.swing.JFrame {
         areaListaTratLayout.setHorizontalGroup(
             areaListaTratLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, areaListaTratLayout.createSequentialGroup()
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addContainerGap(74, Short.MAX_VALUE)
                 .addGroup(areaListaTratLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
                     .addGroup(areaListaTratLayout.createSequentialGroup()
                         .addComponent(jLabel28)
@@ -972,10 +1021,10 @@ public class MainView extends javax.swing.JFrame {
         jTable5.setForeground(new java.awt.Color(0, 0, 0));
         jTable5.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
-                {null, null, null}
+
             },
             new String [] {
-                "Data", "Período", "Veterinário"
+                "Data", "Hora", "Veterinário"
             }
         ));
         jTable5.setShowGrid(false);
@@ -1017,35 +1066,36 @@ public class MainView extends javax.swing.JFrame {
 
         jCheckBox2.setForeground(new java.awt.Color(0, 0, 0));
         jCheckBox2.setText("Confirmar Realização de Consulta?");
-        jCheckBox2.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jCheckBox2ActionPerformed(evt);
+        jCheckBox2.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                jCheckBox2MouseClicked(evt);
             }
         });
-
-        jCheckBox3.setForeground(new java.awt.Color(0, 0, 0));
-        jCheckBox3.setText("Encerrar Tratamento?");
 
         jButton11.setBackground(new java.awt.Color(238, 238, 252));
         jButton11.setForeground(new java.awt.Color(0, 0, 0));
         jButton11.setText("Novo Exame");
-        jButton11.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jButton11ActionPerformed(evt);
-            }
-        });
-
-        jButton12.setBackground(new java.awt.Color(238, 238, 252));
-        jButton12.setForeground(new java.awt.Color(0, 0, 0));
-        jButton12.setText("Apagar Consulta");
-        jButton12.addMouseListener(new java.awt.event.MouseAdapter() {
+        jButton11.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseClicked(java.awt.event.MouseEvent evt) {
-                jButton12MouseClicked(evt);
+                jButton11MouseClicked(evt);
             }
         });
 
         jTextField10.setBackground(new java.awt.Color(255, 255, 255));
         jTextField10.setText("jTextField10");
+
+        jLabel30.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
+        jLabel30.setForeground(new java.awt.Color(0, 0, 0));
+        jLabel30.setText("Inserir Novo Exame:");
+
+        jButton12.setBackground(new java.awt.Color(238, 238, 252));
+        jButton12.setForeground(new java.awt.Color(0, 0, 0));
+        jButton12.setText("Nova Consulta");
+        jButton12.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                jButton12MouseClicked(evt);
+            }
+        });
 
         javax.swing.GroupLayout areaConsultaLayout = new javax.swing.GroupLayout(areaConsulta);
         areaConsulta.setLayout(areaConsultaLayout);
@@ -1063,18 +1113,18 @@ public class MainView extends javax.swing.JFrame {
                 .addGroup(areaConsultaLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addComponent(jScrollPane9)
                     .addGroup(areaConsultaLayout.createSequentialGroup()
-                        .addComponent(jCheckBox2)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 36, Short.MAX_VALUE)
-                        .addComponent(jButton12))
-                    .addGroup(areaConsultaLayout.createSequentialGroup()
                         .addGroup(areaConsultaLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addComponent(jCheckBox3)
-                            .addComponent(jLabel23))
-                        .addGap(0, 0, Short.MAX_VALUE))
-                    .addGroup(areaConsultaLayout.createSequentialGroup()
-                        .addComponent(jButton11)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                        .addComponent(jTextField10)))
+                            .addComponent(jLabel23)
+                            .addComponent(jLabel30)
+                            .addGroup(areaConsultaLayout.createSequentialGroup()
+                                .addGroup(areaConsultaLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                    .addComponent(jTextField10, javax.swing.GroupLayout.PREFERRED_SIZE, 251, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                    .addComponent(jCheckBox2))
+                                .addGap(12, 12, 12)
+                                .addGroup(areaConsultaLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                                    .addComponent(jButton11)
+                                    .addComponent(jButton12))))
+                        .addGap(0, 0, Short.MAX_VALUE)))
                 .addContainerGap())
         );
         areaConsultaLayout.setVerticalGroup(
@@ -1083,7 +1133,7 @@ public class MainView extends javax.swing.JFrame {
                 .addContainerGap()
                 .addGroup(areaConsultaLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(areaConsultaLayout.createSequentialGroup()
-                        .addGap(0, 9, Short.MAX_VALUE)
+                        .addGap(0, 0, Short.MAX_VALUE)
                         .addGroup(areaConsultaLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
                             .addGroup(areaConsultaLayout.createSequentialGroup()
                                 .addComponent(jScrollPane7, javax.swing.GroupLayout.PREFERRED_SIZE, 108, javax.swing.GroupLayout.PREFERRED_SIZE)
@@ -1096,19 +1146,17 @@ public class MainView extends javax.swing.JFrame {
                         .addComponent(jLabel23)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                         .addComponent(jScrollPane9, javax.swing.GroupLayout.PREFERRED_SIZE, 86, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addGap(18, 18, 18)
+                        .addComponent(jLabel30)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                         .addGroup(areaConsultaLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                            .addComponent(jButton11)
-                            .addComponent(jTextField10, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                            .addComponent(jTextField10, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(jButton11))
                         .addGap(18, 18, 18)
-                        .addGroup(areaConsultaLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addGroup(areaConsultaLayout.createSequentialGroup()
-                                .addComponent(jCheckBox2)
-                                .addGap(12, 12, 12))
-                            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, areaConsultaLayout.createSequentialGroup()
-                                .addComponent(jButton12)
-                                .addGap(2, 2, 2)))
-                        .addComponent(jCheckBox3)))
+                        .addGroup(areaConsultaLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                            .addComponent(jCheckBox2)
+                            .addComponent(jButton12))
+                        .addGap(27, 27, 27)))
                 .addContainerGap())
         );
 
@@ -1137,264 +1185,159 @@ public class MainView extends javax.swing.JFrame {
 
         consulta.setBackground(new java.awt.Color(241, 242, 249));
 
-        areaTabelaVet.setBackground(new java.awt.Color(241, 242, 249));
-        areaTabelaVet.setBorder(javax.swing.BorderFactory.createTitledBorder(new javax.swing.border.LineBorder(new java.awt.Color(55, 64, 129), 1, true), "Selecionar Veterinário", javax.swing.border.TitledBorder.DEFAULT_JUSTIFICATION, javax.swing.border.TitledBorder.DEFAULT_POSITION, new java.awt.Font("Segoe UI", 1, 14), new java.awt.Color(55, 64, 129))); // NOI18N
+        areaCadConsulta.setBackground(new java.awt.Color(241, 242, 249));
+        areaCadConsulta.setBorder(javax.swing.BorderFactory.createTitledBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(55, 64, 129)), "Visualizar Consultas", javax.swing.border.TitledBorder.DEFAULT_JUSTIFICATION, javax.swing.border.TitledBorder.DEFAULT_POSITION, new java.awt.Font("Segoe UI", 1, 14), new java.awt.Color(55, 64, 129))); // NOI18N
 
-        jTable3.setBackground(new java.awt.Color(255, 255, 255));
-        jTable3.setForeground(new java.awt.Color(0, 0, 0));
-        jTable3.setModel(new javax.swing.table.DefaultTableModel(
+        jTable8.setBackground(new java.awt.Color(255, 255, 255));
+        jTable8.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
+        jTable8.setForeground(new java.awt.Color(0, 0, 0));
+        jTable8.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
 
             },
             new String [] {
-                "Nome", "Email", "Telefone"
+                "Data", "Horário", "Cliente", "Animal", "Veterinário", "Finalizado?", "Tratamento"
             }
-        ));
-        jTable3.setShowGrid(false);
-        jTable3.addMouseListener(new java.awt.event.MouseAdapter() {
-            public void mousePressed(java.awt.event.MouseEvent evt) {
-                jTable3MousePressed(evt);
+        ) {
+            Class[] types = new Class [] {
+                java.lang.Object.class, java.lang.Object.class, java.lang.Object.class, java.lang.Object.class, java.lang.Object.class, java.lang.Boolean.class, java.lang.Object.class
+            };
+            boolean[] canEdit = new boolean [] {
+                false, false, false, false, false, false, true
+            };
+
+            public Class getColumnClass(int columnIndex) {
+                return types [columnIndex];
             }
-        });
-        jScrollPane4.setViewportView(jTable3);
 
-        jLabel17.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
-        jLabel17.setForeground(new java.awt.Color(0, 0, 0));
-        jLabel17.setText("Buscar:");
-
-        jTextField6.setBackground(new java.awt.Color(255, 255, 255));
-        jTextField6.setForeground(new java.awt.Color(51, 51, 51));
-        jTextField6.setText("jTextField6\n");
-        jTextField6.addKeyListener(new java.awt.event.KeyAdapter() {
-            public void keyTyped(java.awt.event.KeyEvent evt) {
-                jTextField6KeyTyped(evt);
+            public boolean isCellEditable(int rowIndex, int columnIndex) {
+                return canEdit [columnIndex];
             }
         });
+        jScrollPane5.setViewportView(jTable8);
 
-        jButton7.setBackground(new java.awt.Color(238, 238, 252));
-        jButton7.setForeground(new java.awt.Color(0, 0, 0));
-        jButton7.setText("Todos");
-        jButton7.addMouseListener(new java.awt.event.MouseAdapter() {
-            public void mouseClicked(java.awt.event.MouseEvent evt) {
-                jButton7MouseClicked(evt);
-            }
-        });
-
-        jButton8.setBackground(new java.awt.Color(238, 238, 252));
-        jButton8.setForeground(new java.awt.Color(0, 0, 0));
-        jButton8.setText("Inserir");
-        jButton8.addMouseListener(new java.awt.event.MouseAdapter() {
-            public void mouseClicked(java.awt.event.MouseEvent evt) {
-                jButton8MouseClicked(evt);
-            }
-        });
-
-        jButton9.setBackground(new java.awt.Color(238, 238, 252));
-        jButton9.setForeground(new java.awt.Color(0, 0, 0));
-        jButton9.setText("Apagar");
-        jButton9.addMouseListener(new java.awt.event.MouseAdapter() {
-            public void mouseClicked(java.awt.event.MouseEvent evt) {
-                jButton9MouseClicked(evt);
-            }
-        });
-
-        javax.swing.GroupLayout areaTabelaVetLayout = new javax.swing.GroupLayout(areaTabelaVet);
-        areaTabelaVet.setLayout(areaTabelaVetLayout);
-        areaTabelaVetLayout.setHorizontalGroup(
-            areaTabelaVetLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(areaTabelaVetLayout.createSequentialGroup()
-                .addGap(25, 25, 25)
-                .addGroup(areaTabelaVetLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(areaTabelaVetLayout.createSequentialGroup()
-                        .addComponent(jLabel17)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addComponent(jTextField6, javax.swing.GroupLayout.PREFERRED_SIZE, 400, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addGap(43, 43, 43)
-                        .addComponent(jButton7)
-                        .addGap(18, 18, 18)
-                        .addComponent(jButton8)
-                        .addGap(18, 18, 18)
-                        .addComponent(jButton9))
-                    .addComponent(jScrollPane4, javax.swing.GroupLayout.PREFERRED_SIZE, 750, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
-        );
-        areaTabelaVetLayout.setVerticalGroup(
-            areaTabelaVetLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, areaTabelaVetLayout.createSequentialGroup()
-                .addGap(15, 15, 15)
-                .addGroup(areaTabelaVetLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(jLabel17)
-                    .addComponent(jTextField6, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(jButton7)
-                    .addComponent(jButton8)
-                    .addComponent(jButton9))
-                .addGap(30, 30, 30)
-                .addComponent(jScrollPane4, javax.swing.GroupLayout.PREFERRED_SIZE, 108, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(20, Short.MAX_VALUE))
-        );
-
-        areaCadConsulta.setBackground(new java.awt.Color(241, 242, 249));
-        areaCadConsulta.setBorder(javax.swing.BorderFactory.createTitledBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(55, 64, 129)), "Agendar Nova Consulta", javax.swing.border.TitledBorder.DEFAULT_JUSTIFICATION, javax.swing.border.TitledBorder.DEFAULT_POSITION, new java.awt.Font("Segoe UI", 1, 14), new java.awt.Color(55, 64, 129))); // NOI18N
-
-        consultaVeterinario.setBackground(new java.awt.Color(241, 242, 249));
-
-        jLabel19.setBackground(new java.awt.Color(0, 0, 0));
-        jLabel19.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
-        jLabel19.setForeground(new java.awt.Color(0, 0, 0));
-        jLabel19.setText("Veterinário:");
-        jLabel19.setPreferredSize(new java.awt.Dimension(74, 20));
-
-        jTextField8.setEditable(false);
         jTextField8.setBackground(new java.awt.Color(255, 255, 255));
         jTextField8.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
-        jTextField8.setForeground(new java.awt.Color(51, 51, 51));
+        jTextField8.setForeground(new java.awt.Color(0, 0, 0));
         jTextField8.setText("jTextField8");
-        jTextField8.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jTextField8ActionPerformed(evt);
-            }
-        });
 
-        jSeparator6.setForeground(new java.awt.Color(185, 190, 223));
+        jLabel33.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
+        jLabel33.setForeground(new java.awt.Color(0, 0, 0));
+        jLabel33.setText("Buscar:");
 
-        javax.swing.GroupLayout consultaVeterinarioLayout = new javax.swing.GroupLayout(consultaVeterinario);
-        consultaVeterinario.setLayout(consultaVeterinarioLayout);
-        consultaVeterinarioLayout.setHorizontalGroup(
-            consultaVeterinarioLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, consultaVeterinarioLayout.createSequentialGroup()
-                .addComponent(jLabel19, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(18, 18, 18)
-                .addComponent(jTextField8, javax.swing.GroupLayout.PREFERRED_SIZE, 284, javax.swing.GroupLayout.PREFERRED_SIZE))
-            .addComponent(jSeparator6, javax.swing.GroupLayout.Alignment.TRAILING)
-        );
-        consultaVeterinarioLayout.setVerticalGroup(
-            consultaVeterinarioLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(consultaVeterinarioLayout.createSequentialGroup()
-                .addGroup(consultaVeterinarioLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(jLabel19, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(jTextField8, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(jSeparator6, javax.swing.GroupLayout.PREFERRED_SIZE, 10, javax.swing.GroupLayout.PREFERRED_SIZE))
-        );
+        jTextArea5.setBackground(new java.awt.Color(255, 255, 255));
+        jTextArea5.setColumns(20);
+        jTextArea5.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
+        jTextArea5.setForeground(new java.awt.Color(0, 0, 0));
+        jTextArea5.setRows(5);
+        jScrollPane14.setViewportView(jTextArea5);
 
-        consultaTratamento.setBackground(new java.awt.Color(241, 242, 249));
+        jTextArea6.setBackground(new java.awt.Color(255, 255, 255));
+        jTextArea6.setColumns(20);
+        jTextArea6.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
+        jTextArea6.setForeground(new java.awt.Color(0, 0, 0));
+        jTextArea6.setRows(5);
+        jScrollPane15.setViewportView(jTextArea6);
 
-        jLabel20.setBackground(new java.awt.Color(0, 0, 0));
-        jLabel20.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
-        jLabel20.setForeground(new java.awt.Color(0, 0, 0));
-        jLabel20.setText("Tratamento:");
+        jLabel34.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
+        jLabel34.setForeground(new java.awt.Color(0, 0, 0));
+        jLabel34.setText("Exames da Consulta Selecionada:");
 
-        jTextField9.setEditable(false);
-        jTextField9.setBackground(new java.awt.Color(255, 255, 255));
-        jTextField9.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
-        jTextField9.setForeground(new java.awt.Color(51, 51, 51));
-        jTextField9.setText("jTextField9");
-        jTextField9.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jTextField9ActionPerformed(evt);
-            }
-        });
+        jLabel35.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
+        jLabel35.setForeground(new java.awt.Color(0, 0, 0));
+        jLabel35.setText("Comentários da Consulta Selecionada:");
 
-        jSeparator7.setForeground(new java.awt.Color(185, 190, 223));
+        jToggleButton3.setBackground(new java.awt.Color(238, 238, 252));
+        jToggleButton3.setForeground(new java.awt.Color(0, 0, 0));
+        jToggleButton3.setText("Pendentes");
 
-        javax.swing.GroupLayout consultaTratamentoLayout = new javax.swing.GroupLayout(consultaTratamento);
-        consultaTratamento.setLayout(consultaTratamentoLayout);
-        consultaTratamentoLayout.setHorizontalGroup(
-            consultaTratamentoLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, consultaTratamentoLayout.createSequentialGroup()
-                .addComponent(jLabel20)
-                .addGap(18, 18, 18)
-                .addComponent(jTextField9, javax.swing.GroupLayout.PREFERRED_SIZE, 284, javax.swing.GroupLayout.PREFERRED_SIZE))
-            .addComponent(jSeparator7, javax.swing.GroupLayout.Alignment.TRAILING)
-        );
-        consultaTratamentoLayout.setVerticalGroup(
-            consultaTratamentoLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(consultaTratamentoLayout.createSequentialGroup()
-                .addGroup(consultaTratamentoLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(jLabel20)
-                    .addComponent(jTextField9, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(jSeparator7, javax.swing.GroupLayout.PREFERRED_SIZE, 10, javax.swing.GroupLayout.PREFERRED_SIZE))
-        );
+        jToggleButton4.setBackground(new java.awt.Color(238, 238, 252));
+        jToggleButton4.setForeground(new java.awt.Color(0, 0, 0));
+        jToggleButton4.setText("Tratamento");
 
-        jSeparator8.setBackground(new java.awt.Color(204, 213, 224));
-        jSeparator8.setForeground(new java.awt.Color(185, 190, 223));
-        jSeparator8.setOrientation(javax.swing.SwingConstants.VERTICAL);
+        jToggleButton5.setBackground(new java.awt.Color(238, 238, 252));
+        jToggleButton5.setForeground(new java.awt.Color(0, 0, 0));
+        jToggleButton5.setText("Veterinario");
 
-        jTextArea2.setBackground(new java.awt.Color(255, 255, 255));
-        jTextArea2.setColumns(20);
-        jTextArea2.setRows(5);
-        jScrollPane5.setViewportView(jTextArea2);
+        jToggleButton6.setBackground(new java.awt.Color(238, 238, 252));
+        jToggleButton6.setForeground(new java.awt.Color(0, 0, 0));
+        jToggleButton6.setText("Hora");
 
-        jLabel21.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
-        jLabel21.setForeground(new java.awt.Color(0, 0, 0));
-        jLabel21.setText("Comentários ou Sintomas:");
-
-        jCheckBox1.setBackground(new java.awt.Color(241, 242, 249));
-        jCheckBox1.setForeground(new java.awt.Color(0, 0, 0));
-        jCheckBox1.setText("Iniciar Novo Tratamento?");
-
-        jButton10.setBackground(new java.awt.Color(238, 238, 252));
-        jButton10.setForeground(new java.awt.Color(0, 0, 0));
-        jButton10.setText("Agendar");
-        jButton10.addMouseListener(new java.awt.event.MouseAdapter() {
+        jToggleButton7.setBackground(new java.awt.Color(238, 238, 252));
+        jToggleButton7.setForeground(new java.awt.Color(0, 0, 0));
+        jToggleButton7.setText("Data");
+        jToggleButton7.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseClicked(java.awt.event.MouseEvent evt) {
-                jButton10MouseClicked(evt);
+                jToggleButton7MouseClicked(evt);
             }
         });
-        jButton10.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jButton10ActionPerformed(evt);
-            }
-        });
+
+        jToggleButton8.setBackground(new java.awt.Color(238, 238, 252));
+        jToggleButton8.setForeground(new java.awt.Color(0, 0, 0));
+        jToggleButton8.setText("Mês");
 
         javax.swing.GroupLayout areaCadConsultaLayout = new javax.swing.GroupLayout(areaCadConsulta);
         areaCadConsulta.setLayout(areaCadConsultaLayout);
         areaCadConsultaLayout.setHorizontalGroup(
             areaCadConsultaLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(areaCadConsultaLayout.createSequentialGroup()
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, areaCadConsultaLayout.createSequentialGroup()
                 .addContainerGap()
                 .addGroup(areaCadConsultaLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(consultaTratamento, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(consultaVeterinario, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(jCheckBox1))
-                .addGap(33, 33, 33)
-                .addComponent(jSeparator8, javax.swing.GroupLayout.PREFERRED_SIZE, 14, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGroup(areaCadConsultaLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(areaCadConsultaLayout.createSequentialGroup()
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addGap(18, 18, 18)
                         .addGroup(areaCadConsultaLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addComponent(jLabel21)
-                            .addComponent(jScrollPane5, javax.swing.GroupLayout.PREFERRED_SIZE, 355, javax.swing.GroupLayout.PREFERRED_SIZE))
-                        .addContainerGap(32, Short.MAX_VALUE))
+                            .addComponent(jScrollPane14, javax.swing.GroupLayout.PREFERRED_SIZE, 304, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(jLabel34))
+                        .addGap(39, 39, 39)
+                        .addGroup(areaCadConsultaLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addComponent(jScrollPane15, javax.swing.GroupLayout.PREFERRED_SIZE, 304, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(jLabel35))
+                        .addGap(206, 206, 206))
                     .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, areaCadConsultaLayout.createSequentialGroup()
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                        .addComponent(jButton10)
-                        .addContainerGap())))
+                        .addGroup(areaCadConsultaLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                            .addGroup(areaCadConsultaLayout.createSequentialGroup()
+                                .addComponent(jLabel33)
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                                .addComponent(jTextField8)
+                                .addGap(18, 18, 18)
+                                .addComponent(jToggleButton7)
+                                .addGap(18, 18, 18)
+                                .addComponent(jToggleButton8)
+                                .addGap(18, 18, 18)
+                                .addComponent(jToggleButton6)
+                                .addGap(18, 18, 18)
+                                .addComponent(jToggleButton5)
+                                .addGap(18, 18, 18)
+                                .addComponent(jToggleButton4)
+                                .addGap(18, 18, 18)
+                                .addComponent(jToggleButton3))
+                            .addComponent(jScrollPane5))
+                        .addGap(27, 27, 27))))
         );
         areaCadConsultaLayout.setVerticalGroup(
             areaCadConsultaLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(areaCadConsultaLayout.createSequentialGroup()
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addGap(18, 18, 18)
+                .addGroup(areaCadConsultaLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(jTextField8, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(jLabel33)
+                    .addComponent(jToggleButton3)
+                    .addComponent(jToggleButton4)
+                    .addComponent(jToggleButton5)
+                    .addComponent(jToggleButton6)
+                    .addComponent(jToggleButton7)
+                    .addComponent(jToggleButton8))
+                .addGap(18, 18, 18)
+                .addComponent(jScrollPane5, javax.swing.GroupLayout.PREFERRED_SIZE, 240, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addGroup(areaCadConsultaLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(jLabel34)
+                    .addComponent(jLabel35))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addGroup(areaCadConsultaLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                    .addGroup(areaCadConsultaLayout.createSequentialGroup()
-                        .addGroup(areaCadConsultaLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                            .addGroup(javax.swing.GroupLayout.Alignment.LEADING, areaCadConsultaLayout.createSequentialGroup()
-                                .addGap(25, 25, 25)
-                                .addComponent(consultaVeterinario, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                .addGap(18, 18, 18)
-                                .addComponent(consultaTratamento, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                                .addComponent(jCheckBox1))
-                            .addComponent(jSeparator8, javax.swing.GroupLayout.PREFERRED_SIZE, 162, javax.swing.GroupLayout.PREFERRED_SIZE))
-                        .addGap(36, 36, 36))
-                    .addGroup(areaCadConsultaLayout.createSequentialGroup()
-                        .addComponent(jLabel21)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                        .addComponent(jScrollPane5, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                        .addComponent(jButton10)
-                        .addGap(20, 20, 20))))
+                    .addComponent(jScrollPane15, javax.swing.GroupLayout.DEFAULT_SIZE, 90, Short.MAX_VALUE)
+                    .addComponent(jScrollPane14, javax.swing.GroupLayout.PREFERRED_SIZE, 0, Short.MAX_VALUE))
+                .addGap(45, 45, 45))
         );
 
         javax.swing.GroupLayout consultaLayout = new javax.swing.GroupLayout(consulta);
@@ -1402,20 +1345,16 @@ public class MainView extends javax.swing.JFrame {
         consultaLayout.setHorizontalGroup(
             consultaLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(consultaLayout.createSequentialGroup()
-                .addGap(30, 30, 30)
-                .addGroup(consultaLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                    .addComponent(areaCadConsulta, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                    .addComponent(areaTabelaVet, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
-                .addContainerGap(44, Short.MAX_VALUE))
+                .addGap(20, 20, 20)
+                .addComponent(areaCadConsulta, javax.swing.GroupLayout.PREFERRED_SIZE, 871, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addContainerGap(36, Short.MAX_VALUE))
         );
         consultaLayout.setVerticalGroup(
             consultaLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(consultaLayout.createSequentialGroup()
-                .addGap(25, 25, 25)
-                .addComponent(areaTabelaVet, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(12, 12, 12)
-                .addComponent(areaCadConsulta, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(30, 30, 30))
+                .addGap(23, 23, 23)
+                .addComponent(areaCadConsulta, javax.swing.GroupLayout.PREFERRED_SIZE, 469, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addContainerGap(70, Short.MAX_VALUE))
         );
 
         areaTabelas.add(consulta, "card3");
@@ -1486,9 +1425,9 @@ public class MainView extends javax.swing.JFrame {
             .addGroup(areaListaEspeciesLayout.createSequentialGroup()
                 .addGroup(areaListaEspeciesLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(areaListaEspeciesLayout.createSequentialGroup()
-                        .addGap(40, 40, 40)
+                        .addGap(37, 37, 37)
                         .addComponent(jLabel27)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                         .addComponent(jTextField7, javax.swing.GroupLayout.PREFERRED_SIZE, 351, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addGap(18, 18, 18)
                         .addComponent(jButton14)
@@ -1497,23 +1436,23 @@ public class MainView extends javax.swing.JFrame {
                         .addGap(18, 18, 18)
                         .addComponent(jButton15))
                     .addGroup(areaListaEspeciesLayout.createSequentialGroup()
-                        .addGap(122, 122, 122)
+                        .addGap(125, 125, 125)
                         .addComponent(jScrollPane10, javax.swing.GroupLayout.PREFERRED_SIZE, 525, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                .addContainerGap(65, Short.MAX_VALUE))
+                .addContainerGap(62, Short.MAX_VALUE))
         );
         areaListaEspeciesLayout.setVerticalGroup(
             areaListaEspeciesLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, areaListaEspeciesLayout.createSequentialGroup()
-                .addContainerGap(45, Short.MAX_VALUE)
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                 .addGroup(areaListaEspeciesLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jLabel27)
                     .addComponent(jTextField7, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(jButton14)
                     .addComponent(jButton13)
                     .addComponent(jButton15))
-                .addGap(31, 31, 31)
-                .addComponent(jScrollPane10, javax.swing.GroupLayout.PREFERRED_SIZE, 144, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(50, 50, 50))
+                .addGap(18, 18, 18)
+                .addComponent(jScrollPane10, javax.swing.GroupLayout.PREFERRED_SIZE, 156, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(79, 79, 79))
         );
 
         javax.swing.GroupLayout especiesLayout = new javax.swing.GroupLayout(especies);
@@ -1528,12 +1467,130 @@ public class MainView extends javax.swing.JFrame {
         especiesLayout.setVerticalGroup(
             especiesLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(especiesLayout.createSequentialGroup()
-                .addGap(54, 54, 54)
-                .addComponent(areaListaEspecies, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(135, Short.MAX_VALUE))
+                .addGap(117, 117, 117)
+                .addComponent(areaListaEspecies, javax.swing.GroupLayout.PREFERRED_SIZE, 275, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addContainerGap(146, Short.MAX_VALUE))
         );
 
         areaTabelas.add(especies, "card4");
+
+        veterinarios.setBackground(new java.awt.Color(241, 242, 249));
+
+        areaTabelaVet3.setBackground(new java.awt.Color(241, 242, 249));
+        areaTabelaVet3.setBorder(javax.swing.BorderFactory.createTitledBorder(new javax.swing.border.LineBorder(new java.awt.Color(55, 64, 129), 1, true), "Selecionar Veterinário", javax.swing.border.TitledBorder.DEFAULT_JUSTIFICATION, javax.swing.border.TitledBorder.DEFAULT_POSITION, new java.awt.Font("Segoe UI", 1, 14), new java.awt.Color(55, 64, 129))); // NOI18N
+
+        jTable9.setBackground(new java.awt.Color(255, 255, 255));
+        jTable9.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
+        jTable9.setForeground(new java.awt.Color(0, 0, 0));
+        jTable9.setModel(new javax.swing.table.DefaultTableModel(
+            new Object [][] {
+
+            },
+            new String [] {
+                "Nome", "Email", "Telefone"
+            }
+        ));
+        jTable9.setShowGrid(false);
+        jTable9.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                jTable9MouseClicked(evt);
+            }
+        });
+        jScrollPane13.setViewportView(jTable9);
+
+        jLabel31.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
+        jLabel31.setForeground(new java.awt.Color(0, 0, 0));
+        jLabel31.setText("Buscar:");
+
+        jTextField14.setBackground(new java.awt.Color(255, 255, 255));
+        jTextField14.setForeground(new java.awt.Color(51, 51, 51));
+        jTextField14.setText("jTextField14");
+        jTextField14.addKeyListener(new java.awt.event.KeyAdapter() {
+            public void keyTyped(java.awt.event.KeyEvent evt) {
+                jTextField14KeyTyped(evt);
+            }
+        });
+
+        jButton27.setBackground(new java.awt.Color(238, 238, 252));
+        jButton27.setForeground(new java.awt.Color(0, 0, 0));
+        jButton27.setText("Apagar");
+        jButton27.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                jButton27MouseClicked(evt);
+            }
+        });
+
+        jButton22.setBackground(new java.awt.Color(238, 238, 252));
+        jButton22.setForeground(new java.awt.Color(0, 0, 0));
+        jButton22.setText("Todos");
+        jButton22.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                jButton22MouseClicked(evt);
+            }
+        });
+
+        jButton23.setBackground(new java.awt.Color(238, 238, 252));
+        jButton23.setForeground(new java.awt.Color(0, 0, 0));
+        jButton23.setText("Inserir");
+        jButton23.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                jButton23MouseClicked(evt);
+            }
+        });
+
+        javax.swing.GroupLayout areaTabelaVet3Layout = new javax.swing.GroupLayout(areaTabelaVet3);
+        areaTabelaVet3.setLayout(areaTabelaVet3Layout);
+        areaTabelaVet3Layout.setHorizontalGroup(
+            areaTabelaVet3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(areaTabelaVet3Layout.createSequentialGroup()
+                .addGap(25, 25, 25)
+                .addGroup(areaTabelaVet3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                    .addGroup(areaTabelaVet3Layout.createSequentialGroup()
+                        .addComponent(jLabel31)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addComponent(jTextField14, javax.swing.GroupLayout.PREFERRED_SIZE, 400, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                        .addComponent(jButton22)
+                        .addGap(18, 18, 18)
+                        .addComponent(jButton23)
+                        .addGap(18, 18, 18)
+                        .addComponent(jButton27))
+                    .addComponent(jScrollPane13, javax.swing.GroupLayout.PREFERRED_SIZE, 750, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addContainerGap(13, Short.MAX_VALUE))
+        );
+        areaTabelaVet3Layout.setVerticalGroup(
+            areaTabelaVet3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, areaTabelaVet3Layout.createSequentialGroup()
+                .addGap(15, 15, 15)
+                .addGroup(areaTabelaVet3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(jLabel31)
+                    .addComponent(jTextField14, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(jButton27)
+                    .addComponent(jButton22)
+                    .addComponent(jButton23))
+                .addGap(30, 30, 30)
+                .addComponent(jScrollPane13, javax.swing.GroupLayout.PREFERRED_SIZE, 158, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addContainerGap(19, Short.MAX_VALUE))
+        );
+
+        javax.swing.GroupLayout veterinariosLayout = new javax.swing.GroupLayout(veterinarios);
+        veterinarios.setLayout(veterinariosLayout);
+        veterinariosLayout.setHorizontalGroup(
+            veterinariosLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(veterinariosLayout.createSequentialGroup()
+                .addGap(46, 46, 46)
+                .addComponent(areaTabelaVet3, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addGap(62, 62, 62))
+        );
+        veterinariosLayout.setVerticalGroup(
+            veterinariosLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(veterinariosLayout.createSequentialGroup()
+                .addGap(133, 133, 133)
+                .addComponent(areaTabelaVet3, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addContainerGap(134, Short.MAX_VALUE))
+        );
+
+        areaTabelas.add(veterinarios, "card3");
 
         getContentPane().add(areaTabelas, new org.netbeans.lib.awtextra.AbsoluteConstraints(290, 280, 910, 540));
 
@@ -1596,33 +1653,9 @@ public class MainView extends javax.swing.JFrame {
         Controller.switchPanels(tratamento);
     }//GEN-LAST:event_itemTratamentoMouseClicked
 
-    private void jTextField8ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jTextField8ActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_jTextField8ActionPerformed
-
-    private void jTextField9ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jTextField9ActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_jTextField9ActionPerformed
-
-    private void jButton10ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton10ActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_jButton10ActionPerformed
-
-    private void jCheckBox2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jCheckBox2ActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_jCheckBox2ActionPerformed
-
-    private void jButton11ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton11ActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_jButton11ActionPerformed
-
     private void itemHelpMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_itemHelpMouseClicked
        new HelpView().setVisible(true);
     }//GEN-LAST:event_itemHelpMouseClicked
-
-    private void jButton10MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jButton10MouseClicked
-        new AgendarView().setVisible(true);
-    }//GEN-LAST:event_jButton10MouseClicked
 
     private void jButton2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton2ActionPerformed
         
@@ -1641,10 +1674,6 @@ public class MainView extends javax.swing.JFrame {
         int idAnimal = Controller.getAnimalSelecionado().getId();
         Controller.setTableModel(jTable4, new TratamentoTableModel(TratamentoDAO.getInstance().retrieveByIdAnimal(idAnimal)));
     }//GEN-LAST:event_jTable2MousePressed
-
-    private void jTable3MousePressed(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jTable3MousePressed
-        Controller.setSelected(((GenericTableModel)jTable3.getModel()).getItem(jTable3.getSelectedRow()));
-    }//GEN-LAST:event_jTable3MousePressed
     
     //Tabela tratamento
     private void jTable4MousePressed(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jTable4MousePressed
@@ -1679,10 +1708,6 @@ public class MainView extends javax.swing.JFrame {
         Controller.setBySearch(jTable6, jTextField7.getText());
     }//GEN-LAST:event_jTextField7KeyTyped
 
-    private void jTextField6KeyTyped(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_jTextField6KeyTyped
-        Controller.setBySearch(jTable3, jTextField6.getText());
-    }//GEN-LAST:event_jTextField6KeyTyped
-
     private void jTextField5KeyTyped(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_jTextField5KeyTyped
         Controller.setBySearch(jTable2, jTextField5.getText());
     }//GEN-LAST:event_jTextField5KeyTyped
@@ -1690,15 +1715,6 @@ public class MainView extends javax.swing.JFrame {
     private void jButton2MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jButton2MouseClicked
         Controller.insertLine(jTable1);
     }//GEN-LAST:event_jButton2MouseClicked
-
-    private void jButton7MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jButton7MouseClicked
-        Controller.setBySearch(jTable3, "");
-        Controller.cleanSearch(jTextField6);
-    }//GEN-LAST:event_jButton7MouseClicked
-
-    private void jButton8MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jButton8MouseClicked
-       Controller.insertLine(jTable3);
-    }//GEN-LAST:event_jButton8MouseClicked
 
     private void jButton13MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jButton13MouseClicked
         Controller.insertLine(jTable6);
@@ -1752,12 +1768,55 @@ public class MainView extends javax.swing.JFrame {
         Controller.deleteRow(jTable2);
     }//GEN-LAST:event_jButton6MouseClicked
 
-    private void jButton9MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jButton9MouseClicked
-        Controller.deleteRow(jTable3);
-    }//GEN-LAST:event_jButton9MouseClicked
+    private void itemVeterinariosMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_itemVeterinariosMouseClicked
+        Controller.setClicked(itemVeterinarios);
+        Controller.switchPanels(veterinarios);
+    }//GEN-LAST:event_itemVeterinariosMouseClicked
+
+    private void itemVeterinariosMouseEntered(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_itemVeterinariosMouseEntered
+        Controller.hoverEffect(itemVeterinarios);
+    }//GEN-LAST:event_itemVeterinariosMouseEntered
+
+    private void itemVeterinariosMouseExited(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_itemVeterinariosMouseExited
+        itemVeterinarios.setBackground(Controller.exitedHover());
+    }//GEN-LAST:event_itemVeterinariosMouseExited
+
+    private void jButton22MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jButton22MouseClicked
+        Controller.setBySearch(jTable9, "");
+        Controller.cleanSearch(jTextField14);
+    }//GEN-LAST:event_jButton22MouseClicked
+
+    private void jTextField14KeyTyped(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_jTextField14KeyTyped
+        Controller.setBySearch(jTable9, jTextField14.getText());
+    }//GEN-LAST:event_jTextField14KeyTyped
+
+    private void jButton27MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jButton27MouseClicked
+        Controller.deleteRow(jTable9);
+    }//GEN-LAST:event_jButton27MouseClicked
+
+    private void jButton23MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jButton23MouseClicked
+        Controller.insertLine(jTable9);
+    }//GEN-LAST:event_jButton23MouseClicked
+
+    private void jToggleButton7MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jToggleButton7MouseClicked
+        Controller.insertLine(jTable8);
+    }//GEN-LAST:event_jToggleButton7MouseClicked
+
+    private void jTable9MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jTable9MouseClicked
+        Controller.setSelected(((GenericTableModel)jTable9.getModel()).getItem(jTable9.getSelectedRow()));
+    }//GEN-LAST:event_jTable9MouseClicked
+
+    private void jButton11MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jButton11MouseClicked
+       Controller.insertExame(jTable5, jTextField10.getText());
+       Controller.cleanSearch(jTextField10);
+    }//GEN-LAST:event_jButton11MouseClicked
+
+    private void jCheckBox2MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jCheckBox2MouseClicked
+        Controller.updateConsulta(jTable5);
+    }//GEN-LAST:event_jCheckBox2MouseClicked
 
     private void jButton12MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jButton12MouseClicked
-        Controller.deleteRow(jTable5);
+        new ConsultaView().setVisible(true);
     }//GEN-LAST:event_jButton12MouseClicked
 
     /**
@@ -1803,11 +1862,9 @@ public class MainView extends javax.swing.JFrame {
     private javax.swing.JPanel areaListaTrat;
     private javax.swing.JPanel areaTabelaAnimal;
     private javax.swing.JPanel areaTabelaCliente;
-    private javax.swing.JPanel areaTabelaVet;
+    private javax.swing.JPanel areaTabelaVet3;
     private javax.swing.JPanel areaTabelas;
     private javax.swing.JPanel consulta;
-    private javax.swing.JPanel consultaTratamento;
-    private javax.swing.JPanel consultaVeterinario;
     private javax.swing.JPanel conteudoTop;
     private javax.swing.JPanel especies;
     private javax.swing.JPanel itemAnimal;
@@ -1816,8 +1873,8 @@ public class MainView extends javax.swing.JFrame {
     private javax.swing.JPanel itemHeader;
     private javax.swing.JPanel itemHelp;
     private javax.swing.JPanel itemTratamento;
+    private javax.swing.JPanel itemVeterinarios;
     private javax.swing.JButton jButton1;
-    private javax.swing.JButton jButton10;
     private javax.swing.JButton jButton11;
     private javax.swing.JButton jButton12;
     private javax.swing.JButton jButton13;
@@ -1827,16 +1884,14 @@ public class MainView extends javax.swing.JFrame {
     private javax.swing.JButton jButton17;
     private javax.swing.JButton jButton18;
     private javax.swing.JButton jButton2;
+    private javax.swing.JButton jButton22;
+    private javax.swing.JButton jButton23;
+    private javax.swing.JButton jButton27;
     private javax.swing.JButton jButton3;
     private javax.swing.JButton jButton4;
     private javax.swing.JButton jButton5;
     private javax.swing.JButton jButton6;
-    private javax.swing.JButton jButton7;
-    private javax.swing.JButton jButton8;
-    private javax.swing.JButton jButton9;
-    private javax.swing.JCheckBox jCheckBox1;
     private javax.swing.JCheckBox jCheckBox2;
-    private javax.swing.JCheckBox jCheckBox3;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel10;
     private javax.swing.JLabel jLabel11;
@@ -1845,18 +1900,21 @@ public class MainView extends javax.swing.JFrame {
     private javax.swing.JLabel jLabel14;
     private javax.swing.JLabel jLabel15;
     private javax.swing.JLabel jLabel16;
-    private javax.swing.JLabel jLabel17;
     private javax.swing.JLabel jLabel18;
-    private javax.swing.JLabel jLabel19;
     private javax.swing.JLabel jLabel2;
-    private javax.swing.JLabel jLabel20;
-    private javax.swing.JLabel jLabel21;
     private javax.swing.JLabel jLabel22;
     private javax.swing.JLabel jLabel23;
     private javax.swing.JLabel jLabel24;
+    private javax.swing.JLabel jLabel25;
+    private javax.swing.JLabel jLabel26;
     private javax.swing.JLabel jLabel27;
     private javax.swing.JLabel jLabel28;
     private javax.swing.JLabel jLabel3;
+    private javax.swing.JLabel jLabel30;
+    private javax.swing.JLabel jLabel31;
+    private javax.swing.JLabel jLabel33;
+    private javax.swing.JLabel jLabel34;
+    private javax.swing.JLabel jLabel35;
     private javax.swing.JLabel jLabel4;
     private javax.swing.JLabel jLabel5;
     private javax.swing.JLabel jLabel6;
@@ -1865,9 +1923,11 @@ public class MainView extends javax.swing.JFrame {
     private javax.swing.JLabel jLabel9;
     private javax.swing.JScrollPane jScrollPane1;
     private javax.swing.JScrollPane jScrollPane10;
+    private javax.swing.JScrollPane jScrollPane13;
+    private javax.swing.JScrollPane jScrollPane14;
+    private javax.swing.JScrollPane jScrollPane15;
     private javax.swing.JScrollPane jScrollPane2;
     private javax.swing.JScrollPane jScrollPane3;
-    private javax.swing.JScrollPane jScrollPane4;
     private javax.swing.JScrollPane jScrollPane5;
     private javax.swing.JScrollPane jScrollPane6;
     private javax.swing.JScrollPane jScrollPane7;
@@ -1877,37 +1937,42 @@ public class MainView extends javax.swing.JFrame {
     private javax.swing.JSeparator jSeparator2;
     private javax.swing.JSeparator jSeparator3;
     private javax.swing.JSeparator jSeparator4;
-    private javax.swing.JSeparator jSeparator6;
-    private javax.swing.JSeparator jSeparator7;
-    private javax.swing.JSeparator jSeparator8;
     private javax.swing.JSeparator jSeparator9;
     private javax.swing.JTable jTable1;
     private javax.swing.JTable jTable2;
-    private javax.swing.JTable jTable3;
     private javax.swing.JTable jTable4;
     private javax.swing.JTable jTable5;
     private javax.swing.JTable jTable6;
+    private javax.swing.JTable jTable8;
+    private javax.swing.JTable jTable9;
     private javax.swing.JTextArea jTextArea1;
-    private javax.swing.JTextArea jTextArea2;
     private javax.swing.JTextArea jTextArea3;
     private javax.swing.JTextArea jTextArea4;
+    private javax.swing.JTextArea jTextArea5;
+    private javax.swing.JTextArea jTextArea6;
     private javax.swing.JTextField jTextField1;
     private javax.swing.JTextField jTextField10;
     private javax.swing.JTextField jTextField11;
+    private javax.swing.JTextField jTextField14;
     private javax.swing.JTextField jTextField2;
     private javax.swing.JTextField jTextField3;
     private javax.swing.JTextField jTextField4;
     private javax.swing.JTextField jTextField5;
-    private javax.swing.JTextField jTextField6;
     private javax.swing.JTextField jTextField7;
     private javax.swing.JTextField jTextField8;
-    private javax.swing.JTextField jTextField9;
+    private javax.swing.JToggleButton jToggleButton3;
+    private javax.swing.JToggleButton jToggleButton4;
+    private javax.swing.JToggleButton jToggleButton5;
+    private javax.swing.JToggleButton jToggleButton6;
+    private javax.swing.JToggleButton jToggleButton7;
+    private javax.swing.JToggleButton jToggleButton8;
     private javax.swing.JPanel navBar;
     private javax.swing.JPanel topGroup;
     private javax.swing.JPanel topItemAnimal;
     private javax.swing.JPanel topItemCliente;
     private javax.swing.JPanel topItemEspécie;
     private javax.swing.JPanel tratamento;
+    private javax.swing.JPanel veterinarios;
     // End of variables declaration//GEN-END:variables
     // NavBar variables
     private Color corItemAnimal;
