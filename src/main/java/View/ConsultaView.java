@@ -57,7 +57,7 @@ public class ConsultaView extends javax.swing.JFrame {
         jTextField4 = new javax.swing.JTextField();
         jSeparator4 = new javax.swing.JSeparator();
 
-        setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
+        setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
 
         itemHeader.setBackground(new java.awt.Color(31, 31, 71));
 
@@ -151,6 +151,11 @@ public class ConsultaView extends javax.swing.JFrame {
         jButton1.setBackground(new java.awt.Color(238, 238, 252));
         jButton1.setForeground(new java.awt.Color(0, 0, 0));
         jButton1.setText("Agendar");
+        jButton1.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                jButton1MouseClicked(evt);
+            }
+        });
 
         jLabel9.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
         jLabel9.setForeground(new java.awt.Color(0, 0, 0));
@@ -269,6 +274,10 @@ public class ConsultaView extends javax.swing.JFrame {
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
+
+    private void jButton1MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jButton1MouseClicked
+        Controller.agendarConsulta(jDateChooser1.getDate(), jFormattedTextField1.getText());
+    }//GEN-LAST:event_jButton1MouseClicked
 
     /**
      * @param args the command line arguments

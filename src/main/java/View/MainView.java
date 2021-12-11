@@ -1816,7 +1816,8 @@ public class MainView extends javax.swing.JFrame {
     }//GEN-LAST:event_jCheckBox2MouseClicked
 
     private void jButton12MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jButton12MouseClicked
-        new ConsultaView().setVisible(true);
+        if(Controller.camposAgendamentoValidos())
+            new ConsultaView().setVisible(true);
     }//GEN-LAST:event_jButton12MouseClicked
 
     /**

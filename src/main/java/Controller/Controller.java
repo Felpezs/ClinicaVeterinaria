@@ -17,14 +17,16 @@ import Model.VeterinarioDAO;
 import View.AnimalTableModel;
 import View.ClienteTableModel;
 import View.ConsultaTableModel;
-import View.ConsultasTableModel;
 import View.EspecieTableModel;
 import javax.swing.JTable;
 import View.GenericTableModel;
 import View.TratamentoTableModel;
 import View.VeterinarioTableModel;
 import java.awt.Color;
+import java.text.ParseException;
+import java.text.SimpleDateFormat;
 import java.util.Calendar;
+import java.util.Date;
 import java.util.List;
 import javax.swing.JFrame;
 import javax.swing.JOptionPane;
@@ -379,6 +381,40 @@ public class Controller {
         visiblePanel.setVisible(false);
         visiblePanel = panel;
         visiblePanel.setVisible(true);
+    }
+    
+    public static boolean camposAgendamentoValidos(){
+        if(clienteSelecionado != null && animalSelecionado != null){
+            if(veterinarioSelecionado != null){
+                if(tratamentoSelecionado != null){
+                    return true;
+                }
+                else
+                    JOptionPane.showMessageDialog(new JFrame(), "Um tratamento deve ser selecionado para fazer um agendamento", "Dialog",JOptionPane.ERROR_MESSAGE);
+            }
+            else
+                JOptionPane.showMessageDialog(new JFrame(), "Um veterinário deve ser selecionado para fazer um agendamento", "Dialog",JOptionPane.ERROR_MESSAGE);
+        }
+        else
+            JOptionPane.showMessageDialog(new JFrame(), "Um cliente e um animal devem ser selecionados para fazer um agendamento", "Dialog",JOptionPane.ERROR_MESSAGE);
+        
+        return false;
+    }
+    
+    public static void agendarConsulta(Date data, String hora){
+        try{    
+            String[] horario = hora.split(":");
+            Calendar c = Calendar.getInstance();
+            c.setTime(data);
+            c.set(Calendar.HOUR_OF_DAY, Integer.parseInt(horario[0]));
+            c.set(Calendar.MINUTE, Integer.parseInt(horario[1]));
+            ConsultaDAO.getInstance().create(c, "", animalSelecionado, veterinarioSelecionado, tratamentoSelecionado, false);
+            
+        }
+        catch(Exception e){
+            System.out.println(e);
+            JOptionPane.showMessageDialog(new JFrame(), "A data ou hora inserida é inválida", "Dialog",JOptionPane.ERROR_MESSAGE);
+        }
     }
     
     public static void preencherCamposConsulta(JTextField clienteField, JTextField veterinarioField, JTextField animalField, JTextField tratamentoField){

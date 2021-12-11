@@ -65,28 +65,7 @@ public class ConsultasTableModel extends GenericTableModel{
                 throw new IndexOutOfBoundsException("columnIndex out of bounds");
         }
     }
-    /*
-    @Override
-    public void setValueAt(Object aValue, int rowIndex, int columnIndex){
-        Consulta consulta = (Consulta) vDados.get(rowIndex);
-        
-        switch(columnIndex){
-            case 0:
-                //tratar string antes de passsar para o setter para evitar exception
-                consulta.setData((String)aValue);
-                break;
-            case 1:
-                consulta.setHora((String)aValue);
-                break;
-            case 2:
-                Anima
-            default:
-                throw new IndexOutOfBoundsException("columnIndex out of bounds");            
-        }
-        
-        Controller.updateInstance(consulta);
-    }
-    */
+    
     @Override
     public boolean isCellEditable(int rowIndex,int columnIndex){
         return false;
