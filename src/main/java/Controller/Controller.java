@@ -24,6 +24,7 @@ import View.TratamentoTableModel;
 import View.VeterinarioTableModel;
 import com.toedter.calendar.JDateChooser;
 import java.awt.Color;
+import java.text.SimpleDateFormat;
 import java.util.Calendar;
 import java.util.Date;
 import java.util.List;
@@ -148,10 +149,22 @@ public class Controller {
     }
     
     public static void filtrarConsultas(JTable tabelaConsultas, Date data, String hora, String nomeCliente, String nomeVeterinario, String nomeTratamento, Boolean finalizadas){
+        SimpleDateFormat dateFormat = new SimpleDateFormat("dd/MM/yyyy");
         Calendar c = Calendar.getInstance();
-        c.setTime(data);
-        List<Consulta> consultas = ConsultaDAO.getInstance().retrieveByFilter(c, hora, idCliente, idVeterinario, idTratamento, finalizadas);
-        ((GenericTableModel)tabelaConsultas.getModel()).addListOfItems(consultas);
+        String dia;
+        if(data != null){
+            c.setTime(data);
+            dia = dateFormat.format(c.getTime());
+        }
+        else
+            dia = "";
+        
+        int consultasFinalizadas = finalizadas ? 1 : 0;
+        ((GenericTableModel)tabelaConsultas.getModel()).addListOfItems(ConsultaDAO.getInstance().retrieveByFilter(dia, hora, nomeCliente, nomeVeterinario, nomeTratamento, consultasFinalizadas));
+    }
+    
+    public static void getAllConsultas(JTable tabelaConsultas){
+        ((GenericTableModel)tabelaConsultas.getModel()).addListOfItems(ConsultaDAO.getInstance().retrieveAll());
     }
     
     public static void setSelected(Object selected){
@@ -437,14 +450,14 @@ public class Controller {
         return false;
     }
     
-    public static boolean agendarConsulta(Date data, String hora){
+    public static boolean agendarConsulta(Date data, String hora, String comentarios){
         try{    
             String[] horario = hora.split(":");
             Calendar c = Calendar.getInstance();
             c.setTime(data);
             c.set(Calendar.HOUR_OF_DAY, Integer.parseInt(horario[0]));
             c.set(Calendar.MINUTE, Integer.parseInt(horario[1]));
-            ConsultaDAO.getInstance().create(c, "", animalSelecionado, veterinarioSelecionado, tratamentoSelecionado, false);
+            ConsultaDAO.getInstance().create(c, comentarios, animalSelecionado, veterinarioSelecionado, tratamentoSelecionado, false);
             return true;
             
         }
@@ -478,5 +491,14 @@ public class Controller {
                 consultaSelecionadoTextField.append(status + c.getComentarios() + "\n");
             }
         }
+    }
+    
+    public static void btnFiltrosClick(JToggleButton btn){
+        Color actualColor = btn.getBackground();
+        Color beforeClick = new Color(238,238,252);
+        if(actualColor.equals(beforeClick))
+            btn.setBackground(new Color(226, 239, 255));
+        else
+            btn.setBackground(beforeClick);
     }
 }

@@ -161,6 +161,7 @@ public class MainView extends javax.swing.JFrame {
         jToggleButton4 = new javax.swing.JToggleButton();
         jToggleButton5 = new javax.swing.JToggleButton();
         jToggleButton6 = new javax.swing.JToggleButton();
+        jButton8 = new javax.swing.JButton();
         especies = new javax.swing.JPanel();
         areaListaEspecies = new javax.swing.JPanel();
         jButton13 = new javax.swing.JButton();
@@ -1285,9 +1286,9 @@ public class MainView extends javax.swing.JFrame {
         jLabel35.setText("Comentários da Consulta Selecionada:");
 
         jButton7.setBackground(new java.awt.Color(238, 238, 252));
-        jButton7.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
+        jButton7.setFont(new java.awt.Font("Segoe UI", 1, 12)); // NOI18N
         jButton7.setForeground(new java.awt.Color(0, 0, 0));
-        jButton7.setText("FILTRAR");
+        jButton7.setText("Filtrar");
         jButton7.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseClicked(java.awt.event.MouseEvent evt) {
                 jButton7MouseClicked(evt);
@@ -1386,6 +1387,20 @@ public class MainView extends javax.swing.JFrame {
         jToggleButton6.setBackground(new java.awt.Color(238, 238, 252));
         jToggleButton6.setForeground(new java.awt.Color(0, 0, 0));
         jToggleButton6.setText("Consultas Finalizadas");
+        jToggleButton6.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                jToggleButton6MouseClicked(evt);
+            }
+        });
+
+        jButton8.setBackground(new java.awt.Color(238, 238, 252));
+        jButton8.setForeground(new java.awt.Color(0, 0, 0));
+        jButton8.setText("Todas");
+        jButton8.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                jButton8MouseClicked(evt);
+            }
+        });
 
         javax.swing.GroupLayout areaCadConsultaLayout = new javax.swing.GroupLayout(areaCadConsulta);
         areaCadConsulta.setLayout(areaCadConsultaLayout);
@@ -1393,7 +1408,17 @@ public class MainView extends javax.swing.JFrame {
             areaCadConsultaLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(areaCadConsultaLayout.createSequentialGroup()
                 .addGap(13, 13, 13)
-                .addGroup(areaCadConsultaLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                .addGroup(areaCadConsultaLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                    .addGroup(areaCadConsultaLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                        .addGroup(areaCadConsultaLayout.createSequentialGroup()
+                            .addGroup(areaCadConsultaLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                .addComponent(jScrollPane14, javax.swing.GroupLayout.PREFERRED_SIZE, 304, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addComponent(jLabel34))
+                            .addGap(45, 45, 45)
+                            .addGroup(areaCadConsultaLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                .addComponent(jLabel35)
+                                .addComponent(jScrollPane15, javax.swing.GroupLayout.PREFERRED_SIZE, 430, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                        .addComponent(jScrollPane5, javax.swing.GroupLayout.PREFERRED_SIZE, 864, javax.swing.GroupLayout.PREFERRED_SIZE))
                     .addGroup(areaCadConsultaLayout.createSequentialGroup()
                         .addGroup(areaCadConsultaLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, areaCadConsultaLayout.createSequentialGroup()
@@ -1419,33 +1444,28 @@ public class MainView extends javax.swing.JFrame {
                                 .addComponent(jToggleButton3)
                                 .addGap(23, 23, 23)))
                         .addGroup(areaCadConsultaLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addComponent(jLabel21)
-                            .addComponent(jLabel29))
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addGroup(areaCadConsultaLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                            .addComponent(jTextField12, javax.swing.GroupLayout.DEFAULT_SIZE, 164, Short.MAX_VALUE)
-                            .addComponent(jTextField9))
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addGroup(areaCadConsultaLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addComponent(jToggleButton5)
                             .addGroup(areaCadConsultaLayout.createSequentialGroup()
-                                .addComponent(jToggleButton4)
-                                .addGap(0, 0, Short.MAX_VALUE))))
-                    .addGroup(areaCadConsultaLayout.createSequentialGroup()
-                        .addGroup(areaCadConsultaLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                            .addComponent(jButton7)
-                            .addGroup(areaCadConsultaLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                .addGroup(areaCadConsultaLayout.createSequentialGroup()
-                                    .addGroup(areaCadConsultaLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                        .addComponent(jScrollPane14, javax.swing.GroupLayout.PREFERRED_SIZE, 304, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                        .addComponent(jLabel34))
-                                    .addGap(45, 45, 45)
-                                    .addGroup(areaCadConsultaLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                        .addComponent(jLabel35)
-                                        .addComponent(jScrollPane15, javax.swing.GroupLayout.PREFERRED_SIZE, 430, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                                .addComponent(jScrollPane5, javax.swing.GroupLayout.PREFERRED_SIZE, 864, javax.swing.GroupLayout.PREFERRED_SIZE))
-                            .addComponent(jToggleButton6))
-                        .addGap(0, 0, Short.MAX_VALUE)))
+                                .addGroup(areaCadConsultaLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                    .addComponent(jLabel21)
+                                    .addComponent(jLabel29))
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                                .addGroup(areaCadConsultaLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                                    .addComponent(jTextField12, javax.swing.GroupLayout.DEFAULT_SIZE, 164, Short.MAX_VALUE)
+                                    .addComponent(jTextField9))
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                                .addGroup(areaCadConsultaLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                    .addGroup(areaCadConsultaLayout.createSequentialGroup()
+                                        .addComponent(jToggleButton5)
+                                        .addGap(0, 0, Short.MAX_VALUE))
+                                    .addGroup(areaCadConsultaLayout.createSequentialGroup()
+                                        .addComponent(jToggleButton4)
+                                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                                        .addComponent(jToggleButton6))))
+                            .addGroup(areaCadConsultaLayout.createSequentialGroup()
+                                .addGap(0, 0, Short.MAX_VALUE)
+                                .addComponent(jButton8)
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                                .addComponent(jButton7)))))
                 .addContainerGap())
         );
         areaCadConsultaLayout.setVerticalGroup(
@@ -1482,8 +1502,10 @@ public class MainView extends javax.swing.JFrame {
                             .addComponent(jToggleButton4)
                             .addComponent(jToggleButton6))
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                        .addComponent(jButton7)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)))
+                        .addGroup(areaCadConsultaLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                            .addComponent(jButton7)
+                            .addComponent(jButton8))
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)))
                 .addComponent(jScrollPane5, javax.swing.GroupLayout.DEFAULT_SIZE, 222, Short.MAX_VALUE)
                 .addGap(18, 18, 18)
                 .addGroup(areaCadConsultaLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -1988,27 +2010,40 @@ public class MainView extends javax.swing.JFrame {
 
     private void jToggleButton2MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jToggleButton2MouseClicked
         Controller.changeInputStatus(jTextField8, jToggleButton2);
+        Controller.btnFiltrosClick(jToggleButton2);
     }//GEN-LAST:event_jToggleButton2MouseClicked
 
     private void jToggleButton3MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jToggleButton3MouseClicked
         Controller.changeInputStatus(jTextField6, jToggleButton3);
+        Controller.btnFiltrosClick(jToggleButton3);
     }//GEN-LAST:event_jToggleButton3MouseClicked
 
     private void jToggleButton4MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jToggleButton4MouseClicked
         Controller.changeInputStatus(jTextField9, jToggleButton4);
+        Controller.btnFiltrosClick(jToggleButton4);
     }//GEN-LAST:event_jToggleButton4MouseClicked
 
     private void jToggleButton5MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jToggleButton5MouseClicked
         Controller.changeInputStatus(jTextField12, jToggleButton5);
+        Controller.btnFiltrosClick(jToggleButton5);
     }//GEN-LAST:event_jToggleButton5MouseClicked
 
     private void jToggleButton1MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jToggleButton1MouseClicked
         Controller.changeInputStatus(jDateChooser1, jToggleButton1);
+        Controller.btnFiltrosClick(jToggleButton1);
     }//GEN-LAST:event_jToggleButton1MouseClicked
 
     private void jButton7MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jButton7MouseClicked
         Controller.filtrarConsultas(jTable8, jDateChooser1.getDate(), jTextField8.getText(), jTextField6.getText(), jTextField9.getText(), jTextField12.getText(), jToggleButton6.isSelected());
     }//GEN-LAST:event_jButton7MouseClicked
+
+    private void jButton8MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jButton8MouseClicked
+        Controller.getAllConsultas(jTable8);
+    }//GEN-LAST:event_jButton8MouseClicked
+
+    private void jToggleButton6MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jToggleButton6MouseClicked
+        Controller.btnFiltrosClick(jToggleButton6);
+    }//GEN-LAST:event_jToggleButton6MouseClicked
 
     /**
      * @param args the command line arguments
@@ -2085,6 +2120,7 @@ public class MainView extends javax.swing.JFrame {
     private javax.swing.JButton jButton5;
     private javax.swing.JButton jButton6;
     private javax.swing.JButton jButton7;
+    private javax.swing.JButton jButton8;
     private javax.swing.JCheckBox jCheckBox2;
     private com.toedter.calendar.JDateChooser jDateChooser1;
     private javax.swing.JLabel jLabel1;
@@ -2176,8 +2212,4 @@ public class MainView extends javax.swing.JFrame {
     private javax.swing.JPanel tratamento;
     private javax.swing.JPanel veterinarios;
     // End of variables declaration//GEN-END:variables
-    // NavBar variables
-    private Color corItemAnimal;
-    private Color corItemConsulta;
-    private Color corItemTratamento;
 }

@@ -102,11 +102,21 @@ public class ConsultaDAO extends DAO{
         return this.retrieve("SELECT * FROM consulta WHERE id_animal = " + id);
     }   
     
-    public List retrieveByFilter(String dia, String hora, String nomeCliente, int idVeterinario, int idTratamento, Boolean finalizadas){
-        String data = (dia == null ? "" : dateFormat.format(dia.getTime()));
-        String veterinario = (idVeterinario < 0 ? "" : Integer.toString(idVeterinario));
-        String tratamento = (idTratamento < 0 ? "" : Integer.toString(idTratamento));
-        return this.retrieve("SELECT * FROM consulta WHERE data = " + data + " AND horario LIKE '%" + hora + "%' AND id_vet LIKE '%" + veterinario + "%' AND id_tratamento LIKE '%" + tratamento + "%' AND terminado LIKE '%" + finalizadas + "%'");
+    public List retrieveByFilter(String dia, String hora, String nomeCliente, String nomeVeterinario, String nomeTratamento, int finalizadas){
+        return this.retrieve("SELECT c.id, c.data, c.horario, c.comentario, c.id_animal, c.id_vet, c.id_tratamento, c.terminado FROM consulta c INNER JOIN animal a "
+                + "ON c.id_animal = a.id "
+                + "INNER JOIN vet v "
+                + "ON c.id_vet = v.id "
+                + "INNER JOIN cliente cli "
+                + "ON a.id_cliente = cli.id "
+                + "INNER JOIN tratamento t "
+                + "ON c.id_tratamento = t.id "
+                + "WHERE v.nome LIKE '%" + nomeVeterinario
+                + "%' AND cli.nome LIKE '%" + nomeCliente
+                + "%' AND t.nome LIKE '%" + nomeTratamento
+                + "%' AND c.terminado = " + finalizadas
+                + " AND c.data LIKE '%" + dia
+                + "%' AND horario LIKE '%" + hora + "%'");
     }
     
     public void update(Consulta consulta) {
