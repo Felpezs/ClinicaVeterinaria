@@ -1111,6 +1111,11 @@ public class MainView extends javax.swing.JFrame {
         jButton11.setBackground(new java.awt.Color(238, 238, 252));
         jButton11.setForeground(new java.awt.Color(0, 0, 0));
         jButton11.setText("Novo Exame");
+        jButton11.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                jButton11MouseClicked(evt);
+            }
+        });
 
         jLabel22.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
         jLabel22.setForeground(new java.awt.Color(0, 0, 0));
@@ -2044,6 +2049,11 @@ public class MainView extends javax.swing.JFrame {
     private void jToggleButton6MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jToggleButton6MouseClicked
         Controller.btnFiltrosClick(jToggleButton6);
     }//GEN-LAST:event_jToggleButton6MouseClicked
+
+    private void jButton11MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jButton11MouseClicked
+        Controller.insertExame(jTable5, jTextField10.getText());
+        jTextField10.setText("");
+    }//GEN-LAST:event_jButton11MouseClicked
 
     /**
      * @param args the command line arguments

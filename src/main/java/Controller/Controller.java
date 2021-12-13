@@ -477,6 +477,8 @@ public class Controller {
     
     public static void retrieveConsultas(JTable tabelaConsulta){
         ((GenericTableModel)tabelaConsulta.getModel()).addListOfItems(ConsultaDAO.getInstance().retrieveByIdAnimal(animalSelecionado.getId()));
+        consultaSelecionadoTextField.setText("");
+        Controller.verificarConsultasExistentes();
     }
     
     public static void verificarConsultasExistentes(){
