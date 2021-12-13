@@ -138,7 +138,7 @@ public class Controller {
     public static void changeInputStatus(JDateChooser input, JToggleButton btn){
         if(input.isEnabled()){
             input.setEnabled(false);
-            input.cleanup();
+            input.setDate(null);
             btn.setSelected(false);
         }
         else{
